@@ -33,7 +33,7 @@ public class Permutation {
     public void string_sort() {
         String test = "ASDFGH";
         String sort = sort(test);
-        Assertions.assertEquals(sort, "ADFGHS");
+        Assertions.assertEquals("ADFGHS", sort);
     }
 
     @Test
