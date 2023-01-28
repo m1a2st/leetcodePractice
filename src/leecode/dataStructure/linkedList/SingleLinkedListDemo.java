@@ -72,7 +72,7 @@ public class SingleLinkedListDemo {
         HeroNode reverseHead = new HeroNode(0, "", "");
         //從頭到尾遍歷原來的鏈表，每遍歷一個節點，就將其取出，並放在新的鏈表reverseHead 的最前端
         while (cur != null) {
-            //先暫時保存當前節點的下一個節點，應為後面會用到
+            //先暫時保存當前節點的下一個節點，因為後面會用到
             next = cur.next;
             //將cur的下一個節點指向新的鏈表的最前端
             cur.next = reverseHead.next;

@@ -21,12 +21,12 @@ public class BinaryTreeDemo {
         //手動創建二元樹
         root.left = node1;
         root.right = node2;
-        node2.right = node3;
-        node2.left = node4;
+        node1.right = node3;
+        node1.left = node4;
 
         binaryTree.setRoot(root);
-//        //測試，前序遍歷 =>1,2,3,4
-//        binaryTree.preOrder();
+        //測試，前序遍歷 =>1,2,3,4
+        binaryTree.preOrder();
 //        //測試，中序遍歷 =>2,1,3,4
 //        System.out.println();
 //        binaryTree.infixOrder();
@@ -38,8 +38,8 @@ public class BinaryTreeDemo {
 //        System.out.println(binaryTree.infixOrderSearch(3));
 //        System.out.println(binaryTree.postOrderSearch(5));
 
-        binaryTree.delete(3);
-        binaryTree.preOrder();
+//        binaryTree.delete(3);
+//        binaryTree.preOrder();
     }
 }
 

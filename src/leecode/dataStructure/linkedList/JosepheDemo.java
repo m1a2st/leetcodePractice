@@ -117,6 +117,8 @@ class CircleSingleLinkedList {
         System.out.printf("Last No%d in the circle.\n",first.getNo());
     }
 
+
+
 }
 
 //創建一個節點，表示boy

@@ -10,17 +10,17 @@ public class No23 {
         }
         ListNode dummy = new ListNode(-1);
         ListNode p = dummy;
-        PriorityQueue<ListNode> pq = new PriorityQueue<>(lists.length, Comparator.comparingInt(a -> a.val));
-        for (ListNode head:lists) {
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(lists.length,Comparator.comparingInt(s -> s.val));
+        for (ListNode head : lists) {
             if(head != null){
                 pq.add(head);
             }
         }
-        while(!pq.isEmpty()){
-            ListNode node = pq.poll();
-            p.next = node;
-            if(node.next != null){
-                pq.add(node.next);
+        while (!pq.isEmpty()) {
+            ListNode poll = pq.poll();
+            p.next = poll;
+            if(poll.next != null){
+                pq.add(poll.next);
             }
             p = p.next;
         }
