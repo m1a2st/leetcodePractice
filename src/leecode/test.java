@@ -1,24 +1,20 @@
 package leecode;
 
-import org.junit.platform.commons.util.StringUtils;
-
-import java.io.IOException;
 import java.util.Optional;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
- * @Author Ken
+ * @Author
  * @Date
  * @Version
  * @Description
  */
-public class test {
-    public static void main(String[] args) throws IOException {
-//        String s = "0123456789";
-//        System.out.println(s.substring(0, 4));
-//        String s = null;
-//        System.out.println(Optional.of(s).filter(StringUtils::isNotBlank).map(Integer::valueOf).orElse(0));
-        String s = "fewfuwgfi";
-        Optional.ofNullable(s).orElseThrow(()->new IndexOutOfBoundsException());
+public class Test {
+
+    public static void main(String[] args) {
+        Random random = new Random();
+        IntStream.range(1, 100).map(s -> random.nextInt(10)).forEach(System.out::println);
+        Optional.ofNullable(null).orElseThrow(() -> new IndexOutOfBoundsException(""));
     }
 }
-
