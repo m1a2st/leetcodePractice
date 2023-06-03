@@ -26,10 +26,10 @@ class AsBsGame {
     private final Integer[] ans;
     private Integer[] input;
     private boolean gameOver = false;
-    private final int SIZE = 4;
+    private final static int SIZE = 4;
 
     public AsBsGame() {
-        Set<Integer> ans = new HashSet<>();
+        Set<Integer> ans = new LinkedHashSet<>();
         Random random = new Random();
         while (ans.size() < SIZE) {
             int number = random.nextInt(10);
@@ -52,9 +52,7 @@ class AsBsGame {
             System.out.println("Please input your answer:");
             String customerAns = sc.next();
             char[] chars = customerAns.toCharArray();
-            checkSize(chars);
-            checkDigit(chars);
-            checkDuplicate(chars);
+            checkInput(chars);
             this.input = charArr2IntegerArr(chars);
         } catch (IllegalArgumentException e) {
             System.out.println("Input Illegal Argument!!!");
@@ -68,23 +66,15 @@ class AsBsGame {
         checkEndGame(asAndBs);
     }
 
-    private void checkSize(char[] chars) throws IllegalArgumentException {
-        if (chars.length != SIZE) {
+    private void checkInput(char[] chars) throws IllegalArgumentException {
+        if (charArr2HashSet(chars).size() != SIZE || chars.length != SIZE) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkDigit(char[] chars) throws IllegalArgumentException {
-        for (int i = 0; i < SIZE; i++) {
-            if (!isDigit(chars[i])) {
-                throw new IllegalArgumentException();
+        } else {
+            for (int i = 0; i < SIZE; i++) {
+                if (!isDigit(chars[i])) {
+                    throw new IllegalArgumentException();
+                }
             }
-        }
-    }
-
-    private void checkDuplicate(char[] chars) throws IllegalArgumentException {
-        if (charArr2HashSet(chars).size() != 4) {
-            throw new IllegalArgumentException();
         }
     }
 
@@ -103,11 +93,11 @@ class AsBsGame {
     private int[] getAsAndBs(Integer[] inputs, Integer[] answers) {
         int a = 0, b = 0;
         for (int i = 0; i < SIZE; i++) {
-            if (inputs[i].equals(answers[i])) {
+            if (inputs[i] == answers[i]) {
                 a++;
             } else {
                 for (int j = 0; j < SIZE; j++) {
-                    if (inputs[i].equals(answers[j])) {
+                    if (inputs[i] == answers[j]) {
                         b++;
                         break;
                     }
@@ -130,7 +120,7 @@ class Utils {
     }
 
     public static HashSet<Integer> charArr2HashSet(char[] chars) {
-        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> set = new LinkedHashSet<>();
         for (char c : chars) {
             set.add((int) c);
         }

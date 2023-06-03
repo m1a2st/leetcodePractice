@@ -1,24 +1,8 @@
 package leecode.easy;
 
+import leecode.medium.ListNode;
+
 public class No206 {
-
-    //      Definition for singly-linked list.
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     static class Solution {
         public ListNode reverseList(ListNode head) {

@@ -1,6 +1,8 @@
 package leecode.easy;
 
 
+import leecode.medium.ListNode;
+
 public class No86 {
     public ListNode partition(ListNode head, int x) {
         ListNode dummy1 = new ListNode(-1);
@@ -24,20 +26,3 @@ public class No86 {
     }
 }
 
-//  Definition for singly-linked list.
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}

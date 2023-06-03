@@ -1,5 +1,7 @@
 package leecode.easy;
 
+import leecode.medium.ListNode;
+
 public class No160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode p1 = headA,p2 = headB;

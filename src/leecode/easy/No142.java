@@ -1,5 +1,7 @@
 package leecode.easy;
 
+import leecode.medium.ListNode;
+
 public class No142 {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head, fast = head;

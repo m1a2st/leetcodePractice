@@ -13,24 +13,16 @@ public class No27 {
 
     static class Solution {
         public static int removeElement(int[] nums, int val) {
-            for (int low = 0, fast = 1; fast < nums.length; ) {
-                if (nums[low] == val) {
-                    if (nums[fast] != val) {
-                        swap(nums, low, fast);
-                        low++;
-                    }
-                    fast++;
-                } else {
-
+            int count = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] != val) {
+                    nums[count] = nums[i];
+                    count++;
                 }
             }
-            return 0;
+            return count;
         }
 
-        private static void swap(int[] nums, int low, int fast) {
-            int t = nums[low];
-            nums[low] = nums[fast];
-            nums[fast] = t;
-        }
+
     }
 }

@@ -1,5 +1,7 @@
 package leecode.easy;
 
+import leecode.medium.ListNode;
+
 public class No876 {
     public ListNode middleNode(ListNode head) {
         ListNode temp = head,temp2 = head;

@@ -11,50 +11,32 @@ public class No237 {
 
     }
 
-    public void deleteNode(Listnode node) {
+    public void deleteNode(ListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;
     }
 
 }
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) { val = x; }
- * }
- */
-
-class Listnode {
-    int val;
-    Listnode next;
-
-    Listnode(int x) {
-        this.val = x;
-        this.next = null;
-    }
-}
 
 class LinkedList {
     int length;
-    Listnode head;
+    ListNode head;
 
     public LinkedList() {
     }
 
-    public LinkedList(int length, Listnode head) {
+    public LinkedList(int length, ListNode head) {
         this.length = length;
         this.head = head;
     }
 
     public void push(int val) {
-        Listnode newNode = new Listnode(val);
+        ListNode newNode = new ListNode(val);
         if (this.head == null) {
             this.head = newNode;
         } else {
-            Listnode currentNode = this.head;
+            ListNode currentNode = this.head;
             while (currentNode.next != null) {
                 currentNode = currentNode.next;
             }
@@ -65,30 +47,29 @@ class LinkedList {
 
     public void unshift(int val) {
         if (this.head == null) {
-            this.head = new Listnode(val);
+            this.head = new ListNode(val);
         } else {
-            Listnode temp = this.head;
-            Listnode newNode = new Listnode(val);
-            this.head = newNode;
+            ListNode temp = this.head;
+            this.head = new ListNode(val);
             this.head.next = temp;
         }
         length++;
     }
 
-    public Listnode pop() {
+    public ListNode pop() {
         if (this.head == null) {
             return null;
         } else if (this.length == 1) {
-            Listnode temp = this.head;
+            ListNode temp = this.head;
             this.head = null;
             length = 0;
             return temp;
         } else {
-            Listnode currentNode = this.head;
+            ListNode currentNode = this.head;
             for (int i = 1; i <= length - 2; i++) {
                 currentNode = currentNode.next;
             }
-            Listnode temp = currentNode.next;
+            ListNode temp = currentNode.next;
             currentNode.next = null;
             this.length--;
             return temp;
@@ -105,16 +86,16 @@ class LinkedList {
         }
     }
 
-    public Listnode shift() {
+    public ListNode shift() {
         if (this.head == null) {
             return null;
         } else if (this.length == 1) {
-            Listnode temp = this.head;
+            ListNode temp = this.head;
             this.head = null;
             this.length = 0;
             return temp;
         } else {
-            Listnode temp = this.head;
+            ListNode temp = this.head;
             this.head = this.head.next;
             this.length--;
             return temp;
@@ -125,7 +106,7 @@ class LinkedList {
         if (this.length == 0) {
             System.out.println("Nothing in this linked list");
         }
-        Listnode currentNode = this.head;
+        ListNode currentNode = this.head;
         while (currentNode != null) {
             System.out.println(currentNode.val);
             currentNode = currentNode.next;

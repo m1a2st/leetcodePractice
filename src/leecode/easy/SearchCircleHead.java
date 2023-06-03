@@ -1,5 +1,7 @@
 package leecode.easy;
 
+import leecode.medium.ListNode;
+
 public class SearchCircleHead {
     /**
      * 我們假設快慢指針相遇時，慢指針 slow 走了 k 步，那麽快指針 fast 一定走了 2k 步。

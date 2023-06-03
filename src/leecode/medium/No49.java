@@ -1,9 +1,11 @@
 package leecode.medium;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -22,7 +24,7 @@ public class No49 {
     }
 
     static class Solution {
-        public static List<List<String>> groupAnagrams(String[] strs) {
+        public static List<List<String>> groupAnagramsOld(String[] strs) {
             HashMap<String, List<String>> map = new HashMap<>();
             for (String str : strs) {
                 char[] chars = str.toCharArray();
@@ -39,5 +41,34 @@ public class No49 {
             return new ArrayList<>(map.values());
         }
 
+        public static List<List<String>> groupAnagrams(String[] strs) {
+            Map<String, List<String>> map = new HashMap<>();
+            for (String str : strs) {
+                String str1 = sort(str);
+                if (map.containsKey(str1)) {
+                    List<String> ls = map.get(str1);
+                    ls.add(str);
+                } else {
+                    map.put(str1, new ArrayList<>() {{
+                        add(str);
+                    }});
+                }
+            }
+            return new ArrayList<>(map.values());
+        }
+
+        private static String sort(String str) {
+            char[] charArray = str.toCharArray();
+            Arrays.sort(charArray);
+            return String.valueOf(charArray);
+        }
+    }
+
+    @Test
+    public void test() {
+        Solution solution = new Solution();
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        List<List<String>> lists = solution.groupAnagrams(strs);
+        assertEquals(3, lists.size());
     }
 }
