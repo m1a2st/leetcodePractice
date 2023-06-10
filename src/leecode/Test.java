@@ -1,10 +1,12 @@
 package leecode;
 
 
+import java.lang.reflect.Field;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * @Author
@@ -15,8 +17,34 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
+        ArrayList<Integer> l = new ArrayList<>();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        l.add(4);
+        l.add(5);
+        l.stream().map(i -> i * 2)
+                .flatMap(i -> l.stream().map(j -> i * j))
+                .forEach(System.out::println);
+    }
 
+    public static <T> String clazzToCSVFormat(T t) {
+        Class<?> clazz = t.getClass();
+        Field[] declaredFields = clazz.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            // get declared field value
+            declaredField.setAccessible(true);
+            // get name and value
+            try {
+                System.out.println(declaredField.getName() + "\t" + declaredField.get(t));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+//            System.out.println(declaredField.getName() + "\t" + );
+            // get declared field type
 
+        }
+        return "";
     }
 
     public static <T> Predicate<T> filter(T... t) {
@@ -138,7 +166,7 @@ public class Test {
     }
 
     public static void checkPerson(Object obj) {
-        if(obj instanceof Person p) {
+        if (obj instanceof Person p) {
             System.out.println(p.name());
             System.out.println(p.age());
             System.out.println("obj is a Person");
