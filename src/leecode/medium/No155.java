@@ -66,7 +66,7 @@ public class No155 {
     }
 
     @Test
-    public void test(){
+    public void test() {
         MinStackGood minStackGood = new MinStackGood();
         minStackGood.push(2);
         minStackGood.push(3);
@@ -77,8 +77,5 @@ public class No155 {
         minStackGood.pop();
         minStackGood.pop();
         minStackGood.pop();
-        minStackGood.pop();
-
     }
-
 }
