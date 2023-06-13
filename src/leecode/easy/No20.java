@@ -1,5 +1,8 @@
 package leecode.easy;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.Stack;
 
 /**
@@ -9,21 +12,60 @@ import java.util.Stack;
  */
 public class No20 {
 
-    class Solution {
+    class SolutionOld {
         public boolean isValid(String s) {
             Stack<Character> stack = new Stack<>();
             for (char c : s.toCharArray()) {
-                if(c == '('){
+                if (c == '(') {
                     stack.push(')');
-                }else if(c == '{'){
+                } else if (c == '{') {
                     stack.push('}');
-                }else if (c == '['){
+                } else if (c == '[') {
                     stack.push(']');
-                }else if (stack.isEmpty() || stack.pop() != c){
+                } else if (stack.isEmpty() || stack.pop() != c) {
                     return false;
                 }
             }
             return stack.isEmpty();
         }
+    }
+
+    class Solution {
+        public boolean isValid(String s) {
+            Stack<Character> stack = new Stack<>();
+            for (char c : s.toCharArray()) {
+                if (c == '(') {
+                    stack.push(')');
+                } else if (c == '{') {
+                    stack.push('}');
+                } else if (c == '[') {
+                    stack.push(']');
+                } else if (stack.isEmpty() || stack.pop() != c) {
+                    return false;
+                }
+            }
+            return stack.isEmpty();
+        }
+    }
+
+    @Test
+    public void Test(){
+        String s = "()";
+        Solution solution = new Solution();
+        Assertions.assertTrue(solution.isValid(s));
+    }
+
+    @Test
+    public void Test2(){
+        String s = "()[]{}";
+        Solution solution = new Solution();
+        Assertions.assertTrue(solution.isValid(s));
+    }
+
+    @Test
+    public void Test3(){
+        String s = "(]";
+        Solution solution = new Solution();
+        Assertions.assertFalse(solution.isValid(s));
     }
 }

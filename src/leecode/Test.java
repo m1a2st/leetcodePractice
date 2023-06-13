@@ -2,11 +2,10 @@ package leecode;
 
 
 import java.lang.reflect.Field;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @Author
@@ -17,6 +16,8 @@ import java.util.function.Predicate;
 public class Test {
 
     public static void main(String[] args) {
+        String s = "123";
+        System.out.println(s.substring(1, 3));
         ArrayList<Integer> l = new ArrayList<>();
         l.add(1);
         l.add(2);
@@ -24,8 +25,7 @@ public class Test {
         l.add(4);
         l.add(5);
         l.stream().map(i -> i * 2)
-                .flatMap(i -> l.stream().map(j -> i * j))
-                .forEach(System.out::println);
+                .peek(System.out::println).collect(Collectors.toSet());
     }
 
     public static <T> String clazzToCSVFormat(T t) {
