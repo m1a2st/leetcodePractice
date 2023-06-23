@@ -2,9 +2,12 @@ package leecode;
 
 
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 /**
@@ -16,16 +19,17 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
-        String s = "123";
-        System.out.println(s.substring(1, 3));
-        ArrayList<Integer> l = new ArrayList<>();
-        l.add(1);
-        l.add(2);
-        l.add(3);
-        l.add(4);
-        l.add(5);
-        l.stream().map(i -> i * 2)
-                .peek(System.out::println).collect(Collectors.toSet());
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        integers.add(4);
+        ss(integers).forEach(System.out::println);
+//        integers.forEach(System.out::println);
+    }
+
+    public static List<Integer> ss(List<Integer> ss) {
+        return ss.stream().filter(s -> s / 2 == 0).collect(Collectors.toList());
     }
 
     public static <T> String clazzToCSVFormat(T t) {
@@ -40,9 +44,6 @@ public class Test {
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-//            System.out.println(declaredField.getName() + "\t" + );
-            // get declared field type
-
         }
         return "";
     }
@@ -151,6 +152,29 @@ public class Test {
         return -1;
     }
 
+    public static String convertToCamelCase(String kebabCaseInput) {
+        kebabCaseInput = kebabCaseInput.toLowerCase();
+        StringBuilder result = new StringBuilder();
+        boolean capitalizeNext = false;
+
+        for (int i = 0; i < kebabCaseInput.length(); i++) {
+            char currentChar = kebabCaseInput.charAt(i);
+
+            if (currentChar == '-') {
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    result.append(Character.toUpperCase(currentChar));
+                    capitalizeNext = false;
+                } else {
+                    result.append(currentChar);
+                }
+            }
+        }
+
+        return result.toString();
+    }
+
     private static int[] removeDuplicate(int[] arr) {
         int left = 0, right = 1, point = 0;
         int len = arr.length;
@@ -178,10 +202,23 @@ public class Test {
 
 }
 
-record Person(String name, int age) {
-    public Person {
-        System.out.println("in Person constructor");
+record Person(String name, int age, String date) implements Comparable<Person> {
+
+    @Override
+    public int compareTo(Person o) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        try {
+            return sdf.parse(this.date()).compareTo(sdf.parse(o.date()));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
+}
+
+class Constant {
+    public static final String A = "a";
+    public static final String B = "b";
+    public static final String C = "c";
 }
 
 //class Cat implements Serializable {
