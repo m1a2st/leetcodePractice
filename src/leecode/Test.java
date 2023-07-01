@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 /**
@@ -19,14 +18,19 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
-        ArrayList<Integer> integers = new ArrayList<>();
-        integers.add(1);
-        integers.add(2);
-        integers.add(3);
-        integers.add(4);
-        ss(integers).forEach(System.out::println);
-//        integers.forEach(System.out::println);
+        int i = 1;
+        switch (i) {
+            case 0:
+                System.out.println("0");
+            case 1:
+                System.out.println("1");
+            case 2:
+                System.out.println("2");
+            default:
+                System.out.println("default");
+        }
     }
+
 
     public static List<Integer> ss(List<Integer> ss) {
         return ss.stream().filter(s -> s / 2 == 0).collect(Collectors.toList());

@@ -15,7 +15,7 @@ public class No19 {
         Solution.removeNthFromEnd(head, 2);
     }
 
-    static class Solution {
+    static class SolutionOld {
         public static ListNode removeNthFromEnd(ListNode head, int n) {
             ListNode dummy = new ListNode(-1, head);
             ListNode x = findFromEnd(dummy, n);
@@ -35,6 +35,30 @@ public class No19 {
                 dummy = dummy.next;
             }
             return dummy;
+        }
+    }
+
+    static class Solution {
+        public static ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode dummy = new ListNode(-1);
+            dummy.next = head;
+            // 找到要刪除的前一個節點
+            ListNode node = findRemoveNode(dummy, n + 1);
+            node.next = node.next.next;
+            return dummy.next;
+        }
+
+        private static ListNode findRemoveNode(ListNode dummy, int i) {
+            ListNode fast = dummy;
+            ListNode slow = dummy;
+            for (int j = 0; j < i; j++) {
+                fast = fast.next;
+            }
+            while (fast.next != null) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            return slow;
         }
     }
 
