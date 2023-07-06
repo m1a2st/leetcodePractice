@@ -2,9 +2,11 @@ package leecode.easy;
 
 import leecode.medium.ListNode;
 
+import java.util.List;
+
 public class No141 {
 
-    public class Solution {
+    public class SolutionOld {
         public boolean hasCycle(ListNode head) {
             ListNode fast = head ,slow = head;
             while(fast != null && slow.next != null){
@@ -28,5 +30,19 @@ public class No141 {
             }
         }
         return false;
+    }
+
+    public class Solution {
+        public boolean hasCycle(ListNode head) {
+            ListNode fast = head, slow = head;
+            while(fast != null && fast.next != null){
+                fast = fast.next.next;
+                slow = slow.next;
+                if(fast == slow){
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

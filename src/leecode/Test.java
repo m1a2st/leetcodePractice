@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -18,17 +19,9 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
-        int i = 1;
-        switch (i) {
-            case 0:
-                System.out.println("0");
-            case 1:
-                System.out.println("1");
-            case 2:
-                System.out.println("2");
-            default:
-                System.out.println("default");
-        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM");
+        LocalDate time = LocalDate.now();
+        System.out.println(formatter.format(time));
     }
 
 
