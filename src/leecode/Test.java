@@ -1,6 +1,7 @@
 package leecode;
 
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,9 +20,7 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM");
-        LocalDate time = LocalDate.now();
-        System.out.println(formatter.format(time));
+        System.out.println(Serializable.class.isAssignableFrom(Cat.class));
     }
 
 
