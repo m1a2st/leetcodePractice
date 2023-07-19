@@ -21,12 +21,12 @@ public class No703 {
 
     }
 
-    static class KthLargest {
+    static class KthLargestOld {
 
         private final Queue<Integer> pq = new PriorityQueue<>();
         private final int k;
 
-        public KthLargest(int k, int[] nums) {
+        public KthLargestOld(int k, int[] nums) {
             this.k = k;
             for (int i : nums) {
                 pq.add(i);
@@ -36,9 +36,29 @@ public class No703 {
 
         public int add(int val) {
             pq.add(val);
-            if(pq.size() > k) pq.poll();
+            if (pq.size() > k) pq.poll();
             return pq.peek();
         }
-
     }
+
+    static class KthLargest {
+
+        Queue<Integer> pq;
+        int k;
+
+        public KthLargest(int k, int[] nums) {
+            this.k = k;
+            for (int i : nums) {
+                pq.offer(i);
+                if (pq.size() > k) pq.poll();
+            }
+        }
+
+        public int add(int val) {
+            pq.add(val);
+            if (pq.size() > k) pq.poll();
+            return pq.peek();
+        }
+    }
+
 }
