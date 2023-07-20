@@ -12,7 +12,7 @@ import java.util.Queue;
  */
 public class No1046 {
 
-    static class Solution {
+    static class SolutionOld {
         public int lastStoneWeight(int[] stones) {
             Queue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
             for (int stone : stones) {
@@ -22,6 +22,22 @@ public class No1046 {
                 int diff = pq.poll() - pq.poll();
                 if (diff != 0) {
                     pq.add(diff);
+                }
+            }
+            return pq.size() == 0 ? 0 : pq.poll();
+        }
+    }
+
+    class Solution {
+        public int lastStoneWeight(int[] stones) {
+            PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+            for (int stone : stones) {
+                pq.offer(stone);
+            }
+            while(pq.size() > 1){
+                int diff = pq.poll() - pq.poll();
+                if(diff != 0){
+                    pq.offer(diff);
                 }
             }
             return pq.size() == 0 ? 0 : pq.poll();
