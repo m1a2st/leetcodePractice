@@ -1,7 +1,10 @@
 package test;
 
+import kotlin.ranges.IntRange;
 import leecode.medium.No875;
 import org.junit.Test;
+
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -41,4 +44,29 @@ public class TestClass {
 //        int i = solution.minEatingSpeed(piles, h);
 //        assertEquals(3, i);
 //    }
+
+    @Test
+    public void no875_5() {
+        IntStream.range(0,10)
+                .mapToObj(Cat::new)
+                .forEach(System.out::println);
+    }
+
+    class Cat{
+        private int age;
+
+        public Cat() {
+        }
+
+        public Cat(int age) {
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return "Cat{" +
+                    "age=" + age +
+                    '}';
+        }
+    }
 }

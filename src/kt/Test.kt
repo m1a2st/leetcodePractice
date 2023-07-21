@@ -14,8 +14,7 @@ var list = listOf("a", "b", "c")
 fun main(args: Array<String>) {
 
 
-    list.filter { it == "a" }
-        .forEach{println(it)};
+    println("1231231".contains(""))
 }
 
 
