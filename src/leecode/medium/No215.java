@@ -1,5 +1,7 @@
 package leecode.medium;
 
+import org.junit.Test;
+
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -11,8 +13,9 @@ import java.util.Queue;
  */
 public class No215 {
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
+    @Test
+    public void test() {
+        SolutionOld solution = new SolutionOld();
         System.out.println(solution.findKthLargest(new int[]{3, 2, 1, 5, 6, 4}, 2));
         System.out.println(solution.findKthLargest(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4));
     }
@@ -23,6 +26,19 @@ public class No215 {
             for (int num : nums) {
                 pq.add(num);
                 if (pq.size() > k) pq.poll();
+            }
+            return pq.peek();
+        }
+    }
+
+    static class SolutionOld {
+        public int findKthLargest(int[] nums, int k) {
+            PriorityQueue<Integer> pq = new PriorityQueue();
+            for (int num : nums) {
+                pq.offer(num);
+                if(pq.size() > k){
+                    pq.poll();
+                }
             }
             return pq.peek();
         }

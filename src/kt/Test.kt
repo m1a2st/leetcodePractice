@@ -18,5 +18,8 @@ fun main(args: Array<String>) {
 }
 
 
-
 fun sum(a: Int, b: Int) = a + b;
+
+enum class E {
+    A, B, C
+}
