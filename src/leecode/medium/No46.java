@@ -1,6 +1,7 @@
 package leecode.medium;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class No46 {
@@ -36,6 +37,34 @@ public class No46 {
                 recursive(nums, result, list, used);
                 list.remove(list.size() - 1);
                 used[i] = false;
+            }
+        }
+    }
+
+    static class SolutionNew {
+        List<List<Integer>> result = new ArrayList<>();
+
+        public List<List<Integer>> permute(int[] nums) {
+            List<Integer> list = new ArrayList<>();
+            recursive(nums, list);
+            return result;
+        }
+
+        private void recursive(int[] nums, List<Integer> list) {
+            // 終止條件
+            if (nums.length == list.size()) {
+                result.add(new ArrayList<>(list));
+                return;
+            }
+            for (int num : nums) {
+                if (!list.contains(num)) {
+                    // 前置動作
+                    list.add(num);
+                    // 遞迴
+                    recursive(nums, list);
+                    // 後置動作
+                    list.remove(list.size() - 1);
+                }
             }
         }
     }
