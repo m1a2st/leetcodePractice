@@ -32,4 +32,25 @@ public class No90 {
             }
         }
     }
+
+    static class SolutionNew {
+
+        Set<List<Integer>> result = new HashSet<>();
+        public List<List<Integer>> subsetsWithDup(int[] nums) {
+            result.add(new ArrayList<>());
+            List<Integer> list = new ArrayList<>();
+            recursive(nums, list, 0);
+            return new ArrayList<>(result);
+        }
+
+        private void recursive(int[] nums, List<Integer> list, int start) {
+            for (int i = start; i < nums.length; i++) {
+                list.add(nums[i]);
+                ArrayList<Integer> ans = new ArrayList<>(list);
+                result.add(ans);
+                recursive(nums, list, start + 1);
+                list.remove(list.size() - 1);
+            }
+        }
+    }
 }
