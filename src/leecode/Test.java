@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        Files.write(Path.of("/Users/ken/Downloads/test"), "123".getBytes());
+        System.out.println(TimeUnit.MINUTES.toMillis(1));
     }
 
 
