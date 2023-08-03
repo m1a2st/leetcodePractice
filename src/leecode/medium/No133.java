@@ -20,12 +20,12 @@ public class No133 {
 
         public Node() {
             val = 0;
-            neighbors = new ArrayList<Node>();
+            neighbors = new ArrayList<>();
         }
 
         public Node(int _val) {
             val = _val;
-            neighbors = new ArrayList<Node>();
+            neighbors = new ArrayList<>();
         }
 
         public Node(int _val, ArrayList<Node> _neighbors) {
@@ -35,25 +35,6 @@ public class No133 {
     }
 
     class Solution {
-        //        public Node cloneGraph(Node node) {
-//            if (node == null) return null;
-//            //Map用來儲存新舊節點對應關係，用來區分已clone何未clone的節點
-//            Map<Node, Node> map = new HashMap<>();
-//            Queue<Node> queue = new LinkedList<>();
-//            queue.add(node);
-//            map.put(node, new Node(node.val));
-//            while (!queue.isEmpty()) {
-//                Node cur = queue.poll();
-//                for (Node neighbor : cur.neighbors) {
-//                    if (!map.containsKey(neighbor)) {
-//                        queue.add(neighbor);
-//                        map.put(neighbor, new Node(neighbor.val));
-//                    }
-//                    map.get(cur).neighbors.add(map.get(neighbor));
-//                }
-//            }
-//            return map.get(node);
-//        }
         public Node cloneGraph(Node node) {
             if (node == null) return null;
             Node[] visited = new Node[101];
@@ -74,6 +55,32 @@ public class No133 {
                 }
             }
         }
+    }
 
+    class SolutionNew {
+
+        Node[] visited = new Node[101];
+
+        public Node cloneGraph(Node node) {
+            if (node == null) return null;
+            Node newNode = new Node(node.val);
+            dfs(node, newNode);
+            return newNode;
+        }
+
+        private void dfs(Node node, Node newNode) {
+            // 記錄走過的節點
+            visited[newNode.val] = newNode;
+            for (Node neighbor : node.neighbors) {
+                // 此節點未被訪問過
+                if (visited[neighbor.val] == null) {
+                    Node n = new Node(neighbor.val);
+                    visited[n.val] = n;
+                    dfs(node, neighbor);
+                } else {
+                    neighbor.neighbors.add(visited[neighbor.val]);
+                }
+            }
+        }
     }
 }

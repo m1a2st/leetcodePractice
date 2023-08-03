@@ -3,13 +3,10 @@ package leecode;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -22,7 +19,7 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(TimeUnit.MINUTES.toMillis(1));
+        System.out.println("https://www.youtube.com/watch?v=-yZ1fo7tKS0&ab_channel=%E6%90%9E%E7%AC%91%E8%AB%87%E8%BB%9F%E5%B7%A5".length());
     }
 
 
