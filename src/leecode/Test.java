@@ -3,6 +3,8 @@ package leecode;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -19,7 +21,9 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        System.out.println("https://www.youtube.com/watch?v=-yZ1fo7tKS0&ab_channel=%E6%90%9E%E7%AC%91%E8%AB%87%E8%BB%9F%E5%B7%A5".length());
+        BigDecimal zero = BigDecimal.ZERO;
+        BigDecimal one = BigDecimal.ONE;
+        System.out.println(one.divide(zero, 3, RoundingMode.CEILING));
     }
 
 
