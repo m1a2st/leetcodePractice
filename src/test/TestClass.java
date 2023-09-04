@@ -13,6 +13,12 @@ import static org.junit.Assert.assertEquals;
 public class TestClass {
 
     @Test
+    public void test2(){
+        System.out.println(System.getProperty("os.name"));
+        System.out.println(System.getProperty("java.version"));
+    }
+
+    @Test
     public void test() {
         CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
