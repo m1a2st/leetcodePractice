@@ -1,14 +1,19 @@
 package leecode;
 
 
-import java.io.IOException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.rmi.Remote;
+import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static leecode.Test.Server.findPerson;
+import static leecode.Test.Server.initPerson;
 
 /**
  * @Author
@@ -18,8 +23,68 @@ import java.util.stream.Collectors;
  */
 public class Test {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+        String file = "1qweqweqweq23.txt";
+        System.out.println(file.substring(0,file.lastIndexOf(".")));
+    }
 
+    public static class Server {
+        public static void initPerson() throws Exception{
+            //配置JNDI工厂和JNDI的url和端口。如果没有配置这些信息，会出现NoInitialContextException异常
+            LocateRegistry.createRegistry(6666);
+            System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.rmi.registry.RegistryContextFactory");
+            System.setProperty(Context.PROVIDER_URL, "rmi://localhost:6666");
+
+            //初始化
+            InitialContext ctx = new InitialContext();
+
+            //实例化person对象
+            Person p = new Person();
+            p.setName("0range");
+            p.setPassword("Niubility!");
+
+            //person对象绑定到JNDI服务中，JNDI的名字叫做：person。
+            ctx.bind("person", p);
+            ctx.close();
+        }
+
+        public static void findPerson() throws Exception{
+            //因为前面已经将JNDI工厂和JNDI的url和端口已经添加到System对象中，这里就不用再绑定了
+            InitialContext ctx = new InitialContext();
+
+            //通过lookup查找person对象
+            Person person = (Person) ctx.lookup("person");
+
+            //打印出这个对象
+            System.out.println(person.toString());
+            ctx.close();
+        }
+    }
+
+    public static class Person implements Remote, Serializable {
+        private static final long serialVersionUID = 1L;
+        private String name;
+        private String password;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String toString(){
+            return "name:"+name+" password:"+password;
+        }
     }
 
 
@@ -186,8 +251,8 @@ public class Test {
 
     public static void checkPerson(Object obj) {
         if (obj instanceof Person p) {
-            System.out.println(p.name());
-            System.out.println(p.age());
+//            System.out.println(p.name());
+//            System.out.println(p.age());
             System.out.println("obj is a Person");
         } else {
             System.out.println("obj is not a Person");
@@ -197,18 +262,18 @@ public class Test {
 
 }
 
-record Person(String name, int age, String date) implements Comparable<Person> {
-
-    @Override
-    public int compareTo(Person o) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        try {
-            return sdf.parse(this.date()).compareTo(sdf.parse(o.date()));
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-}
+//record Person(String name, int age, String date) implements Comparable<Person> {
+//
+//    @Override
+//    public int compareTo(Person o) {
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//        try {
+//            return sdf.parse(this.date()).compareTo(sdf.parse(o.date()));
+//        } catch (ParseException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//}
 
 class Constant {
     public static final String A = "a";
