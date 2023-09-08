@@ -3,17 +3,18 @@ package leecode;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import java.io.Serializable;
+import java.io.*;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import static leecode.Test.Server.findPerson;
-import static leecode.Test.Server.initPerson;
 
 /**
  * @Author
@@ -24,12 +25,24 @@ import static leecode.Test.Server.initPerson;
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        String file = "1qweqweqweq23.txt";
-        System.out.println(file.substring(0,file.lastIndexOf(".")));
+        BigDecimal bigDecimal = new BigDecimal("0.00000000000");
+        System.out.println(new BigDecimal(0).equals(bigDecimal));
+//        Charset charset = Charset.forName("UTF-8");
+//        CharsetDecoder decoder = charset.newDecoder();
+//        decoder.onMalformedInput(CodingErrorAction.IGNORE);
+//        decoder.onUnmappableCharacter(CodingErrorAction.IGNORE);
+//        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("big5.txt"), charset))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static class Server {
-        public static void initPerson() throws Exception{
+        public static void initPerson() throws Exception {
             //配置JNDI工厂和JNDI的url和端口。如果没有配置这些信息，会出现NoInitialContextException异常
             LocateRegistry.createRegistry(6666);
             System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.rmi.registry.RegistryContextFactory");
@@ -48,7 +61,7 @@ public class Test {
             ctx.close();
         }
 
-        public static void findPerson() throws Exception{
+        public static void findPerson() throws Exception {
             //因为前面已经将JNDI工厂和JNDI的url和端口已经添加到System对象中，这里就不用再绑定了
             InitialContext ctx = new InitialContext();
 
@@ -82,8 +95,8 @@ public class Test {
             this.password = password;
         }
 
-        public String toString(){
-            return "name:"+name+" password:"+password;
+        public String toString() {
+            return "name:" + name + " password:" + password;
         }
     }
 
