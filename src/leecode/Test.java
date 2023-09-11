@@ -25,8 +25,6 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        BigDecimal bigDecimal = new BigDecimal("0.00000000000");
-        System.out.println(new BigDecimal(0).equals(bigDecimal));
 //        Charset charset = Charset.forName("UTF-8");
 //        CharsetDecoder decoder = charset.newDecoder();
 //        decoder.onMalformedInput(CodingErrorAction.IGNORE);
