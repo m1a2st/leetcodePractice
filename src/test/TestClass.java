@@ -5,7 +5,11 @@ import leecode.medium.No875;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
@@ -13,25 +17,25 @@ import static org.junit.Assert.assertEquals;
 public class TestClass {
 
     @Test
-    public void test2(){
+    public void test2() {
         System.out.println(System.getProperty("os.name"));
         System.out.println(System.getProperty("java.version"));
     }
 
-    @Test
-    public void test() {
-        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            list.add("a" + i);
-        }
-
-        for (String s : list) {
-            if (s.equals("a3")) {
-                list.remove(s);
-            }
-        }
-    }
+//    @Test
+//    public void test() {
+//        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+//
+//        for (int i = 0; i < 10; i++) {
+//            list.add("a" + i);
+//        }
+//
+//        for (String s : list) {
+//            if (s.equals("a3")) {
+//                list.remove(s);
+//            }
+//        }
+//    }
 
 //    @Test
 //    public void no875_1() {
@@ -69,27 +73,40 @@ public class TestClass {
 //    }
 
     @Test
-    public void no875_5() {
-        IntStream.range(0, 10)
-                .mapToObj(Cat::new)
-                .forEach(System.out::println);
+    public void test3() {
+        Map<String, List<Cat>> map = new HashMap<>() {{
+            put("a", List.of(new Cat(1)));
+            put("b", List.of(new Cat(2)));
+            put("c", List.of(new Cat(3)));
+            put("d", List.of(new Cat(4)));
+            put("e", List.of(new Cat(5)));
+        }};
+        Map<String, List<NewCat>> collect = map.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .map(Cat::toNewCat).collect(Collectors.toList())));
+
+
     }
 
-    class Cat {
-        private int age;
 
-        public Cat() {
-        }
+    class Cat {
+        int age;
 
         public Cat(int age) {
             this.age = age;
         }
 
-        @Override
-        public String toString() {
-            return "Cat{" +
-                    "age=" + age +
-                    '}';
+        public NewCat toNewCat() {
+            return new NewCat(age);
+        }
+    }
+
+    class NewCat {
+        int age;
+
+        public NewCat(int age) {
+            this.age = age;
         }
     }
 }
