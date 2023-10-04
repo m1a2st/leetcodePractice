@@ -39,6 +39,8 @@ public class Test {
 //        }
     }
 
+
+
     public static class Server {
         public static void initPerson() throws Exception {
             //配置JNDI工厂和JNDI的url和端口。如果没有配置这些信息，会出现NoInitialContextException异常

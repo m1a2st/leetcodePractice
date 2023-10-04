@@ -1,27 +1,17 @@
 package test;
 
-import kotlin.ranges.IntRange;
-import leecode.medium.No875;
 import org.junit.Test;
 
-import java.io.Serializable;
-import java.rmi.Remote;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import static leecode.Test.Server.initPerson;
-import static org.junit.Assert.assertEquals;
 
 public class TestClass {
 
     @Test
     public void test1(){
-
+        System.out.println(Test.class.getSimpleName());
     }
 
     @Test
