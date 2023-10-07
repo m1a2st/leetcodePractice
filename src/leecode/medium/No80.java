@@ -1,5 +1,7 @@
 package leecode.medium;
 
+import org.junit.Test;
+
 /**
  * @Author m1a2st
  * @Date 2023/3/26
@@ -13,22 +15,38 @@ public class No80 {
 
     static class Solution {
         public static int removeDuplicates(int[] nums) {
-            if (nums == null || nums.length == 0) {
-                return 0;
-            }
-            int i = 0;
-            for (int j = 1; j < nums.length; j++) {
-                if (nums[j] != nums[i]) {
-                    i++;
-                    if (i != j) {
-                        nums[i] = nums[j];
+            int slow = 0;
+            for (int fast = 1; fast < nums.length; fast++) {
+                if (nums[fast] != nums[slow]) {
+                    slow++;
+                    if (slow != fast) {
+                        nums[slow] = nums[fast];
                     }
-                } else if (i < 1 || nums[j] != nums[i - 1]) {
-                    i++;
-                    nums[i] = nums[j];
+                } else if (slow < 1 || nums[fast] != nums[slow - 1]) {
+                    slow++;
+                    nums[slow] = nums[fast];
                 }
             }
-            return i + 1;
+            return slow + 1;
         }
     }
+
+    @Test
+    public void test(){
+        SolutionNew solutionNew = new SolutionNew();
+        solutionNew.removeDuplicates(new int[]{0, 0, 1, 1, 1, 1, 2, 3, 3});
+    }
+
+    class SolutionNew {
+        public int removeDuplicates(int[] nums) {
+            int i = 0;
+
+            for (final int num : nums)
+                if (i < 2 || num > nums[i - 2])
+                    nums[i++] = num;
+
+            return i;
+        }
+    }
+
 }
