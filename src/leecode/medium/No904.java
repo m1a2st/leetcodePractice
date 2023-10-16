@@ -1,5 +1,7 @@
 package leecode.medium;
 
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,33 +13,13 @@ import java.util.Map;
  */
 public class No904 {
 
-    public static void main(String[] args) {
-        Solution.totalFruit(new int[]{1, 0, 1, 4, 1, 4, 1, 2, 3});
+    @Test
+    public void test() {
+        Solution solution = new Solution();
+        solution.totalFruit(new int[]{1, 0, 1, 4, 1, 4, 1, 2, 3});
     }
 
-    static class Solution {
-        public static int totalFruit(int[] fruits) {
-            int max = 0;
-            int len = fruits.length;
-            int left = 0;
-            Map<Integer, Integer> bucket = new HashMap<>();
-            for (int right = 0; right < len; right++) {
-                bucket.put(fruits[right], bucket.getOrDefault(fruits[right], 0) + 1);
-                while (bucket.size() > 2) {
-                    int leftFruit = fruits[left];
-                    bucket.put(leftFruit, bucket.get(leftFruit) - 1);
-                    if (bucket.get(leftFruit) == 0) {
-                        bucket.remove(leftFruit);
-                    }
-                    left++;
-                }
-                max = Math.max(max, right - left + 1);
-            }
-            return max;
-        }
-    }
-
-    class SolutionNew {
+    class Solution {
         public int totalFruit(int[] fruits) {
             int max = 0;
             int len = fruits.length;
@@ -58,4 +40,3 @@ public class No904 {
         }
     }
 }
-
