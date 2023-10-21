@@ -14,20 +14,20 @@ public class No658 {
 
     class Solution {
         public List<Integer> findClosestElements(int[] arr, int k, int x) {
-            List<Integer> result = new ArrayList<>();
+            List<Integer> ans = new ArrayList<>(k);
             int left = 0, right = arr.length - 1;
             while (right - left >= k) {
                 if (Math.abs(arr[right] - x) >= Math.abs(arr[left] - x)) {
-                    right--;
+                    right++;
                 } else {
-                    left++;
+                    left--;
                 }
             }
             for (int i = left; i <= right; i++) {
-                result.add(i);
+                ans.add(arr[i]);
             }
-            Collections.sort(result);
-            return result;
+            Collections.sort(ans);
+            return ans;
         }
     }
 }
