@@ -1,6 +1,7 @@
 package leecode.hard;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 
 /**
  * @Author
@@ -11,7 +12,7 @@ import java.util.ArrayDeque;
 public class No239 {
 
     public static void main(String[] args) {
-        System.out.println(Solution.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3));
+        System.out.println(Arrays.toString(Solution.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
     }
 
     static class Solution {
