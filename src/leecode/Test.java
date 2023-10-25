@@ -24,6 +24,12 @@ import java.util.stream.Collectors;
  */
 public class Test {
 
+    @org.junit.Test
+    public void test1() {
+        String s = "abs測試DCF123";
+        System.out.println(s.toUpperCase(Locale.ENGLISH));
+    }
+
     public static void main(String[] args) throws Exception {
 //        Charset charset = Charset.forName("UTF-8");
 //        CharsetDecoder decoder = charset.newDecoder();

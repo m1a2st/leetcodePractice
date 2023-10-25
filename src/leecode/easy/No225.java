@@ -12,11 +12,11 @@ import java.util.Stack;
  */
 public class No225 {
 
-    class MyStack {
+    class MyStackOld {
         private final Queue<Integer> mainQ;
         private final Queue<Integer> auxQ;
 
-        public MyStack() {
+        public MyStackOld() {
             mainQ = new ArrayDeque<>();
             auxQ = new ArrayDeque<>();
         }
@@ -44,4 +44,36 @@ public class No225 {
         }
     }
 
+    class MyStack {
+
+        private final Queue<Integer> main;
+        private final Queue<Integer> cache;
+
+        public MyStack() {
+            main = new ArrayDeque<>();
+            cache = new ArrayDeque<>();
+        }
+
+        public void push(int x) {
+            while (!main.isEmpty()) {
+                cache.offer(main.poll());
+            }
+            cache.offer(x);
+            while (!cache.isEmpty()) {
+                main.offer(cache.poll());
+            }
+        }
+
+        public int pop() {
+            return main.poll();
+        }
+
+        public int top() {
+            return main.peek();
+        }
+
+        public boolean empty() {
+            return main.isEmpty();
+        }
+    }
 }
