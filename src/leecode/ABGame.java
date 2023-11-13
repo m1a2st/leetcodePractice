@@ -93,11 +93,11 @@ class AsBsGame {
     private int[] getAsAndBs(Integer[] inputs, Integer[] answers) {
         int a = 0, b = 0;
         for (int i = 0; i < SIZE; i++) {
-            if (inputs[i] == answers[i]) {
+            if (Objects.equals(inputs[i], answers[i])) {
                 a++;
             } else {
                 for (int j = 0; j < SIZE; j++) {
-                    if (inputs[i] == answers[j]) {
+                    if (Objects.equals(inputs[i], answers[j])) {
                         b++;
                         break;
                     }
