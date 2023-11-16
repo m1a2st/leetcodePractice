@@ -1,14 +1,9 @@
 package leecode;
 
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import java.io.*;
+import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.math.BigDecimal;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CodingErrorAction;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
@@ -31,18 +26,7 @@ public class Test {
     }
 
     public static void main(String[] args) throws Exception {
-//        Charset charset = Charset.forName("UTF-8");
-//        CharsetDecoder decoder = charset.newDecoder();
-//        decoder.onMalformedInput(CodingErrorAction.IGNORE);
-//        decoder.onUnmappableCharacter(CodingErrorAction.IGNORE);
-//        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("big5.txt"), charset))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
     }
 
 
