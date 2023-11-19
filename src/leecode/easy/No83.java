@@ -36,18 +36,18 @@ public class No83 {
 
     class Solution {
         public ListNode deleteDuplicates(ListNode head) {
-            ListNode dummy = new ListNode(-101, head);
-            ListNode current = dummy.next;
-            ListNode pre = dummy;
-            while (current != null) {
-                if (pre.val == current.val) {
-                    pre.next = current.next;
-                } else {
-                    pre = pre.next;
-                }
-                current = current.next;
+            if (head == null) {
+                return null;
             }
-            return dummy.next;
+            ListNode temp = head;
+            while (temp.next != null) {
+                if (temp.val == temp.next.val) {
+                    temp.next = temp.next.next;
+                } else {
+                    temp = temp.next;
+                }
+            }
+            return head;
         }
     }
 }
