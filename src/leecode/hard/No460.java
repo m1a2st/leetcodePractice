@@ -1,63 +1,106 @@
 package leecode.hard;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class No460 {
 
     class LFUCache {
 
-        private final int capacity;
-        private int minFreq = 0;
-        private final Map<Integer, Integer> keyToVal = new HashMap<>();
-        private final Map<Integer, Integer> keyToFreq = new HashMap<>();
-        private final Map<Integer, LinkedHashSet<Integer>> freqToLRUKeys = new HashMap<>();
+        Map<Integer, Node> cache = new HashMap<>();
+        int capacity, size;
+        Node head;
+        Node tail;
 
         public LFUCache(int capacity) {
             this.capacity = capacity;
+            this.size = 0;
+            this.head = new Node();
+            this.tail = new Node();
+            head.next = tail;
+            tail.prev = head;
         }
 
         public int get(int key) {
-            if (!keyToVal.containsKey(key))
+            Node node = cache.get(key);
+            if (node == null) {
                 return -1;
-
-            final int freq = keyToFreq.get(key);
-            freqToLRUKeys.get(freq).remove(key);
-            if (freq == minFreq && freqToLRUKeys.get(freq).isEmpty()) {
-                freqToLRUKeys.remove(freq);
-                ++minFreq;
             }
-            // Increase key's freq by 1
-            // Add this key to next freq's list
-            putFreq(key, freq + 1);
-            return keyToVal.get(key);
+            removeToHead(node);
+            return node.value;
         }
 
         public void put(int key, int value) {
-            if (capacity == 0)
-                return;
-            if (keyToVal.containsKey(key)) {
-                keyToVal.put(key, value);
-                get(key); // Update key's count
-                return;
+            Node node = cache.get(key);
+            if (node == null) {
+                Node newNode = new Node(key, value);
+                cache.put(key, newNode);
+                addToHead(newNode);
+                size++;
+                if (size > capacity) {
+                    Node leastFreqNode = removeLeastFreqNode();
+                    cache.remove(leastFreqNode.key);
+                    size--;
+                }
+            } else {
+                node.value = value;
+                removeToHead(node);
             }
-
-            if (keyToVal.size() == capacity) {
-                // Evict LRU key from the minFreq list
-                final int keyToEvict = freqToLRUKeys.get(minFreq).iterator().next();
-                freqToLRUKeys.get(minFreq).remove(keyToEvict);
-                keyToVal.remove(keyToEvict);
-            }
-
-            minFreq = 1;
-            putFreq(key, minFreq);    // Add new key and freq
-            keyToVal.put(key, value); // Add new key and value
         }
 
+        class Node {
+            int key;
+            int value;
+            int freq;
+            Node next;
+            Node prev;
 
-        private void putFreq(int key, int freq) {
-            keyToFreq.put(key, freq);
-            freqToLRUKeys.putIfAbsent(freq, new LinkedHashSet<>());
-            freqToLRUKeys.get(freq).add(key);
+            public Node() {
+            }
+
+            public Node(int key, int value) {
+                this.key = key;
+                this.value = value;
+            }
+        }
+
+        public void addToHead(Node node) {
+            node.next = head.next;
+            node.prev = head;
+            head.next.prev = node;
+            head.next = node;
+            ++node.freq;
+        }
+
+        public void removeNode(Node node) {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+        }
+
+        public void removeLast() {
+            removeNode(tail.prev);
+        }
+
+        public void removeToHead(Node node) {
+            removeNode(node);
+            addToHead(node);
+        }
+
+        private Node removeLeastFreqNode() {
+            Node pNode = head.next.next;
+            int tempFreq = tail.prev.freq;
+            while (pNode != null && pNode.value > 0) {
+                if (pNode.freq < tempFreq) {
+                    tempFreq = pNode.freq;
+                }
+                pNode = pNode.next;
+            }
+            pNode = tail.prev;
+            while (pNode.freq > 0 && pNode.freq != tempFreq) {
+                pNode = pNode.prev;
+            }
+            removeNode(pNode);
+            return pNode;
         }
     }
 }
