@@ -4,6 +4,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.nio.CharBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
@@ -26,7 +31,13 @@ public class Test {
     }
 
     public static void main(String[] args) throws Exception {
-
+        ClassLoader classLoader = Test.class.getClassLoader();
+        String path = classLoader.getResource("big5.txt").getPath();
+        System.out.println(path);
+        FileChannel open = FileChannel.open(Path.of(path));
+        MappedByteBuffer map = open.map(FileChannel.MapMode.READ_ONLY, 0, open.size());
+        CharBuffer decode = Charset.forName("big5").decode(map);
+        System.out.println(decode.toString());
     }
 
 

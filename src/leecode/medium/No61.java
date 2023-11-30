@@ -1,6 +1,6 @@
 package leecode.medium;
 
-import java.util.List;
+import org.junit.jupiter.api.Test;
 
 /**
  * @Author m1a2st
@@ -9,7 +9,8 @@ import java.util.List;
  */
 public class No61 {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         ListNode head = new ListNode(1);
         ListNode a = new ListNode(2);
         ListNode b = new ListNode(3);
@@ -19,7 +20,8 @@ public class No61 {
         a.next = b;
         b.next = c;
         c.next = d;
-        rotateRight(head, 2);
+        Solution solution = new Solution();
+        solution.rotateRight(head, 2);
     }
 
     public static ListNode rotateRight(ListNode head, int k) {
@@ -43,5 +45,27 @@ public class No61 {
         ListNode newNode = tailNode.next;
         tailNode.next = null;
         return newNode;
+    }
+
+    class Solution {
+        public ListNode rotateRight(ListNode head, int k) {
+            if (head == null || head.next == null || k == 0) {
+                return head;
+            }
+            int len = 1;
+            ListNode measure = head;
+            while (measure.next != null) {
+                measure = measure.next;
+                len++;
+            }
+            measure.next = head;
+            int shift = len - k % len;
+            for (int i = 0; i < shift; i++) {
+                measure = measure.next;
+            }
+            ListNode ans = measure.next;
+            measure.next = null;
+            return ans;
+        }
     }
 }
