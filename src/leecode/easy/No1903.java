@@ -2,8 +2,6 @@ package leecode.easy;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
 public class No1903 {
 
     @Test
