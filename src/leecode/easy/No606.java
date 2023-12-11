@@ -48,4 +48,35 @@ public class No606 {
             return root.val + "";
         }
     }
+
+    class SolutionNew {
+
+        StringBuilder sb = new StringBuilder();
+
+        public String tree2str(TreeNode t) {
+            dfs(t);
+            return sb.toString();
+        }
+
+        public void dfs(TreeNode t) {
+            if (t == null) {
+                return;
+            }
+            sb.append(t.val);
+
+            if (t.left == null && t.right == null) {
+                return;
+            }
+
+            sb.append('(');
+            dfs(t.left);
+            sb.append(')');
+
+            if (t.right != null) {
+                sb.append('(');
+                dfs(t.right);
+                sb.append(')');
+            }
+        }
+    }
 }
