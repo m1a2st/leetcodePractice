@@ -1,11 +1,11 @@
-package leecode;
+package leecode.test;
 
 import java.util.*;
 
 import static java.lang.Character.getNumericValue;
 import static java.lang.Character.isDigit;
-import static leecode.Utils.charArr2HashSet;
-import static leecode.Utils.charArr2IntegerArr;
+import static leecode.test.Utils.charArr2HashSet;
+import static leecode.test.Utils.charArr2IntegerArr;
 
 /**
  * @Author m1a2st

@@ -1,4 +1,4 @@
-package leecode;
+package leecode.test;
 
 public class AmazingTalker {
 

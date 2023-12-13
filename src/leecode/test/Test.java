@@ -1,4 +1,4 @@
-package leecode;
+package leecode.test;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -294,44 +294,3 @@ class Constant {
     public static final String B = "b";
     public static final String C = "c";
 }
-
-//class Cat implements Serializable {
-//
-//    private int age;
-//    private int name;
-//
-//    public static Builder builder() {
-//        return new Builder();
-//    }
-//
-//    public static class Builder {
-//
-//        private final Cat cat;
-//
-//        public Builder() {
-//            cat = new Cat();
-//        }
-//
-//        public Builder age(int age) {
-//            cat.age = age;
-//            return this;
-//        }
-//
-//        public Cat name(int name) {
-//            cat.name = name;
-//            return cat;
-//        }
-//
-//        public Cat build() {
-//            return cat;
-//        }
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Cat{" +
-//                "age=" + age +
-//                ", name=" + name +
-//                '}';
-//    }
-//}
