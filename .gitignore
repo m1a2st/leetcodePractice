@@ -85,6 +85,7 @@ local.properties
 *.war
 *.ear
 *.db
+*.class
 
 ######################
 # Windows
