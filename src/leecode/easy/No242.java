@@ -18,7 +18,7 @@ public class No242 {
     class Solution {
 
         public boolean isAnagram(String s, String t) {
-            if(s.length() != t.length()) {
+            if (s.length() != t.length()) {
                 return false;
             }
             int[] counter = new int[26];
@@ -27,7 +27,7 @@ public class No242 {
             }
             for (char c : t.toCharArray()) {
                 counter[c - 'a']--;
-                if(counter[c - 'a'] < 0) {
+                if (counter[c - 'a'] < 0) {
                     return false;
                 }
             }
@@ -56,6 +56,26 @@ public class No242 {
         }
     }
 
+    class SolutionNew {
+        public boolean isAnagram(String s, String t) {
+            if(s.length() != t.length()){
+                return false;
+            }
+            char[] arr = new char[26];
+            char a = 'a';
+            for (char c : s.toCharArray()) {
+                arr[c - a]++;
+            }
+            for (char c : t.toCharArray()) {
+                arr[c - a]--;
+                if(arr[c - a] == 65535){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
     @Test
     public void test() {
         Solution solution = new Solution();
@@ -65,7 +85,7 @@ public class No242 {
 
     @Test
     public void test2() {
-        Solution solution = new Solution();
+        SolutionNew solution = new SolutionNew();
         String s = "rat", t = "car";
         assertFalse(solution.isAnagram(s, t));
     }
