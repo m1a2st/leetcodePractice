@@ -2,12 +2,26 @@ package test;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TestClass {
+
+    @Test
+    public void test() {
+        HashSet<Integer> integers = new HashSet<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        integers.add(4);
+        integers.add(5);
+        Integer[] arr = new Integer[1];
+        arr[0] = 1;
+        Arrays.stream(arr)
+                .filter(i -> integers.contains(i))
+                .findFirst()
+                .orElseThrow(RuntimeException::new);
+    }
 
     @Test
     public void test1() {
