@@ -1,5 +1,7 @@
 package leecode.easy;
 
+import static javax.swing.Spring.height;
+
 /**
  * @Author m1a2st
  * @Date 2023/7/8
@@ -18,6 +20,27 @@ public class No110 {
         private int findHeight(TreeNode root) {
             if (root == null) return 0;
             return 1 + Math.max(findHeight(root.left), findHeight(root.right));
+        }
+    }
+
+    class SolutionNew {
+        public boolean isBalanced(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            return height(root) != -1;
+        }
+
+        private int height(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            int lHeight = height(root.left);
+            int rHeight = height(root.right);
+
+            if (lHeight == -1 || rHeight == -1) return -1;
+            if (Math.abs(lHeight - rHeight) > 1) return -1;
+            return 1 + Math.max(lHeight, rHeight);
         }
     }
 
