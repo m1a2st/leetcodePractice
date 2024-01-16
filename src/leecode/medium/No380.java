@@ -1,9 +1,6 @@
 package leecode.medium;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class No380 {
 
@@ -30,7 +27,7 @@ public class No380 {
         public boolean remove(int val) {
             if (map.containsKey(val)) {
                 map.remove(val);
-                ls.remove((Object)val);
+                ls.remove((Object) val);
                 return true;
             }
             return false;
@@ -39,6 +36,48 @@ public class No380 {
         public int getRandom() {
             int r = random.nextInt(map.size() + 1);
             return ls.get(r);
+        }
+    }
+
+    class RandomizedSetNew {
+        HashMap<Integer, Integer> map;
+        List<Integer> list;
+        Random random;
+
+        public RandomizedSetNew() {
+            map = new HashMap<>();
+            list = new ArrayList<>();
+            random = new Random();
+        }
+
+        public boolean insert(int val) {
+            if (map.containsKey(val)) {
+                return false;
+            }
+            map.put(val, list.size());
+            list.add(val);
+            return true;
+        }
+
+        public boolean remove(int val) {
+            if (!map.containsKey(val)) {
+                return false;
+            }
+            int idx = map.get(val);
+            int lastIdx = list.size() - 1;
+            if (idx != lastIdx) {
+                list.set(idx, list.get(lastIdx));
+                map.put(list.get(lastIdx), idx);
+            }
+            map.remove(val);
+            list.remove(lastIdx);
+            return true;
+
+
+        }
+
+        public int getRandom() {
+            return list.get(random.nextInt(list.size()));
         }
     }
 }
