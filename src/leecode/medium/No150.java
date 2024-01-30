@@ -59,6 +59,26 @@ public class No150 {
         }
     }
 
+    class SolutionNew {
+        public int evalRPN(String[] tokens) {
+            Stack<Integer> stack = new Stack<>();
+            for (String token : tokens) {
+                switch (token) {
+                    case "+" -> stack.push(stack.pop() + stack.pop());
+                    case "-" -> stack.push(-stack.pop() + stack.pop());
+                    case "*" -> stack.push(stack.pop() * stack.pop());
+                    case "/" -> {
+                        Integer p1 = stack.pop();
+                        Integer p2 = stack.pop();
+                        stack.push(p2 / p1);
+                    }
+                    default -> stack.push(Integer.valueOf(token));
+                }
+            }
+            return stack.pop();
+        }
+    }
+
     @Test
     public void test() {
         String[] tokens = {"2", "1", "+", "3", "*"};
