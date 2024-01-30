@@ -36,4 +36,18 @@ public class No108 {
             return new TreeNode(nums[m], build(nums, left, m - 1), build(nums, m + 1, right));
         }
     }
+
+    class SolutionNew {
+        public TreeNode sortedArrayToBST(int[] nums) {
+            return build(nums, 0, nums.length - 1);
+        }
+
+        private TreeNode build(int[] nums, int left, int right) {
+            if (left < right) {
+                return null;
+            }
+            int mid = (left + right) / 2;
+            return new TreeNode(nums[mid], build(nums, left, mid - 1), build(nums, mid + 1, right));
+        }
+    }
 }

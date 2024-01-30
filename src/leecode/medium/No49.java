@@ -23,6 +23,22 @@ public class No49 {
 
     }
 
+    class SolutionNew {
+        public List<List<String>> groupAnagramsMap(String[] strs) {
+            Map<String, List<String>> map = new HashMap<>();
+
+            for (String word : strs) {
+                char[] chars = word.toCharArray();
+                Arrays.sort(chars);
+                String sortedWord = String.valueOf(chars);
+
+                map.putIfAbsent(sortedWord, new ArrayList<>());
+                map.get(sortedWord).add(word);
+            }
+            return new ArrayList<>(map.values());
+        }
+    }
+
     static class Solution {
         public static List<List<String>> groupAnagramsOld(String[] strs) {
             HashMap<String, List<String>> map = new HashMap<>();
