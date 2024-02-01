@@ -1,5 +1,6 @@
 package leecode.medium;
 
+import leecode.dataStructure.recursive.Queen8;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
@@ -25,6 +26,21 @@ public class No739 {
                     ans[index] = i - index;
                 }
                 stack.push(i);
+            }
+            return ans;
+        }
+    }
+
+    class SolutionNew {
+        public int[] dailyTemperatures(int[] temperatures) {
+            int[] ans = new int[temperatures.length];
+            ArrayDeque<Integer> queue = new ArrayDeque<>();
+            for (int i = 0; i < temperatures.length ; i++) {
+                while (!queue.isEmpty() && temperatures[queue.peek()] < temperatures[i]) {
+                    Integer pop = queue.pop();
+                    ans[pop] = i - pop;
+                }
+                queue.push(i);
             }
             return ans;
         }
