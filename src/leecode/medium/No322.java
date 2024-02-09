@@ -53,7 +53,7 @@ public class No322 {
             if (amount == 0) return 0;
             if (amount < 0) return -1;
             // 防止重複計算
-            if(memo[amount] != Integer.MIN_VALUE){
+            if (memo[amount] != Integer.MIN_VALUE) {
                 return memo[amount];
             }
 
@@ -62,13 +62,42 @@ public class No322 {
                 // 計算子問題
                 int subProblem = dp(coins, amount - coin);
                 // 子問題無解則跳過
-                if(subProblem == -1) continue;
+                if (subProblem == -1) continue;
                 // 在子問題找出最優解，然後加一
                 res = Math.min(res, subProblem + 1);
             }
             // 寫入備忘錄中
             memo[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
             return memo[amount];
+        }
+    }
+
+    class SolutionThree {
+        int[] dp;
+
+        public int coinChange(int[] coins, int amount) {
+            dp = new int[amount + 1];
+            Arrays.fill(dp, Integer.MIN_VALUE);
+            return dp(coins, amount);
+        }
+
+        private int dp(int[] coins, int amount) {
+            if (amount == 0) return 0;
+            if (amount < 0) return -1;
+            if (dp[amount] != Integer.MIN_VALUE) {
+                return dp[amount];
+            }
+            int res = Integer.MAX_VALUE;
+            for (int coin : coins) {
+                // 計算子問題
+                int subProblem = dp(coins, amount - coin);
+                // 子問題無解則跳過
+                if (subProblem == -1) continue;
+                // 在子問題找出最優解，然後加一
+                res = Math.min(res, subProblem + 1);
+            }
+            dp[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
+            return dp[amount];
         }
     }
 }
