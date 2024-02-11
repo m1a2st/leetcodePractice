@@ -54,4 +54,20 @@ public class No509 {
             return res[n];
         }
     }
+
+    class SolutionThree {
+        public int fib(int n) {
+            if (n <= 1) {
+                return 1;
+            }
+            int dp1 = 0;
+            int dp2 = 1;
+            for (int i = 2; i < n; i++) {
+                int tempDp = dp1 + dp2;
+                dp1 = dp2;
+                dp2 = tempDp;
+            }
+            return dp2;
+        }
+    }
 }
