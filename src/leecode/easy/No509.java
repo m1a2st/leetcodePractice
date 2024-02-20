@@ -55,17 +55,17 @@ public class No509 {
         }
     }
 
-    class SolutionThree {
+    class SolutionFour {
         public int fib(int n) {
             if (n <= 1) {
-                return 1;
+                return n;
             }
             int dp1 = 0;
             int dp2 = 1;
             for (int i = 2; i < n; i++) {
-                int tempDp = dp1 + dp2;
+                int temp = dp1 + dp2;
                 dp1 = dp2;
-                dp2 = tempDp;
+                dp2 = temp;
             }
             return dp2;
         }

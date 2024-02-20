@@ -1,10 +1,17 @@
 package leecode.medium;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 import static java.lang.Math.min;
 
 public class No322 {
+
+    @Test
+    public void test() {
+        new Solution().coinChange(new int[]{1, 2, 5}, 11);
+    }
 
     class Solution {
         int[] memo;
@@ -39,65 +46,23 @@ public class No322 {
         }
     }
 
-    class SolutionNew {
-        int[] memo;
+    class SolutionBottonUp {
 
-        public int coinChange(int[] coins, int amount) {
-            memo = new int[amount + 1];
-            Arrays.fill(memo, Integer.MIN_VALUE);
-            return dp(coins, amount);
-        }
-
-        private int dp(int[] coins, int amount) {
-            // base case
-            if (amount == 0) return 0;
-            if (amount < 0) return -1;
-            // 防止重複計算
-            if (memo[amount] != Integer.MIN_VALUE) {
-                return memo[amount];
-            }
-
-            int res = Integer.MAX_VALUE;
-            for (int coin : coins) {
-                // 計算子問題
-                int subProblem = dp(coins, amount - coin);
-                // 子問題無解則跳過
-                if (subProblem == -1) continue;
-                // 在子問題找出最優解，然後加一
-                res = Math.min(res, subProblem + 1);
-            }
-            // 寫入備忘錄中
-            memo[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
-            return memo[amount];
-        }
-    }
-
-    class SolutionThree {
         int[] dp;
 
         public int coinChange(int[] coins, int amount) {
             dp = new int[amount + 1];
-            Arrays.fill(dp, Integer.MIN_VALUE);
-            return dp(coins, amount);
-        }
-
-        private int dp(int[] coins, int amount) {
-            if (amount == 0) return 0;
-            if (amount < 0) return -1;
-            if (dp[amount] != Integer.MIN_VALUE) {
-                return dp[amount];
+            Arrays.fill(dp, amount + 1);
+            dp[0] = 0;
+            for (int i = 0; i < dp.length; i++) {
+                for (int coin : coins) {
+                    if (i - amount < 0) {
+                        continue;
+                    }
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                }
             }
-            int res = Integer.MAX_VALUE;
-            for (int coin : coins) {
-                // 計算子問題
-                int subProblem = dp(coins, amount - coin);
-                // 子問題無解則跳過
-                if (subProblem == -1) continue;
-                // 在子問題找出最優解，然後加一
-                res = Math.min(res, subProblem + 1);
-            }
-            dp[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
-            return dp[amount];
+            return (dp[amount] == amount + 1) ? -1 : dp[amount];
         }
     }
 }
