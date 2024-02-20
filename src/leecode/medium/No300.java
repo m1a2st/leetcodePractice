@@ -1,9 +1,17 @@
 package leecode.medium;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class No300 {
+
+    @Test
+    public void test() {
+        System.out.println(new Solution().lengthOfLIS(new int[]{2, 9, 3, 1, 2, 3}));
+    }
 
     class Solution {
         public int lengthOfLIS(int[] nums) {
@@ -20,19 +28,41 @@ public class No300 {
             return tail.size();
         }
 
-        // Finds the first index l s.t A.get(l) >= target.
+        // Finds the first index l s.t a.get(l) >= target.
         // Returns nums.size() if can't find.
-        private int firstGreaterEqual(List<Integer> A, int target) {
+        private int firstGreaterEqual(List<Integer> a, int target) {
             int l = 0;
-            int r = A.size();
+            int r = a.size();
             while (l < r) {
                 final int m = (l + r) / 2;
-                if (A.get(m) >= target)
+                if (a.get(m) >= target)
                     r = m;
                 else
                     l = m + 1;
             }
             return l;
+        }
+    }
+
+    class SolutionDp {
+
+        int[] dp;
+
+        public int lengthOfLIS(int[] nums) {
+            dp = new int[nums.length];
+            int res = 0;
+            Arrays.fill(dp, 1);
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (nums[i] > nums[j]) {
+                        dp[i] = Math.max(dp[i], dp[j] + 1);
+                    }
+                }
+            }
+            for (int i : dp) {
+                res = Math.max(res, i);
+            }
+            return res;
         }
     }
 }
