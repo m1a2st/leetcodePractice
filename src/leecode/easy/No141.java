@@ -47,22 +47,5 @@ public class No141 {
             return false;
         }
     }
-
-    @Test
-    public void test() {
-        TestT testT = new TestT();
-        if (testT.getT()) {
-            System.out.println("true");
-        } else {
-            System.out.println("false or null");
-        }
-    }
 }
 
-class TestT {
-    Boolean t;
-
-    public Boolean getT() {
-        return t;
-    }
-}
