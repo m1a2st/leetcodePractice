@@ -1,6 +1,7 @@
 package leecode.easy;
 
 import leecode.medium.ListNode;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -8,11 +9,11 @@ public class No141 {
 
     public class SolutionOld {
         public boolean hasCycle(ListNode head) {
-            ListNode fast = head ,slow = head;
-            while(fast != null && slow.next != null){
+            ListNode fast = head, slow = head;
+            while (fast != null && slow.next != null) {
                 slow = slow.next;
                 fast = fast.next.next;
-                if(fast == slow){
+                if (fast == slow) {
                     return true;
                 }
             }
@@ -32,17 +33,36 @@ public class No141 {
         return false;
     }
 
+
     public class Solution {
         public boolean hasCycle(ListNode head) {
             ListNode fast = head, slow = head;
-            while(fast != null && fast.next != null){
+            while (fast != null && fast.next != null) {
                 fast = fast.next.next;
                 slow = slow.next;
-                if(fast == slow){
+                if (fast == slow) {
                     return true;
                 }
             }
             return false;
         }
+    }
+
+    @Test
+    public void test() {
+        TestT testT = new TestT();
+        if (testT.getT()) {
+            System.out.println("true");
+        } else {
+            System.out.println("false or null");
+        }
+    }
+}
+
+class TestT {
+    Boolean t;
+
+    public Boolean getT() {
+        return t;
     }
 }
