@@ -45,9 +45,9 @@ public class No155 {
     class MinStackGood {
         public void push(int x) {
             if (stack.isEmpty())
-                stack.push(new int[] {x, x});
+                stack.push(new int[]{x, x});
             else
-                stack.push(new int[] {x, Math.min(x, stack.peek()[1])});
+                stack.push(new int[]{x, Math.min(x, stack.peek()[1])});
         }
 
         public void pop() {
@@ -77,5 +77,30 @@ public class No155 {
         minStackGood.pop();
         minStackGood.pop();
         minStackGood.pop();
+    }
+
+    class MinStackNew {
+
+        Stack<int[]> stack = new Stack<>();
+
+        public void push(int val) {
+            if (stack.isEmpty()) {
+                stack.push(new int[]{val, val});
+            } else {
+                stack.push(new int[]{val, Math.min(val, stack.peek()[1])});
+            }
+        }
+
+        public void pop() {
+            stack.pop();
+        }
+
+        public int top() {
+            return stack.peek()[0];
+        }
+
+        public int getMin() {
+            return stack.peek()[1];
+        }
     }
 }
