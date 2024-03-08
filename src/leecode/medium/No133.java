@@ -57,28 +57,26 @@ public class No133 {
         }
     }
 
-    class SolutionNew {
+    class SolutionNew2 {
 
         Node[] visited = new Node[101];
 
         public Node cloneGraph(Node node) {
             if (node == null) return null;
             Node newNode = new Node(node.val);
-            dfs(node, newNode);
+            dfs(newNode, node);
             return newNode;
         }
 
-        private void dfs(Node node, Node newNode) {
-            // 記錄走過的節點
+        private void dfs(Node newNode, Node node) {
             visited[newNode.val] = newNode;
             for (Node neighbor : node.neighbors) {
-                // 此節點未被訪問過
                 if (visited[neighbor.val] == null) {
-                    Node n = new Node(neighbor.val);
-                    visited[n.val] = n;
-                    dfs(node, neighbor);
+                    Node newNeighborNode = new Node(neighbor.val);
+                    newNode.neighbors.add(newNeighborNode);
+                    dfs(newNeighborNode, neighbor);
                 } else {
-                    neighbor.neighbors.add(visited[neighbor.val]);
+                    newNode.neighbors.add(visited[neighbor.val]);
                 }
             }
         }
