@@ -87,6 +87,7 @@ local.properties
 *.db
 *.class
 
+
 ######################
 # Windows
 ######################
