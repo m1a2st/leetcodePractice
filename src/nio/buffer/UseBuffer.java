@@ -1,4 +1,4 @@
-package buffer;
+package nio.buffer;
 
 import java.nio.IntBuffer;
 import java.nio.channels.DatagramChannel;
