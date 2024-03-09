@@ -19,8 +19,8 @@ public class NioDiscardServer {
         // 3. 設置非阻塞
         socketChannel.configureBlocking(false);
         // 4. 綁定端口
-        socketChannel.bind(new java.net.InetSocketAddress(5000));
-        System.out.println("Server started at port 5000");
+        socketChannel.bind(new java.net.InetSocketAddress(6000));
+        System.out.println("Server started at port 6000");
         // 5. 將通道註冊的"接受新連接"IO事件註冊到選擇器上
         socketChannel.register(selector, OP_ACCEPT);
 
@@ -32,11 +32,11 @@ public class NioDiscardServer {
                 // 8. 根據具體的IO事件類型處理
                 if (key.isAcceptable()) {
                     // 9. 若選擇器的 IO 事件是"連接就緒"，則接受新的連接
-                    socketChannel.accept();
+                    SocketChannel channel = socketChannel.accept();
                     // 10. 將新連接設置非阻塞
-                    socketChannel.configureBlocking(false);
+                    channel.configureBlocking(false);
                     // 11. 將新連接註冊的"讀取"IO事件註冊到選擇器上
-                    socketChannel.register(selector, OP_READ);
+                    channel.register(selector, OP_READ);
                 } else if (key.isReadable()) {
                     // 12. 若選擇器的 IO 事件是"讀取就緒"，則讀取數據
                     SocketChannel channel = (SocketChannel) key.channel();
