@@ -3,8 +3,6 @@ package leecode.easy;
 import java.util.ArrayList;
 import java.util.List;
 
-import static leecode.dataStructure.commomAlogrithm.horse.HorseChess.traversal;
-
 public class No872 {
 
 

@@ -1,13 +1,9 @@
 package leecode.medium;
 
-import leecode.dataStructure.recursive.Queen8;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.concurrent.LinkedTransferQueue;
 
 /**
  * @Author m1a2st
