@@ -1,5 +1,7 @@
 package leecode.medium;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
@@ -45,6 +47,23 @@ public class No230 {
                 }
             }
             return stack.peek().val;
+        }
+    }
+
+    class SolutionPQ {
+
+        List<Integer> ls = new ArrayList<>();
+
+        public int kthSmallest(TreeNode root, int k) {
+            preOrder(root);
+            return ls.get(k - 1);
+        }
+
+        private void preOrder(TreeNode root) {
+            if (root == null) return;
+            preOrder(root.left);
+            ls.add(root.val);
+            preOrder(root.right);
         }
     }
 }
