@@ -10,11 +10,6 @@ public class No930 {
     @Test
     public void test() {
         int[] nums = {1, 0, 1, 0, 1};
-        // 0 0 1 2 2
-        // 0 0 0 0 1
-        // 0 0 0 0 1
-        // 0 0 0 0 0
-        // 0 0 0 0 0
         int goal = 2;
         int i = new Solution().numSubarraysWithSum(nums, goal);
     }
