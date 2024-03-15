@@ -1,8 +1,26 @@
 package lintcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Stack;
 
 public class No1001 {
+
+    @Test
+    public void test() {
+        int[] ints = new Solution().asteroidCollision(new int[]{5, 10, -5});
+        for (int anInt : ints) {
+            System.out.println(anInt);
+        }
+    }
+
+    @Test
+    public void test1() {
+        int[] ints = new Solution().asteroidCollision(new int[]{10, 2, -5});
+        for (int anInt : ints) {
+            System.out.println(anInt);
+        }
+    }
 
     public class Solution {
         /**
@@ -17,6 +35,8 @@ public class No1001 {
                     Integer a1 = stack.pop();
                     Integer a2 = stack.pop();
                     if (a1 * a2 > 0) {
+                        stack.push(a2);
+                        stack.push(a1);
                         break;
                     } else {
                         if (Math.abs(a1) > Math.abs(a2)) {

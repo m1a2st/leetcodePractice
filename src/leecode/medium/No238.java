@@ -43,9 +43,28 @@ public class No238 {
         }
     }
 
+    class SolutionNew {
+
+        public int[] productExceptSelf(int[] nums) {
+            int len = nums.length;
+            int[] res = new int[len];
+            res[0] = 1;
+            int right = 1;
+            // 1 1 2 6
+            for (int i = 1; i < len; i++) {
+                res[i] = nums[i - 1] * res[i - 1];
+            }
+            for (int i = len - 1; i >= 0; i--) {
+                res[i] *= right;
+                right *= nums[i];
+            }
+            return res;
+        }
+    }
+
     @Test
     public void test() {
-        Solution solution = new Solution();
+        SolutionNew solution = new SolutionNew();
         int[] nums = {1, 2, 3, 4};
         int[] res = {24, 12, 8, 6};
         int[] result = solution.productExceptSelf(nums);

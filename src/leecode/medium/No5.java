@@ -17,7 +17,7 @@ public class No5 {
                 return s;
             }
             String res = s.substring(0, 1);
-            boolean dp[][] = new boolean[len][len];
+            boolean[][] dp = new boolean[len][len];
             for (int i = 0; i < len; i++) {
                 dp[i][i] = true;
             }
