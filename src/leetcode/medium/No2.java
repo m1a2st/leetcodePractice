@@ -1,0 +1,77 @@
+package leetcode.medium;
+
+public class No2 {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode node = new ListNode();
+        ListNode head = node;
+        int sum;
+        int h = 0;
+        while (l1 != null || l2 != null) {
+            if (l1 != null && l2 != null) {
+                sum = l1.val + l2.val + h;
+            } else if (l1 == null) {
+                sum = l2.val + h;
+            } else {
+                sum = l1.val + h;
+            }
+            if (sum > 9) {
+                node.val = sum % 10;
+                h = 1;
+            } else {
+                node.val = sum;
+                h = 0;
+            }
+            if (l1 != null)
+                l1 = l1.next;
+            if (l2 != null)
+                l2 = l2.next;
+
+            if (l1 != null || l2 != null) {
+                node.next = new ListNode();
+                node = node.next;
+            }
+        }
+        if (h == 1) {
+            node.next = new ListNode();
+            node.next.val = 1;
+        }
+        return head;
+    }
+
+    class Solution {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            ListNode result = new ListNode(-1);
+            ListNode head = result;
+            int sum;
+            int h = 0;
+            while (l1 != null || l2 != null) {
+                if (l1 != null && l2 != null) {
+                    sum = l1.val + l2.val + h;
+                } else if (l1 == null) {
+                    sum = l2.val + h;
+                } else {
+                    sum = l1.val + h;
+                }
+                if(sum < 9){
+                    result.next = new ListNode(sum);
+                    h = 0;
+                }else{
+                    result.next = new ListNode(sum % 10);
+                    h = 1;
+                }
+                if (l1 != null) {
+                    l1 = l1.next;
+                }
+                if (l2 != null) {
+                    l2 = l2.next;
+                }
+                result = result.next;
+            }
+            if(h == 1){
+                result.next = new ListNode(1);
+            }
+            return head.next;
+        }
+    }
+}
+
