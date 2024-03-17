@@ -17,36 +17,38 @@ public class No1443 {
     }
 
     class Solution {
-        public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
-            List<Integer>[] graph = new List[n];
 
-            for (int i = 0; i < n; ++i) {
+        List<Integer>[] graph;
+        boolean[] seen;
+
+        public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
+            graph = new List[n];
+            seen = new boolean[n];
+
+            for (int i = 0; i < graph.length; i++) {
                 graph[i] = new ArrayList<>();
             }
 
             for (int[] edge : edges) {
-                final int u = edge[0];
-                final int v = edge[1];
+                int u = edge[0];
+                int v = edge[1];
                 graph[u].add(v);
                 graph[v].add(u);
             }
-
-            return dfs(graph, 0, new boolean[n], hasApple);
+            return dfs(0, hasApple);
         }
 
-        private int dfs(List<Integer>[] graph, int u, boolean[] seen, List<Boolean> hasApple) {
+        private int dfs(int u, List<Boolean> hasApple) {
             seen[u] = true;
-            int totalCost = 0;
-
-            for (final int v : graph[u]) {
-                if (seen[v])
-                    continue;
-                final int cost = dfs(graph, v, seen, hasApple);
-                if (cost > 0 || hasApple.get(v))
-                    totalCost += cost + 2;
+            int totalPath = 0;
+            for (Integer i : graph[u]) {
+                if (seen[i]) continue;
+                int cost = dfs(i, hasApple);
+                if (hasApple.get(i) || cost > 0) {
+                    totalPath += cost + 2;
+                }
             }
-
-            return totalCost;
+            return totalPath;
         }
     }
 }
