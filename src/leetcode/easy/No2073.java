@@ -2,8 +2,6 @@ package leetcode.easy;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayDeque;
-
 public class No2073 {
 
     @Test
@@ -13,15 +11,15 @@ public class No2073 {
 
     class Solution {
         public int timeRequiredToBuy(int[] tickets, int k) {
+            int len = tickets.length;
             int ans = 0;
             int index = 0;
             while (tickets[k] != 0) {
-                if (tickets[index] != 0) {
+                if (tickets[index %= len] != 0) {
                     tickets[index]--;
                     ans++;
                 }
                 index++;
-                index %= tickets.length;
             }
             return ans;
         }
