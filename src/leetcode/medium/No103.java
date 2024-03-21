@@ -27,34 +27,42 @@ public class No103 {
 
     class Solution {
         public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-            if (root == null) {
-                return new ArrayList<>();
-            }
-
             List<List<Integer>> ans = new ArrayList<>();
-            Deque<TreeNode> q = new ArrayDeque<>(List.of(root));
-            boolean isLeftToRight = true;
-
-            while (!q.isEmpty()) {
-                List<Integer> currLevel = new ArrayList<>();
-                for (int sz = q.size(); sz > 0; --sz) {
-                    TreeNode node = q.poll();
-                    if (isLeftToRight) {
-                        currLevel.add(node.val);
-                    } else {
-                        currLevel.add(0, node.val);
+            if (root == null) {
+                return ans;
+            }
+            boolean reverse = false;
+            ArrayDeque<TreeNode> deque = new ArrayDeque<>();
+            deque.offer(root);
+            while (!deque.isEmpty()) {
+                int size = deque.size();
+                List<Integer> subList = new ArrayList<>();
+                if (reverse) {
+                    for (int i = 0; i < size; i++) {
+                        TreeNode last = deque.pollLast();
+                        subList.add(last.val);
+                        if (last.right != null) {
+                            deque.addFirst(last.right);
+                        }
+                        if (last.left != null) {
+                            deque.addFirst(last.left);
+                        }
                     }
-                    if (node.left != null) {
-                        q.offer(node.left);
-                    }
-                    if (node.right != null) {
-                        q.offer(node.right);
+                } else {
+                    for (int i = 0; i < size; i++) {
+                        TreeNode node = deque.pop();
+                        subList.add(node.val);
+                        if (node.left != null) {
+                            deque.offer(node.left);
+                        }
+                        if (node.right != null) {
+                            deque.offer(node.right);
+                        }
                     }
                 }
-                ans.add(currLevel);
-                isLeftToRight = !isLeftToRight;
+                ans.add(subList);
+                reverse = !reverse;
             }
-
             return ans;
         }
     }

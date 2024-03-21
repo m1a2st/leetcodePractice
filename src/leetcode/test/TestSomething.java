@@ -11,7 +11,7 @@ public class TestSomething {
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyyMMdd");
         System.out.println(pattern.parse("20240101"));
         pattern = DateTimeFormatter.ofPattern("yyyyMM");
-        System.out.println(pattern.parse("202401"));
+        System.out.println(pattern.parse("202311"));
     }
 }
 
