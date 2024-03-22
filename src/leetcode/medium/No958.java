@@ -51,7 +51,7 @@ public class No958 {
                 q.offer(node.right);
             }
 
-            while (!q.isEmpty() && q.peek() == null){
+            while (!q.isEmpty() && q.peek() == null) {
                 q.poll();
             }
 

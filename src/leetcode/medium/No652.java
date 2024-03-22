@@ -1,9 +1,6 @@
 package leetcode.medium;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class No652 {
 
@@ -45,6 +42,28 @@ public class No652 {
 
             final String encoded = root.val + "#" + encode(root.left) + "#" + encode(root.right);
             if (count.merge(encoded, 1, Integer::sum) == 2) {
+                ans.add(root);
+            }
+            return encoded;
+        }
+    }
+
+    class SolutionNew {
+
+        List<TreeNode> ans = new ArrayList<>();
+        Map<String, Integer> cache = new HashMap<>();
+
+        public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+            encode(root);
+            return ans;
+        }
+
+        private String encode(TreeNode root) {
+            if (root == null) {
+                return "";
+            }
+            String encoded = root.val + "#" + encode(root.right) + "#" + encode(root.left);
+            if (cache.merge(encoded, 1, Integer::sum) == 2) {
                 ans.add(root);
             }
             return encoded;
