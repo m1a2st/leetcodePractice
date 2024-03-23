@@ -1,6 +1,7 @@
 package leetcode.medium;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -11,59 +12,62 @@ import java.util.Stack;
  */
 public class No143 {
 
-    class SolutionOld {
-        public void reorderList(ListNode head) {
-            if (head == null || head.next == null) {
-                return;
-            }
-            ListNode copy = head;
-            Stack<ListNode> stack = new Stack<>();
-            while (head != null) {
-                stack.push(head);
-                head = head.next;
-            }
-
-            while (copy != null) {
-                ListNode pop = stack.pop();
-                if (pop == copy) {
-                    break;
-                }
-                ListNode tmp = copy.next;
-                if (tmp == pop) {
-                    break;
-                }
-                copy.next = pop;
-                copy = copy.next;
-                copy.next = tmp;
-                copy = copy.next;
-            }
-        }
-    }
-
     class Solution {
         public void reorderList(ListNode head) {
             if (head == null || head.next == null) {
                 return;
             }
-            ListNode copy = head;
-            List<ListNode> list = new ArrayList<>();
-            while (head != null) {
-                list.add(head);
-                head = head.next;
+            ListNode dummy = head.next;
+            LinkedList<ListNode> cache = new LinkedList<>();
+            while (dummy != null) {
+                cache.add(dummy);
+                dummy = dummy.next;
             }
-            int left = 1, right = list.size() - 1;
-            while (left <= right) {
-                ListNode lNode = list.get(left);
-                ListNode rNode = list.get(right);
-                lNode.next = rNode;
-                left++;
-                if (left == right) {
-                    break;
+            dummy = head;
+            while (!cache.isEmpty()) {
+                dummy.next = cache.pollLast();
+                dummy = dummy.next;
+                dummy.next = cache.pollFirst();
+                dummy = dummy.next;
+            }
+            if (dummy != null) {
+                dummy.next = null;
+            }
+        }
+    }
+
+    class SolutionReverse {
+        public void reorderList(ListNode head) {
+            if (head.next != null) {
+                ListNode middle = findMiddleNode(head);
+                ListNode newHead = middle.next;
+                middle.next = null;
+                newHead = reverse(newHead, null);
+                ListNode curr = head;
+                while (newHead != null) {
+                    ListNode node = curr.next;
+                    curr.next = newHead;
+                    newHead = node;
+                    curr = curr.next;
                 }
-                rNode.next = lNode;
-                right--;
             }
-            list.get(left).next = null;
+        }
+
+        private ListNode findMiddleNode(ListNode head) {
+            ListNode slow = head;
+            ListNode fast = head.next;
+            while (fast.next != null && fast.next.next != null) {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            return slow.next;
+        }
+
+        public ListNode reverse(ListNode head, ListNode prev) {
+            if (head == null) return prev;
+            ListNode newHead = head.next;
+            head.next = prev;
+            return reverse(newHead, head);
         }
     }
 }
