@@ -1,9 +1,6 @@
 package leetcode.medium;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
 
 /**
  * @Author m1a2st
