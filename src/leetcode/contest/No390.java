@@ -60,27 +60,39 @@ public class No390 {
     @Test
     public void test3() {
         Solution100258 solution = new Solution100258();
-        int[] nums = {2 ,3, 2, 1};
-        int[] freq = {3, 2, -3, 1};
+        int[] nums = {5, 3, 9, 4, 3, 9, 4};
+        int[] freq = {2, 4, 5, 2, -2, -4, 5};
         long[] res = solution.mostFrequentIDs(nums, freq);
         System.out.println(Arrays.toString(res));
     }
 
     class Solution100258 {
-        public static long[] mostFrequentIDs(int[] nums, int[] freq) {
-            Map<Integer, Integer> count = new HashMap<>();
-            PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        public long[] mostFrequentIDs(int[] nums, int[] freq) {
+            Map<Integer, Long> count = new HashMap<>();
+            PriorityQueue<Pair> pq = new PriorityQueue<>(Comparator.comparingLong(p -> -p.freq));
             int n = nums.length;
             long[] ans = new long[n];
 
             for (int i = 0; i < n; i++) {
-                count.merge(nums[i], freq[i], Integer::sum);
-                pq.clear();
-                pq.addAll(count.values());
-                ans[i] = pq.isEmpty() ? 0 : pq.peek();
+                count.merge(nums[i], (long)freq[i], Long::sum);
+                pq.add(new Pair(nums[i], count.get(nums[i])));
+                while (pq.peek().freq != count.get(pq.peek().id)) {
+                    pq.poll();
+                }
+                ans[i] = pq.peek().freq < 0 ? 0 : pq.peek().freq;
             }
 
             return ans;
+        }
+
+        class Pair {
+            int id;
+            long freq;
+
+            public Pair(int id, long freq) {
+                this.id = id;
+                this.freq = freq;
+            }
         }
     }
 }
