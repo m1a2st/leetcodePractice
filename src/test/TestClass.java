@@ -9,18 +9,14 @@ public class TestClass {
 
     @Test
     public void test() {
-        HashSet<Integer> integers = new HashSet<>();
-        integers.add(1);
-        integers.add(2);
-        integers.add(3);
-        integers.add(4);
-        integers.add(5);
-        Integer[] arr = new Integer[1];
-        arr[0] = 1;
-        Arrays.stream(arr)
-                .filter(i -> integers.contains(i))
-                .findFirst()
-                .orElseThrow(RuntimeException::new);
+        StringBuilder sb = new StringBuilder();
+        sb.append("123");
+        app(sb);
+        System.out.println(sb);
+    }
+
+    void app(StringBuilder sb) {
+        sb.append("456");
     }
 
     @Test

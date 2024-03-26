@@ -8,66 +8,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No875 {
 
-    public class SolutionOld {
+    class Solution {
         public int minEatingSpeed(int[] piles, int h) {
             int max = Arrays.stream(piles).max().getAsInt();
-            int ans = max;
-            int len = piles.length;
-            if (h == len) {
+            if (piles.length == h) {
                 return max;
-            } else {
-                int left = 0, right = len - 1;
-                while (left < right) {
-                    int mid = (right - left) / 2 + left;
-                    if (canEatAll(piles, h, mid)) {
-                        ans = mid;
-                        left = mid + 1;
-                    } else {
-                        right = mid - 1;
-                    }
-                }
             }
-            return ans;
-        }
-    }
-
-    public class Solution {
-        public int minEatingSpeed(int[] piles, int h) {
-            int max = Arrays.stream(piles).max().getAsInt();
+            int left = 1, right = max;
             int ans = max;
-            int len = piles.length;
-            if (h == len) {
-                return max;
-            } else {
-                int left = 1, right = max;
-                while (left < right) {
-                    int mid = (right - left) / 2 + left;
-                    if (canEatAll(piles, h, mid)) {
-                        ans = mid;
-                        right = mid;
-                    } else {
-                        left = mid + 1;
-                    }
+            while (left < right) {
+                int mid = (right - left) / 2 + left;
+                if (getEatAll(piles, mid, h)) {
+                    ans = mid;
+                    right = mid;
+                } else {
+                    left = mid + 1;
                 }
             }
             return ans;
         }
 
-        private boolean canEatAll(int[] piles, int h, int mid) {
+        private boolean getEatAll(int[] piles, int num, int time) {
             int count = 0;
             for (int pile : piles) {
-                count += Math.ceil(pile * 1.0 / mid);
+                if (pile % num == 0) {
+                    count += pile / num;
+                } else {
+                    count += pile / num + 1;
+                }
             }
-            return count < h;
+            return count <= time;
         }
-    }
-
-    private boolean canEatAll(int[] piles, int h, int mid) {
-        int count = 0;
-        for (int pile : piles) {
-            count += Math.ceil(pile * 1.0 / mid);
-        }
-        return count <= h;
     }
 
     @Test
