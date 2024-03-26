@@ -33,7 +33,7 @@ public class No41 {
             while (i < nums.length) {
                 int correct = nums[i] - 1;
                 if (correct != i && nums[i] > 0 && nums[i] < nums.length) {
-                    if (nums[i] != nums[nums[i] - 1]) {
+                    if (nums[i] != nums[correct]) {
                         swap(nums, i, correct);
                     } else {
                         i++;
