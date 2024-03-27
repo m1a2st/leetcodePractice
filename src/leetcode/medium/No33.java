@@ -17,13 +17,13 @@ public class No33 {
                 }
                 // 一般狀況
                 if (nums[left] <= nums[mid]) {
-                    if (nums[left] <= target && nums[mid] >= target) {
+                    if (nums[left] <= target && target <= nums[mid]) {
                         right = mid - 1;
                     } else {
                         left = mid + 1;
                     }
                 } else {
-                    if (nums[right] >= target && nums[mid] <= target) {
+                    if (nums[mid] <= target && target <= nums[right]) {
                         left = mid + 1;
                     } else {
                         right = mid - 1;
@@ -43,6 +43,38 @@ public class No33 {
         assertEquals(-1, solution.search(new int[]{1}, 0));
         assertEquals(1, solution.search(new int[]{5, 1, 3}, 1));
         assertEquals(2, solution.search(new int[]{5, 1, 3}, 3));
+    }
+
+    class SolutionNew {
+        public int search(int[] nums, int target) {
+            int left = 0, right = nums.length;
+            while (left < right) {
+                int mid = (right - left) / 2 + left;
+                if (nums[mid] == target) {
+                    return mid;
+                }
+                // target = 2
+                // [1, 2, 3, 4, 5]
+                // [3, 4, 5, 1, 2]
+                if (nums[left] <= nums[mid]) {
+                    // [1, 2, 3, 4, 5]
+                    if (nums[left] <= target && target <= nums[mid]) {
+                        right = mid;
+                    } else {
+                        left = mid + 1;
+                    }
+                    // [5, 1, 2, 3, 4]
+                    // [4, 5, 1, 2, 3]
+                } else {
+                    if (nums[mid] <= target && target <= nums[right]) {
+                        left = mid + 1;
+                    } else {
+                        right = mid;
+                    }
+                }
+            }
+            return -1;
+        }
     }
 
 }

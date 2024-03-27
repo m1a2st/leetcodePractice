@@ -2,6 +2,9 @@ package test;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,10 +12,8 @@ public class TestClass {
 
     @Test
     public void test() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("123");
-        app(sb);
-        System.out.println(sb);
+        BigDecimal b = new BigDecimal("1222.2232323");
+        System.out.println(String.format("%s", b));
     }
 
     void app(StringBuilder sb) {
