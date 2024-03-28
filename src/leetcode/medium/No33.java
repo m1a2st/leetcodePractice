@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class No33 {
 
-
     static class Solution {
         public int search(int[] nums, int target) {
             int left = 0, right = nums.length - 1;
