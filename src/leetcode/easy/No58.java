@@ -17,8 +17,10 @@ public class No58 {
         public int lengthOfLastWord(String s) {
             int count = 0;
             int index = s.length() - 1;
-            while (index >=0 && s.charAt(index--) != ' ') {
-                ++count;
+            while ((index >= 0 && s.charAt(index) != ' ') || count == 0) {
+                if (s.charAt(index--) != ' ') {
+                    ++count;
+                }
             }
             return count;
         }
