@@ -1,5 +1,7 @@
 package leetcode.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,22 +33,28 @@ public class No205 {
         }
     }
 
+    @Test
+    public void test() {
+        new SolutionA().isIsomorphic("egg", "add");
+    }
+
     class SolutionA {
         public boolean isIsomorphic(String s, String t) {
-            char[] l = s.toCharArray();
-            char[] k = t.toCharArray();
-            int[] arr = new int[256];
-            int[] brr = new int[256];
+            char[] sArr = s.toCharArray();
+            char[] tArr = t.toCharArray();
+            int[] sMap = new int[256];
+            int[] tMap = new int[256];
 
-
-            for (int i = 0; i < l.length; i++) {
-                if (arr[l[i]] == 0 && brr[k[i]] == 0) {
-                    arr[l[i]] = k[i];
-                    brr[k[i]] = 1;
+            for (int i = 0; i < sArr.length; i++) {
+                char sC = sArr[i];
+                char tC = tArr[i];
+                if (sMap[sC] == 0 && tMap[tC] == 0) {
+                    sMap[sC] = tC;
+                    tMap[tC] = 1;
                 }
             }
-            for (int i = 0; i < l.length; i++) {
-                if (arr[l[i]] != k[i]) {
+            for (int i = 0; i < sArr.length; i++) {
+                if (sMap[sArr[i]] != tArr[i]) {
                     return false;
                 }
             }
