@@ -6,7 +6,7 @@ public class No92 {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
+        SolutionNew solution = new SolutionNew();
         ListNode head = new ListNode(1);
         ListNode node = head;
         for (int i = 2; i <= 5; i++) {
@@ -63,5 +63,46 @@ public class No92 {
             }
             return dummy.next;
         }
+    }
+
+    class SolutionNew {
+        public ListNode reverseBetween(ListNode head, int left, int right) {
+            // 1. find the left - 1 node
+            ListNode dummy = new ListNode(-1, head);
+            ListNode pointer = dummy;
+            for (int i = 0; i < left - 1; i++) {
+                pointer = pointer.next;
+            }
+            ListNode preLeft = pointer;
+            ListNode reverseLeft = pointer.next;
+            // 2. find the right + 1 node
+            pointer = dummy;
+            for (int i = 0; i < right; i++) {
+                pointer = pointer.next;
+            }
+            ListNode reverseRight = pointer;
+            ListNode nextRight = pointer.next;
+            reverseRight.next = null;
+            // reverse the linkedList
+            ListNode reverse = reverse(reverseLeft);
+            // concat
+            preLeft.next = reverse;
+            while (reverse.next != null) {
+                reverse = reverse.next;
+            }
+            reverse.next = nextRight;
+            return dummy.next;
+        }
+
+        public ListNode reverse(ListNode head) {
+            if (head == null || head.next == null) {
+                return head;
+            }
+            ListNode node = reverse(head.next);
+            head.next.next = head;
+            head.next = null;
+            return node;
+        }
+
     }
 }

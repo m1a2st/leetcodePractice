@@ -73,4 +73,17 @@ public class No206 {
             return reverseList(newNode, head);
         }
     }
+
+    class SolutionG {
+        public ListNode reverseList(ListNode head) {
+            return reverseList(head, null);
+        }
+
+        private ListNode reverseList(ListNode head, ListNode prev) {
+            if (head == null) return prev;
+            ListNode node = head.next;
+            head.next = prev;
+            return reverseList(node, head);
+        }
+    }
 }
