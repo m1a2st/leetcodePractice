@@ -28,7 +28,7 @@ public class No79 {
                 for (int j = 0; j < y; j++) {
                     findTheWord(board, word, visited, i, j, 0);
                     if (result) {
-                        return result;
+                        return true;
                     }
                 }
             }
