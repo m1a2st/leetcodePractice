@@ -15,6 +15,53 @@ public class No79 {
         System.out.println(exist);
     }
 
+    class SolutionNew {
+
+        boolean result = false;
+        boolean[][] visited;
+
+        public boolean exist(char[][] board, String word) {
+            int x = board.length;
+            int y = board[0].length;
+            visited = new boolean[x][y];
+            for (int i = 0; i < x; i++) {
+                for (int j = 0; j < y; j++) {
+                    findTheWord(board, word, visited, i, j, 0);
+                    if (result) {
+                        return result;
+                    }
+                }
+            }
+            return result;
+        }
+
+        private void findTheWord(char[][] board, String word, boolean[][] visited, int x, int y, int start) {
+            if (x < 0 || y < 0 || x == board.length || y == board[0].length) {
+                return;
+            }
+            if (visited[x][y]) {
+                return;
+            }
+            if (board[x][y] != word.charAt(start)) {
+                return;
+            }
+
+            visited[x][y] = true;
+
+            if (start == word.length() - 1) {
+                result = true;
+                return;
+            }
+
+            findTheWord(board, word, visited, x + 1, y, start + 1);
+            findTheWord(board, word, visited, x, y + 1, start + 1);
+            findTheWord(board, word, visited, x - 1, y, start + 1);
+            findTheWord(board, word, visited, x, y - 1, start + 1);
+
+            visited[x][y] = false;
+        }
+    }
+
     class Solution {
 
         boolean result = false;
