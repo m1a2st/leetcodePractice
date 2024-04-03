@@ -2,6 +2,7 @@ package leetcode.easy;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +43,5 @@ public class No217 {
         int[] nums = {1, 2, 3, 4};
         assertFalse(solution.containsDuplicate(nums));
     }
-
 
 }
