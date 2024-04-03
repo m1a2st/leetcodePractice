@@ -26,7 +26,7 @@ public class No79 {
             visited = new boolean[x][y];
             for (int i = 0; i < x; i++) {
                 for (int j = 0; j < y; j++) {
-                    findTheWord(board, word, visited, i, j, 0);
+                    findTheWord(board, word, i, j, 0);
                     if (result) {
                         return true;
                     }
@@ -35,7 +35,7 @@ public class No79 {
             return result;
         }
 
-        private void findTheWord(char[][] board, String word, boolean[][] visited, int x, int y, int start) {
+        private void findTheWord(char[][] board, String word, int x, int y, int start) {
             if (x < 0 || y < 0 || x == board.length || y == board[0].length) {
                 return;
             }
@@ -53,10 +53,10 @@ public class No79 {
                 return;
             }
 
-            findTheWord(board, word, visited, x + 1, y, start + 1);
-            findTheWord(board, word, visited, x, y + 1, start + 1);
-            findTheWord(board, word, visited, x - 1, y, start + 1);
-            findTheWord(board, word, visited, x, y - 1, start + 1);
+            findTheWord(board, word, x + 1, y, start + 1);
+            findTheWord(board, word, x, y + 1, start + 1);
+            findTheWord(board, word, x - 1, y, start + 1);
+            findTheWord(board, word, x, y - 1, start + 1);
 
             visited[x][y] = false;
         }
