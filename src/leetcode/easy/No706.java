@@ -86,4 +86,69 @@ public class No706 {
             }
         }
     }
+
+    class MyHashMapNew {
+
+        static final int MOD = 19997;
+
+        ListNode[] buckets;
+
+        public MyHashMapNew() {
+            this.buckets = new ListNode[MOD];
+        }
+
+        public void put(int key, int value) {
+            remove(key);
+            int h = hash(key);
+            ListNode node = new ListNode(key, value, buckets[h]);
+            buckets[h] = node;
+        }
+
+        public int get(int key) {
+            int h = hash(key);
+            ListNode node = buckets[h];
+            while (node != null) {
+                if (node.key == key) {
+                    return node.val;
+                }
+                node = node.next;
+            }
+            return -1;
+        }
+
+        public void remove(int key) {
+            int h = hash(key);
+            ListNode node = buckets[h];
+            if (node == null) {
+                return;
+            }
+            if (node.key == key) {
+                buckets[h] = node.next;
+                return;
+            }
+            while (node.next != null) {
+                if (node.next.key == key) {
+                    node.next = node.next.next;
+                    return;
+                }
+                node = node.next;
+            }
+        }
+
+        private int hash(int key) {
+            return Integer.hashCode(key) % MOD;
+        }
+
+        class ListNode {
+            int key;
+            int val;
+            ListNode next;
+
+            public ListNode(int key, int val, ListNode next) {
+                this.key = key;
+                this.val = val;
+                this.next = next;
+            }
+        }
+    }
 }
