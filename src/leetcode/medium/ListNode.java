@@ -24,25 +24,3 @@ public class ListNode {
     }
 }
 
-class Test {
-
-    @org.junit.jupiter.api.Test
-    public void test() {
-        ListNode head = new ListNode(1);
-        ListNode node1 = new ListNode(2);
-        head.next = node1;
-        ListNode node2 = new ListNode(3);
-        node1.next = node2;
-        traverse(head);
-    }
-
-    void traverse(ListNode head) {
-        if (head == null) {
-            return;
-        }
-        System.out.println(head.val);
-        traverse(head.next);
-        // 后序位置
-    }
-}
-
