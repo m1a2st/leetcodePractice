@@ -2,9 +2,7 @@ package leetcode.easy;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,12 +16,10 @@ public class No217 {
 
     class Solution {
         public boolean containsDuplicate(int[] nums) {
-            Map<Integer, Integer> map = new HashMap<>();
+            Set<Integer> set = new HashSet<>();
             for (int num : nums) {
-                if (map.containsKey(num)) {
+                if (!set.add(num)) {
                     return true;
-                } else {
-                    map.put(num, 1);
                 }
             }
             return false;
