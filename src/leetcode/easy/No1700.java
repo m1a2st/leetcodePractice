@@ -7,17 +7,18 @@ public class No1700 {
 
     class Solution {
         public int countStudents(int[] students, int[] sandwiches) {
-            int[] count = new int[2];
+            int[] counter = new int[2];
             for (int student : students) {
-                count[student]++;
+                ++counter[student];
             }
             for (int sandwich : sandwiches) {
-                if (count[sandwich] == 0) {
+                if (counter[sandwich] > 0) {
+                    counter[sandwich]--;
+                } else {
                     break;
                 }
-                count[sandwich]--;
             }
-            return count[0] + count[1];
+            return counter[0] + counter[1];
         }
     }
 

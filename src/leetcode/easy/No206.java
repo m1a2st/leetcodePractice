@@ -6,50 +6,7 @@ import java.util.Stack;
 
 public class No206 {
 
-    static class SolutionOld {
-        public ListNode reverseList(ListNode head) {
-            if (head == null || head.next == null) {
-                return head;
-            }
-            ListNode last = reverseList(head.next);
-            head.next.next = head;
-            head.next = null;
-            return last;
-        }
-    }
-
     static class Solution {
-        public ListNode reverseList(ListNode head) {
-            if (head == null || head.next == null) {
-                return head;
-            }
-            ListNode last = reverseList(head.next);
-            head.next.next = head;
-            head.next = null;
-            return last;
-        }
-    }
-
-
-    class SolutionNoRecursive {
-        public ListNode reverseList(ListNode head) {
-            Stack<Integer> stack = new Stack<>();
-            while (head != null) {
-                stack.push(head.val);
-                head = head.next;
-            }
-            ListNode dummy = new ListNode(-1);
-            ListNode cur = dummy;
-            while (!stack.isEmpty()) {
-                ListNode node = new ListNode(stack.pop());
-                cur.next = node;
-                cur = cur.next;
-            }
-            return dummy.next;
-        }
-    }
-
-    class SolutionRecursive {
         public ListNode reverseList(ListNode head) {
             if (head == null || head.next == null) {
                 return head;
@@ -74,16 +31,18 @@ public class No206 {
         }
     }
 
-    class SolutionG {
-        public ListNode reverseList(ListNode head) {
-            return reverseList(head, null);
+    public ListNode reverseListByLoop(ListNode current) {
+        if (current == null) {
+            return null;
         }
 
-        private ListNode reverseList(ListNode head, ListNode prev) {
-            if (head == null) return prev;
-            ListNode node = head.next;
-            head.next = prev;
-            return reverseList(node, head);
+        ListNode prev = null;
+        while (current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
+        return prev;
     }
 }
