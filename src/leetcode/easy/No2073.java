@@ -42,4 +42,23 @@ public class No2073 {
             return seconds;
         }
     }
+
+    class SolutionP {
+        public int timeRequiredToBuy(int[] tickets, int k) {
+            int ans = 0;
+            int limit = tickets[k];
+            for (int i = 0; i < tickets.length; i++) {
+                if (tickets[i] < limit) {
+                    ans += tickets[i];
+                } else {
+                    if (i <= k) {
+                        ans += limit;
+                    } else {
+                        ans += limit - 1;
+                    }
+                }
+            }
+            return ans;
+        }
+    }
 }
