@@ -33,6 +33,25 @@ public class No950 {
         }
     }
 
+    class SolutionNew {
+        public int[] deckRevealedIncreasing(int[] deck) {
+            Arrays.sort(deck);
+            int len = deck.length;
+            int[] ans = new int[len];
+            ArrayDeque<Integer> cache = new ArrayDeque<>();
+            for (int i = 0; i < len; i++) {
+                cache.offer(i);
+            }
+            for (int i : deck) {
+                ans[cache.poll()] = i;
+                if (!cache.isEmpty()) {
+                    cache.offer(cache.poll());
+                }
+            }
+            return ans;
+        }
+    }
+
     class SolutionWorth {
         public int[] deckRevealedIncreasing(int[] deck) {
             Arrays.sort(deck);
