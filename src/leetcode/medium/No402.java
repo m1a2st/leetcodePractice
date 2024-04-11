@@ -40,4 +40,33 @@ public class No402 {
             return sb.isEmpty() ? "0" : sb.toString();
         }
     }
+
+    class SolutionNew {
+        public String removeKdigits(String num, int k) {
+            if (num.length() == k) return "0";
+
+            StringBuilder sb = new StringBuilder();
+            LinkedList<Character> stack = new LinkedList<>();
+
+            for (char c : num.toCharArray()) {
+                while (!stack.isEmpty() && k > 0 && stack.getLast() > c) {
+                    stack.pollLast();
+                    k--;
+                }
+                stack.addLast(c);
+            }
+
+            while (k-- > 0) {
+                stack.pollLast();
+            }
+
+            for (final char c : stack) {
+                if (c == '0' && sb.isEmpty())
+                    continue;
+                sb.append(c);
+            }
+
+            return sb.isEmpty() ? "0" : sb.toString();
+        }
+    }
 }

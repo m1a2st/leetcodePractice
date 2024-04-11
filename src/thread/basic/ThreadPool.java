@@ -1,6 +1,7 @@
 package thread.basic;
 
 import javax.annotation.Nonnull;
+import java.util.Objects;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -58,10 +59,10 @@ public class ThreadPool {
             EXECUTOR.allowCoreThreadTimeOut(true);
             Runtime.getRuntime()
                     .addShutdownHook(new ShutdownHookThread<Void>("IO密集型任務線程池", () -> {
-                // 優雅關閉線程池
-                shutdownThreadPoolGracefully(EXECUTOR);
-                return null;
-            }));
+                        // 優雅關閉線程池
+                        shutdownThreadPoolGracefully(EXECUTOR);
+                        return null;
+                    }));
         }
     }
 
@@ -101,6 +102,58 @@ public class ThreadPool {
             } catch (Throwable e) {
                 System.err.println(e.getMessage());
             }
+        }
+    }
+
+    private static final int MAXIMUM_POOL_SIZE = CPU_COUNT;
+
+    public static class CpuIntenseTargetThreadPoolLazyHolder {
+        private static final ThreadPoolExecutor EXECUTOR =
+                new ThreadPoolExecutor(MAXIMUM_POOL_SIZE,
+                        MAXIMUM_POOL_SIZE,
+                        KEEP_ALIVE_SECONDS,
+                        TimeUnit.SECONDS,
+                        new LinkedBlockingQueue<>(QUEUE_SIZE),
+                        new CustomThreadFactory("cpu"));
+
+        static {
+            EXECUTOR.allowCoreThreadTimeOut(true);
+            // JVM 關閉時的鉤子函數
+            Runtime.getRuntime()
+                    .addShutdownHook(new ShutdownHookThread<Void>("CPU密集型任務線程池", () -> {
+                        // 優雅關閉線程池
+                        shutdownThreadPoolGracefully(EXECUTOR);
+                        return null;
+                    }));
+        }
+    }
+
+    // 最大線程數
+    private static final int MIXED_MAX = 128;
+    private static final String MIXED_THREAD_AMOUNT = "mixed.thread.amount";
+
+    public static class MixedTargetThreadTargetLazyHolder {
+
+        // 首先先從環境變量 mixed.thread.amount 中獲取預先配置的線程池
+        // 如果沒有配置，則使用預設的線程池大小
+        private static final int MAX = Objects.nonNull(System.getProperty(MIXED_THREAD_AMOUNT)) ?
+                Integer.parseInt(System.getProperty(MIXED_THREAD_AMOUNT)) : MIXED_MAX;
+        private static final ThreadPoolExecutor EXECUTOR =
+                new ThreadPoolExecutor(MAXIMUM_POOL_SIZE,
+                        MAX,
+                        MAX,
+                        TimeUnit.SECONDS,
+                        new LinkedBlockingQueue<>(QUEUE_SIZE),
+                        new CustomThreadFactory("mixed"));
+        static {
+            EXECUTOR.allowCoreThreadTimeOut(true);
+            // JVM 關閉時的鉤子函數
+            Runtime.getRuntime()
+                    .addShutdownHook(new ShutdownHookThread<Void>("混合型任務線程池", () -> {
+                        // 優雅關閉線程池
+                        shutdownThreadPoolGracefully(EXECUTOR);
+                        return null;
+                    }));
         }
     }
 }

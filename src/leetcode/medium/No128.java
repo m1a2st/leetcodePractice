@@ -15,18 +15,25 @@ public class No128 {
 
     class Solution {
         public int longestConsecutive(int[] nums) {
-            Set<Integer> seen = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+            Arrays.sort(nums);
             int ans = 0;
-            for (Integer i : seen) {
-                if(seen.contains(i - 1)){
-                    continue;
+            int prev = Integer.MAX_VALUE;
+            int temp = 0;
+            for (int num : nums) {
+                if (prev == Integer.MAX_VALUE) {
+                    temp++;
+                    prev = num;
+                } else {
+                    if (prev + 1 == num) {
+                        temp++;
+                        prev = num;
+                    } else if (prev != num) {
+                        prev = num;
+                        ans = Math.max(ans, temp);
+                        temp = 1;
+                    }
                 }
-                int length = 1;
-                while (seen.contains(i + 1)) {
-                    length++;
-                    i++;
-                }
-                ans = Math.max(ans, length);
+                ans = Math.max(ans, temp);
             }
             return ans;
         }
@@ -42,7 +49,7 @@ public class No128 {
     @Test
     public void test2() {
         Solution solution = new Solution();
-        int[] nums = {0, 3, 7, 2, 5, 8, 4, 6, 0, 1};
-        assert solution.longestConsecutive(nums) == 9;
+        int[] nums = {9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6};
+        assert solution.longestConsecutive(nums) == 7;
     }
 }
