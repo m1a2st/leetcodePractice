@@ -11,6 +11,25 @@ public class No129 {
         assert solution.sumNumbers(new TreeNode(4, new TreeNode(9, new TreeNode(5), new TreeNode(1)), new TreeNode(0))) == 1026;
     }
 
+    class Solution {
+        public int sumNumbers(TreeNode root) {
+            return dfs(root, 0);
+        }
+
+        private int dfs(TreeNode root, int pathVal) {
+            if (root == null) {
+                return 0;
+            }
+            int pathSum = pathVal * 10 + root.val;
+            int sum = 0;
+            if (root.left == null && root.right == null) {
+                sum += pathSum;
+            }
+            sum += dfs(root.right, pathSum);
+            sum += dfs(root.left, pathSum);
+            return sum;
+        }
+    }
 
     // Definition for a binary tree node.
     public class TreeNode {
@@ -32,7 +51,7 @@ public class No129 {
         }
     }
 
-    class Solution {
+    class SolutionBT {
 
         int ans = 0;
         int temp = 0;

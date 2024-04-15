@@ -145,6 +145,11 @@ public class ThreadPool {
                         TimeUnit.SECONDS,
                         new LinkedBlockingQueue<>(QUEUE_SIZE),
                         new CustomThreadFactory("mixed"));
+
+        public static ThreadPoolExecutor getInnerExecutor() {
+            return EXECUTOR;
+        }
+
         static {
             EXECUTOR.allowCoreThreadTimeOut(true);
             // JVM 關閉時的鉤子函數

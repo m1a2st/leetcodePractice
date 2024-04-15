@@ -5,11 +5,35 @@ import org.junit.jupiter.api.Test;
 public class No75 {
 
     @Test
-    public void test(){
-        int[] nums = {2,0,2,1,1,0};
+    public void test() {
+        int[] nums = {2, 0, 2, 1, 1, 0};
         new SolutionNew().sortColors(nums);
         for (int num : nums) {
             System.out.println(num);
+        }
+    }
+
+    class SolutionP {
+        public void sortColors(int[] nums) {
+            int left = 0, right = nums.length - 1, current = 0;
+            while (current <= right) {
+                if (nums[current] == 2) {
+                    swap(nums, current, right);
+                    right--;
+                } else if (nums[current] == 1) {
+                    current++;
+                } else {
+                    swap(nums, current, left);
+                    left++;
+                    current++;
+                }
+            }
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            int k = nums[i];
+            nums[i] = nums[j];
+            nums[j] = k;
         }
     }
 
@@ -17,7 +41,7 @@ public class No75 {
         public void sortColors(int[] nums) {
             for (int i = 0; i < nums.length; i++) {
                 for (int j = i + 1; j < nums.length; j++) {
-                    if(nums[i] > nums[j]){
+                    if (nums[i] > nums[j]) {
                         swap(nums, i, j);
                     }
                 }
@@ -37,7 +61,7 @@ public class No75 {
             int one = -1;
             int two = -1;
 
-            for (final int num : nums)
+            for (int num : nums)
                 if (num == 0) {
                     nums[++two] = 2;
                     nums[++one] = 1;
