@@ -12,7 +12,6 @@ public class No121 {
 
     class Solution {
         public int maxProfit(int[] prices) {
-            int len = prices.length;
             int min = prices[0];
             int ans = 0;
             for (int price : prices) {
@@ -38,5 +37,21 @@ public class No121 {
         int[] s = {7, 6, 4, 3, 1};
         Solution solution = new Solution();
         Assertions.assertEquals(0, solution.maxProfit(s));
+    }
+
+    class SolutionP {
+        public int maxProfit(int[] prices) {
+            int ans = 0;
+            int cost = prices[0];
+            for (int price : prices) {
+                if (cost < price) {
+                    cost = price;
+                } else {
+                    ans = Math.max(ans, price - cost);
+                }
+            }
+
+            return ans;
+        }
     }
 }
