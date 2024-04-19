@@ -1,5 +1,7 @@
 package leetcode.data_structure.sort;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Date;
 
 /**
@@ -18,6 +20,7 @@ public class SelectSort {
      * 3. 接著找出扣掉第0位的最小值
      * 4. 接著數據做交換
      * 5. ....重複直到，數據排序好
+     *
      * @param arr 欲排序的數據陣列
      */
     public static void selectSort(int[] arr) {
@@ -49,5 +52,35 @@ public class SelectSort {
         Date endTime = new Date();
         long end = endTime.getTime();
         System.out.println("總共花費的時間為： " + (end - start));
+    }
+
+    @Test
+    public void test() {
+        int[] arr = {8, 7, 4, 32, 313, 5, 6, 3, 0, 1};
+        selectionPractice(arr);
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
+
+    public void selectionPractice(int[] arr) {
+        int len = arr.length;
+        for (int i = 0; i < len - 1; i++) {
+            int minValue = arr[i];
+            int minIndex = i;
+            for (int j = i + 1; j < len; j++) {
+                if (arr[j] < minValue) {
+                    minValue = arr[j];
+                    minIndex = j;
+                }
+            }
+            swap(arr, i, minIndex);
+        }
+    }
+
+    public void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
