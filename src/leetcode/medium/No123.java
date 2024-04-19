@@ -7,7 +7,7 @@ public class No123 {
 
     @Test
     public void test() {
-        new Solution().maxProfit(new int[]{1, 2, 1, 4, 2, 5});
+        new Solution().maxProfit(new int[]{3, 2, 6, 5, 0, 3});
     }
 
     class Solution {
