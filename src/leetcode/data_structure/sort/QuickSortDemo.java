@@ -1,5 +1,7 @@
 package leetcode.data_structure.sort;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Date;
 
 /**
@@ -72,4 +74,41 @@ public class QuickSortDemo {
             quickSort(arr, lIndex, rightIndex);
         }
     }
+
+    @Test
+    public void test() {
+        int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33};
+        quickSortPractice(arr, 0, arr.length - 1);
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
+
+    public void quickSortPractice(int[] arr, int left, int right) {
+        if (left < right) {
+            int pivot = partition(arr, left, right);
+            quickSortPractice(arr, left, pivot - 1);
+            quickSortPractice(arr, pivot + 1, right);
+        }
+    }
+
+    private int partition(int[] arr, int left, int right) {
+        int pivot = arr[right];
+        int i = left - 1;
+        for (int j = left; j < right; j++) {
+            if (arr[j] < pivot) {
+                ++i;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, right);
+        return i + 1;
+    }
+
+    private void swap(int[] arr, int lIndex, int rIndex) {
+        int temp = arr[lIndex];
+        arr[lIndex] = arr[rIndex];
+        arr[rIndex] = temp;
+    }
+
 }

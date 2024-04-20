@@ -20,11 +20,7 @@ public class No1992 {
                     }
                 }
             }
-            int[][] ans = new int[cache.size()][4];
-            for (int i = 0; i < cache.size(); i++) {
-                ans[i] = cache.get(i);
-            }
-            return ans;
+            return cache.toArray(new int[cache.size()][]);
         }
 
         private void dfs(int[][] land, int i, int j, int[] temp) {
