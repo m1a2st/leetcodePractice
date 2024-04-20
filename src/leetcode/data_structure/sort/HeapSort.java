@@ -1,5 +1,7 @@
 package leetcode.data_structure.sort;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 /**
@@ -10,8 +12,7 @@ import java.util.Arrays;
  */
 public class HeapSort {
     public static void main(String[] args) {
-
-        int[] arr = {4, 6, 8, 5, 9};
+        int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33, 123, 100, 45};
         heapSort(arr);
     }
 
@@ -24,17 +25,20 @@ public class HeapSort {
      * @param arr 待調整的陣列
      */
     public static void heapSort(int[] arr) {
-        int temp;
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             adjustHeap(arr, i, arr.length);
         }
         for (int j = arr.length - 1; j > 0; j--) {
-            temp = arr[j];
-            arr[j] = arr[0];
-            arr[0] = temp;
+            swap(arr, 0, j);
             adjustHeap(arr, 0, j);
         }
         System.out.println(Arrays.toString(arr));
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
     }
 
     /**
@@ -65,5 +69,54 @@ public class HeapSort {
         }
         //當for循環結束後，我們已經將以noLeafNodeIndex為父節點的樹之最大值，放在了最頂部（局部）
         arr[noLeafNodeIndex] = temp; //將temp值放到調整後的位置
+    }
+
+    @Test
+    public void test() {
+        int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33, 123, 100, 45};
+        heapSortP(arr);
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
+
+    public void heapSortP(int[] arr) {
+        // 根據樹的結構來推算（如果根節點所引為 0），最後一個非葉子節點的索引必定是 arr.length / 2 - 1
+        // 因為要把樹結構調整成「大頂堆」，所以就從最後一個非根節點開始調整
+        for (int i = arr.length / 2 - 1; i >= 0; i--) {
+            adjustHeapP(arr, i, arr.length);
+        }
+        for (int i = arr.length - 1; i > 0; i--) {
+            swap(arr, 0, i);
+            adjustHeapP(arr, 0, i);
+        }
+    }
+
+    private void adjustHeapP(int[] arr, int notLeafNodeIndex, int length) {
+        // 先取出當前元素的值，保存在臨時變量，也就是目前子樹的父節點
+        int root = arr[notLeafNodeIndex];
+        // leftNodeIndex = notLeafNodeIndex * 2 + 1 是 notLeafNodeIndex 的左子節點
+        // rightNodeIndex = notLeafNodeIndex * 2 + 2 是 notLeafNodeIndex 的右子節點
+            for (int leftNodeIndex = notLeafNodeIndex * 2 + 1; leftNodeIndex < length; leftNodeIndex = leftNodeIndex * 2 + 1) {
+            int rightNodeIndex = leftNodeIndex + 1;
+            // 判斷哪一個子節點比較大，值比較大的節點，會被換到父節點
+            int biggestLeafNodeIndex = leftNodeIndex;
+            if (rightNodeIndex < length && arr[leftNodeIndex] < arr[rightNodeIndex]) {
+                biggestLeafNodeIndex = rightNodeIndex;
+            }
+            // 如果子節點的值大於父節點
+            if (arr[biggestLeafNodeIndex] > root) {
+                // 將子節點的值換到父節點
+                arr[notLeafNodeIndex] = arr[biggestLeafNodeIndex];
+                // 將指針變成新的父節點，繼續往下一個子樹比較
+                notLeafNodeIndex = biggestLeafNodeIndex;
+                // 要注意，這邊需要重新更新 leftNodeIndex 的值，繼續遍歷的索引才會正確
+                leftNodeIndex = biggestLeafNodeIndex;
+            } else {
+                break;
+            }
+        }
+        // 將保存的節點放回正確的指針位置
+        arr[notLeafNodeIndex] = root;
     }
 }

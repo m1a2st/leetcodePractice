@@ -78,7 +78,7 @@ public class QuickSortDemo {
     @Test
     public void test() {
         int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33};
-        quickSortPractice(arr, 0, arr.length - 1);
+        quickSortP(arr, 0, arr.length - 1);
         for (int i : arr) {
             System.out.println(i);
         }
@@ -109,6 +109,29 @@ public class QuickSortDemo {
         int temp = arr[lIndex];
         arr[lIndex] = arr[rIndex];
         arr[rIndex] = temp;
+    }
+
+
+
+    public void quickSortP(int[] arr, int left, int right) {
+        if (left < right) {
+            int partition = partitionP(arr, left, right);
+            quickSortP(arr, left, partition - 1);
+            quickSortP(arr, partition + 1, right);
+        }
+    }
+
+    private int partitionP(int[] arr, int left, int right) {
+        int pivot = arr[right];
+        int i = left - 1;
+        for (int j = left; j < right; j++) {
+            if (arr[j] < pivot) {
+                ++i;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, right);
+        return i + 1;
     }
 
 }

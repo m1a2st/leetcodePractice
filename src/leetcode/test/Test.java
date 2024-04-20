@@ -275,22 +275,3 @@ public class Test {
     }
 
 }
-
-//record Person(String name, int age, String date) implements Comparable<Person> {
-//
-//    @Override
-//    public int compareTo(Person o) {
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//        try {
-//            return sdf.parse(this.date()).compareTo(sdf.parse(o.date()));
-//        } catch (ParseException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//}
-
-class Constant {
-    public static final String A = "a";
-    public static final String B = "b";
-    public static final String C = "c";
-}
