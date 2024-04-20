@@ -1,5 +1,7 @@
 package leetcode.data_structure.sort;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Date;
 
 /**
@@ -56,6 +58,37 @@ public class BubbleSort {
 //            System.out.println(Arrays.toString(array));
             }
         }
+    }
+
+    @Test
+    public void test() {
+        int[] arr = {8, 7, 4, 32, 313, 5, 6, 3, 0, 1};
+        bubbleSortPractice(arr);
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
+
+    public void bubbleSortPractice(int[] arr) {
+        int len = arr.length;
+        for (int j = 0; j < len; j++) {
+            boolean tag = false;
+            for (int i = 0; i < len - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    swap(arr, i, i+ 1);
+                    tag = true;
+                }
+            }
+            if (!tag) {
+                break;
+            }
+        }
+    }
+
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
 
