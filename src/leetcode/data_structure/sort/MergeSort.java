@@ -1,5 +1,7 @@
 package leetcode.data_structure.sort;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Date;
 
 /**
@@ -19,7 +21,7 @@ public class MergeSort {
 
         Date startTime = new Date();
         long start = startTime.getTime();
-        mergeSort(arr, 0, arr.length - 1,temp);
+        mergeSort(arr, 0, arr.length - 1, temp);
         Date endTime = new Date();
         long end = endTime.getTime();
         System.out.println("總共花費的時間為： " + (end - start));
@@ -94,7 +96,51 @@ public class MergeSort {
         while (tempLeft <= right) {
             arr[tempLeft] = temp[t];
             t++;
-            tempLeft ++;
+            tempLeft++;
+        }
+    }
+
+    @Test
+    public void test() {
+        int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33};
+        MergeSortP.mergeSort(arr);
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
+
+    class MergeSortP {
+
+        public static void mergeSort(int[] list) {
+            int length = list.length;
+            if (length > 1) {
+                int[] firstHalf = new int[length / 2];
+                System.arraycopy(list, 0, firstHalf, 0, length / 2);
+                mergeSort(firstHalf);
+                int[] secondHalf = new int[length - length / 2];
+                System.arraycopy(list, length / 2 + 1, secondHalf, 0, length - length / 2);
+                mergeSort(secondHalf);
+                merge(firstHalf, secondHalf, list);
+            }
+        }
+
+        public static void merge(int[] list1, int[] list2, int[] temp) {
+            int i = 0;
+            int j = 0;
+            int k = 0;
+            while (i < list1.length && j < list2.length) {
+                if (list1[i] <= list2[j]) {
+                    temp[k++] = list1[i++];
+                } else {
+                    temp[k++] = list2[j++];
+                }
+            }
+            while (i < list1.length) {
+                temp[k++] = list1[i++];
+            }
+            while (j < list2.length) {
+                temp[k++] = list2[j++];
+            }
         }
     }
 
