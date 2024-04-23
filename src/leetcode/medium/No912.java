@@ -1,5 +1,10 @@
 package leetcode.medium;
 
+
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 public class No912 {
 
     class Solution {
@@ -41,6 +46,51 @@ public class No912 {
 
             for (k = left; k <= right; k++) {
                 nums[k] = temp[k];
+            }
+        }
+    }
+
+
+    @Test
+    public void test() {
+        new SolutionNew().sortArray(new int[]{5, 2, 3, 1, 4, 6});
+    }
+
+    class SolutionNew {
+        public int[] sortArray(int[] nums) {
+            mergeSort(nums);
+            return nums;
+        }
+
+        private void mergeSort(int[] nums) {
+            int len = nums.length;
+            if (len > 1) {
+                int[] frontHalf = new int[len / 2];
+                System.arraycopy(nums, 0, frontHalf, 0, len / 2);
+                mergeSort(frontHalf);
+                int[] backHalf = new int[len - len / 2];
+                System.arraycopy(nums, len / 2, backHalf, 0, len - len / 2);
+                mergeSort(backHalf);
+                merge(frontHalf, backHalf, nums);
+            }
+        }
+
+        private void merge(int[] frontSort, int[] backSort, int[] nums) {
+            int i = 0;
+            int j = 0;
+            int k = 0;
+            while (i < frontSort.length && j < backSort.length) {
+                if (frontSort[i] < backSort[j]) {
+                    nums[k++] = frontSort[i++];
+                } else {
+                    nums[k++] = backSort[j++];
+                }
+            }
+            while (i < frontSort.length) {
+                nums[k++] = frontSort[i++];
+            }
+            while (j < backSort.length) {
+                nums[k++] = backSort[j++];
             }
         }
     }
