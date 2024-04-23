@@ -10,21 +10,6 @@ import org.junit.jupiter.api.Test;
  */
 public class No121 {
 
-    class Solution {
-        public int maxProfit(int[] prices) {
-            int min = prices[0];
-            int ans = 0;
-            for (int price : prices) {
-                if (price < min) {
-                    min = price;
-                } else {
-                    ans = Math.max(ans, price - min);
-                }
-            }
-            return ans;
-        }
-    }
-
     @Test
     public void test() {
         int[] s = {7, 1, 5, 3, 6, 4};
@@ -39,18 +24,17 @@ public class No121 {
         Assertions.assertEquals(0, solution.maxProfit(s));
     }
 
-    class SolutionP {
+    class Solution {
         public int maxProfit(int[] prices) {
+            int buy = prices[0];
             int ans = 0;
-            int cost = prices[0];
             for (int price : prices) {
-                if (cost < price) {
-                    cost = price;
+                if (buy > price) {
+                    buy = price;
                 } else {
-                    ans = Math.max(ans, price - cost);
+                    ans = Math.max(ans, price - buy);
                 }
             }
-
             return ans;
         }
     }
