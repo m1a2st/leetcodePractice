@@ -1,9 +1,5 @@
 package leetcode.easy;
 
-import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
-
 public class No1137 {
 
     class Solution {
