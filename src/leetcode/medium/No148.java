@@ -1,10 +1,24 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class No148 {
+
+    @Test
+    public void test() {
+        ListNode l1 = new ListNode(4);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(1);
+        ListNode l4 = new ListNode(3);
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        new SolutionNew().sortList(l1);
+    }
 
 
     // Definition for singly-linked list.
@@ -43,21 +57,22 @@ public class No148 {
         }
     }
 
-    class SolutionMergeSort {
+    class SolutionNew {
         public ListNode sortList(ListNode head) {
             if (head == null || head.next == null) {
                 return head;
             }
-            ListNode mid = searchMid(head);
-            ListNode midNext = mid.next;
+            ListNode mid = findMidNode(head);
+            ListNode right = mid.next;
             mid.next = null;
-            ListNode l1 = sortList(head);
-            ListNode l2 = sortList(midNext);
-            return mergeLinkedList(l1, l2);
+            ListNode sortLeft = sortList(head);
+            ListNode sortRight = sortList(right);
+            return merge(sortLeft, sortRight);
         }
 
-        private ListNode searchMid(ListNode head) {
-            ListNode fast = head, slow = head;
+        private ListNode findMidNode(ListNode head) {
+            ListNode slow = head;
+            ListNode fast = head;
             while (fast.next != null && fast.next.next != null) {
                 slow = slow.next;
                 fast = fast.next.next;
@@ -65,26 +80,26 @@ public class No148 {
             return slow;
         }
 
-        private ListNode mergeLinkedList(ListNode l1, ListNode l2) {
-            ListNode dummy = new ListNode();
-            ListNode temp = dummy;
-            while (l1 != null && l2 != null) {
-                if (l1.val > l2.val) {
-                    dummy.next = l2;
-                    l2 = l2.next;
+        private ListNode merge(ListNode left, ListNode right) {
+            ListNode dummy = new ListNode(-1);
+            ListNode cur = dummy;
+            while (left != null && right != null) {
+                if (left.val < right.val) {
+                    cur.next = left;
+                    left = left.next;
                 } else {
-                    dummy.next = l1;
-                    l1 = l1.next;
+                    cur.next = right;
+                    right = right.next;
                 }
-                dummy = dummy.next;
+                cur = cur.next;
             }
-            if (l1 != null) {
-                dummy.next = l1;
+            if (left != null) {
+                cur.next = left;
             }
-            if (l2 != null) {
-                dummy.next = l2;
+            if (right != null) {
+                cur.next = right;
             }
-            return temp;
+            return dummy.next;
         }
     }
 }
