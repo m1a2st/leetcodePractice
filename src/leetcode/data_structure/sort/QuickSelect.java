@@ -39,4 +39,50 @@ public class QuickSelect {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+    /**
+     * 快速選擇法(從最小開始)，使用迴圈來迭代。
+     */
+    public int quickSelect(final int[] array, final int index) {
+        int start = 0;
+        int end = array.length - 1;
+
+        while (true) {
+            if (start == end) {
+                return start;
+            }
+
+            final int pivot = array[start];
+
+            int l = start + 1;
+            int r = end;
+
+            while (true) {
+                while (r > start && array[r] >= pivot) {
+                    --r;
+                }
+
+                while (l <= r && array[l] <= pivot) {
+                    ++l;
+                }
+
+                if (l < r) {
+                    swap(array, l, r);
+                } else {
+                    if (r > start) {
+                        swap(array, l, r);
+                    }
+                    break;
+                }
+            }
+
+            if (index == r) {
+                return index;
+            } else if (index > r) {
+                start = r + 1;
+            } else {
+                end = r - 1;
+            }
+        }
+    }
 }
