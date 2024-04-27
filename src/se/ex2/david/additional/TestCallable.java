@@ -39,12 +39,10 @@ public class TestCallable {
 		for (Future<Long> future : futures) {
 			try {
 				sum += future.get();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			} catch (ExecutionException e) {
+			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
 			}
-		}
+        }
 		System.out.println(sum);
 		// 要求ExecutorService準備停止，已經執行的任務會等待其結束，而且不再接受新任務
 		executor.shutdown();
