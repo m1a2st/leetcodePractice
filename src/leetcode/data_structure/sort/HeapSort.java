@@ -74,7 +74,7 @@ public class HeapSort {
     @Test
     public void test() {
         int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33, 123, 100, 45};
-        heapSortP(arr);
+        heapSortQ(arr);
         for (int i : arr) {
             System.out.println(i);
         }
@@ -97,7 +97,7 @@ public class HeapSort {
         int root = arr[notLeafNodeIndex];
         // leftNodeIndex = notLeafNodeIndex * 2 + 1 是 notLeafNodeIndex 的左子節點
         // rightNodeIndex = notLeafNodeIndex * 2 + 2 是 notLeafNodeIndex 的右子節點
-            for (int leftNodeIndex = notLeafNodeIndex * 2 + 1; leftNodeIndex < length; leftNodeIndex = leftNodeIndex * 2 + 1) {
+        for (int leftNodeIndex = notLeafNodeIndex * 2 + 1; leftNodeIndex < length; leftNodeIndex = leftNodeIndex * 2 + 1) {
             int rightNodeIndex = leftNodeIndex + 1;
             // 判斷哪一個子節點比較大，值比較大的節點，會被換到父節點
             int biggestLeafNodeIndex = leftNodeIndex;
@@ -117,6 +117,35 @@ public class HeapSort {
             }
         }
         // 將保存的節點放回正確的指針位置
+        arr[notLeafNodeIndex] = root;
+    }
+
+    public void heapSortQ(int[] arr) {
+        for (int i = arr.length / 2 - 1; i >= 0; --i) {
+            adjustHeapQ(arr, i, arr.length);
+        }
+        for (int i = arr.length - 1; i >= 0; --i) {
+            swap(arr, 0, i);
+            adjustHeapQ(arr, 0, i);
+        }
+    }
+
+    private void adjustHeapQ(int[] arr, int notLeafNodeIndex, int length) {
+        int root = arr[notLeafNodeIndex];
+        for (int leftNodeIndex = notLeafNodeIndex * 2 + 1; leftNodeIndex < length; leftNodeIndex = leftNodeIndex * 2 + 1) {
+            int rightNodeIndex = leftNodeIndex + 1;
+            int biggestLeafNodeIndex = leftNodeIndex;
+            if (rightNodeIndex < length && arr[leftNodeIndex] < arr[rightNodeIndex]) {
+                biggestLeafNodeIndex = rightNodeIndex;
+            }
+            if (arr[biggestLeafNodeIndex] > root) {
+                arr[notLeafNodeIndex] = arr[biggestLeafNodeIndex];
+                notLeafNodeIndex = biggestLeafNodeIndex;
+                leftNodeIndex = biggestLeafNodeIndex;
+            } else {
+                break;
+            }
+        }
         arr[notLeafNodeIndex] = root;
     }
 }
