@@ -8,6 +8,7 @@ public class IncrementData {
     public static void lockAndFastIncrease(Lock lock) {
         // step1：抢占锁
         // System.out.println(curThreadName()+" -- 本线程开始抢占锁");
+        // 如果沒有搶到鎖就不需要釋放鎖，所以不能放在 try 裡面
         lock.lock();
         try {
             //System.out.println(curThreadName()+" ^-^本线程抢到了锁");
