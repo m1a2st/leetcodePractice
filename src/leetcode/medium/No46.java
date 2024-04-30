@@ -1,27 +1,32 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class No46 {
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
+    @Test
+    public void test() {
+        SolutionNew solution = new SolutionNew();
         int[] a = {1, 2, 3};
         solution.permute(a);
     }
 
-    static class Solution {
+    class Solution {
+
+        List<List<Integer>> result = new ArrayList<>();
+        boolean[] used;
+
         public List<List<Integer>> permute(int[] nums) {
-            List<List<Integer>> result = new ArrayList<>();
             if (nums == null) return result;
-            List<Integer> list = new ArrayList<>();
-            boolean[] used = new boolean[nums.length];
-            recursive(nums, result, list, used);
+            used = new boolean[nums.length];
+            recursive(nums, new ArrayList<>());
             return result;
         }
 
-        private void recursive(int[] nums, List<List<Integer>> result, List<Integer> list, boolean[] used) {
+        private void recursive(int[] nums, List<Integer> list) {
             if (list.size() == nums.length) {
                 result.add(new ArrayList<>(list));
                 return;
@@ -33,38 +38,49 @@ public class No46 {
                 }
                 list.add(nums[i]);
                 used[i] = true;
-                recursive(nums, result, list, used);
+                recursive(nums, list);
                 list.remove(list.size() - 1);
                 used[i] = false;
             }
         }
     }
 
-    static class SolutionNew {
-        List<List<Integer>> result = new ArrayList<>();
+    class SolutionNew {
+
+        List<List<Integer>> ans = new ArrayList<>();
 
         public List<List<Integer>> permute(int[] nums) {
-            List<Integer> list = new ArrayList<>();
-            recursive(nums, list);
-            return result;
+            for (int i = 0; i < nums.length; i++) {
+                recursive(nums, i, new ArrayList<>());
+            }
+            return ans;
         }
 
-        private void recursive(int[] nums, List<Integer> list) {
-            // 終止條件
-            if (nums.length == list.size()) {
-                result.add(new ArrayList<>(list));
+        private void recursive(int[] nums, int start, ArrayList<Integer> subArr) {
+            subArr.add(nums[start]);
+            if (nums.length == 1) {
+                ans.add(new ArrayList<>(subArr));
+                subArr.remove(subArr.size() - 1);
                 return;
             }
-            for (int num : nums) {
-                if (!list.contains(num)) {
-                    // 前置動作
-                    list.add(num);
-                    // 遞迴
-                    recursive(nums, list);
-                    // 後置動作
-                    list.remove(list.size() - 1);
+            int[] cache = copy(nums, start);
+            for (int i = 0; i < cache.length; i++) {
+                recursive(cache, i, subArr);
+            }
+            subArr.remove(subArr.size() - 1);
+        }
+
+        private int[] copy(int[] nums, int index) {
+            if (nums.length == 0) {
+                return new int[0];
+            }
+            int[] res = new int[nums.length - 1];
+            for (int i = 0, j = 0; i < nums.length; i++) {
+                if (i != index) {
+                    res[j++] = nums[i];
                 }
             }
+            return res;
         }
     }
 }
