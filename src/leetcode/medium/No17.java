@@ -35,4 +35,30 @@ public class No17 {
             }
         }
     }
+
+    class SolutionNew {
+        List<String> ans = new ArrayList<>();
+        private static final String[] digitToLetters =
+                {"", "", "abc", "def", "ghi",
+                        "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+        public List<String> letterCombinations(String digits) {
+            if (digits.isEmpty()) return ans;
+            backtracking(digits.toCharArray(), new StringBuilder(), 0);
+            return ans;
+        }
+
+        private void backtracking(char[] arr, StringBuilder sb, int start) {
+            if (start == arr.length) {
+                ans.add(sb.toString());
+                return;
+            }
+            char[] chars = digitToLetters[arr[start] - '0'].toCharArray();
+            for (char aChar : chars) {
+                sb.append(aChar);
+                backtracking(arr, sb, start + 1);
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
+    }
 }
