@@ -56,14 +56,15 @@ public class CircleArrayQueueDemo {
 
 //使用陣列模擬隊列 - 編寫一個CircleArrayQueue類
 class CircleArrayQueue {
-    private final int maxSize; //表示陣列最大容量
-    //front 變量含義做一個調整： front 就指向隊列的第一個元素，也就是說 arr[front]
-    //front 的初始值=0
+    // 表示陣列最大容量
+    private final int maxSize;
+    // front 變量含義做一個調整： front 就指向隊列的第一個元素，也就是說 arr[front]
+    // front 的初始值 = 0
     private int front;
     //rear 變量含義做一個調整： rear 就指向隊列的最後一個元素的後一個位置，因為希望空出一個位置
-    //rear 的初始值=0
+    //rear 的初始值 = 0
     private int rear;
-    private int[] arr; // 該陣列用於存放數據，模擬陣列
+    private final int[] arr; // 該陣列用於存放數據，模擬陣列
 
     //創建隊列構造器
     public CircleArrayQueue(int maxSize) {
