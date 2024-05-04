@@ -8,9 +8,9 @@ import java.util.concurrent.locks.Lock;
 public class CLHLock implements Lock {
 
     // 當前節點的執行緒本地變量
-    private static ThreadLocal<Node> curNodeLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Node> curNodeLocal = new ThreadLocal<>();
     // CLHLock 隊列的尾部，使用 AtomicReference ，方便進行 CAS 操作
-    private AtomicReference<Node> tail = new AtomicReference<>(null);
+    private final AtomicReference<Node> tail = new AtomicReference<>(null);
 
     public CLHLock() {
         // 設置尾部節點
