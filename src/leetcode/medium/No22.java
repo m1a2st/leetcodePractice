@@ -12,61 +12,37 @@ import java.util.List;
  */
 public class No22 {
 
-    class SolutionOld {
+    @Test
+    public void test() {
+        Solution solution = new Solution();
+        List<String> strings = solution.generateParenthesis(3);
+        System.out.println(strings);
+    }
+
+    class Solution {
+
+        List<String> ans = new ArrayList<>();
+
         public List<String> generateParenthesis(int n) {
-            ArrayList<String> ans = new ArrayList<>();
-            dfs(n, n, new StringBuilder(), ans);
+            dfs(n, n, new StringBuilder());
             return ans;
         }
 
-        private void dfs(int left, int right, StringBuilder sb, ArrayList<String> ans) {
+        private void dfs(int left, int right, StringBuilder sb) {
             if (left == 0 && right == 0) {
                 ans.add(sb.toString());
                 return;
             }
             if (left > 0) {
                 sb.append("(");
-                dfs(left - 1, right, sb, ans);
+                dfs(left - 1, right, sb);
                 sb.deleteCharAt(sb.length() - 1);
             }
-            if (left < right) {
+            if (right > left) {
                 sb.append(")");
-                dfs(left, right - 1, sb, ans);
+                dfs(left, right - 1, sb);
                 sb.deleteCharAt(sb.length() - 1);
             }
         }
-    }
-
-    class Solution {
-        public List<String> generateParenthesis(int n) {
-            List<String> ans = new ArrayList<>();
-            dfs(n, n, new StringBuilder(), ans);
-            return ans;
-        }
-
-        private void dfs(int l, int r, StringBuilder sb, List<String> ans) {
-            if (l == 0 && r == 0) {
-                ans.add(sb.toString());
-                return;
-            }
-            if (l > 0) {
-                sb.append("(");
-                dfs(l - 1, r, sb, ans);
-                sb.deleteCharAt(sb.length() - 1);
-            }
-            if (r > l) {
-                sb.append(")");
-                dfs(l, r - 1, sb, ans);
-                sb.deleteCharAt(sb.length() - 1);
-            }
-        }
-    }
-
-    @Test
-    public void test() {
-        Solution solution = new Solution();
-        List<String> strings = solution.generateParenthesis(3);
-        System.out.println(strings);
-
     }
 }
