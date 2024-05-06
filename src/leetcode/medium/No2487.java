@@ -2,6 +2,8 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+
 public class No2487 {
 
 
@@ -49,32 +51,23 @@ public class No2487 {
             if (head.next == null) {
                 return head;
             }
-            ListNode prevNode = reverse(head);
-            ListNode currentNode = prevNode.next;
-            while (currentNode != null) {
-                if (currentNode.val < prevNode.val) {
-                    currentNode = currentNode.next;
-                } else {
-                    ListNode nextNode = currentNode.next;
-                    currentNode.next = new ListNode(prevNode.val);
-                    prevNode = currentNode;
-                    currentNode = nextNode;
+            LinkedList<ListNode> stack = new LinkedList<>();
+            ListNode cur = head;
+            while (cur != null) {
+                while (!stack.isEmpty() && stack.peekLast().val < cur.val) {
+                    stack.pollLast();
                 }
-
+                stack.offer(cur);
+                cur = cur.next;
             }
-            head.next = null;
-            head = prevNode;
-            return head;
-        }
-
-        public ListNode reverse(ListNode head) {
-            if (head.next == null) {
-                return head;
+            ListNode ans = new ListNode(-1);
+            cur = ans;
+            while (!stack.isEmpty()) {
+                cur.next = stack.poll();
+                cur = cur.next;
             }
-            ListNode newHead = reverse(head.next);
-            head.next.next = head;
-            head.next = null;
-            return newHead;
+            cur.next = null;
+            return ans.next;
         }
     }
 }
