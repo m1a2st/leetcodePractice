@@ -34,7 +34,7 @@ public class No51 {
                 return;
             }
             for (int j = 0; j < n; j++) {
-                if (isValid(start, j, n)) {
+                if (isValid(start, j , n)) {
                     board[start][j] = 'Q';
                     backtracking(start + 1, n);
                     board[start][j] = '.';
