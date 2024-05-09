@@ -46,6 +46,24 @@ public class TestClass {
                                 .map(Cat::toNewCat).collect(Collectors.toList())));
     }
 
+    @Test
+    public void test4() {
+        ArrayList<Integer> ls = new ArrayList<>();
+        ls.add(1);
+        ls.add(2);
+        ls.add(3);
+        ls.add(4);
+        ls.add(5);
+        Iterator<Integer> iterator = ls.iterator();
+        while (iterator.hasNext()) {
+            Integer i = iterator.next();
+            if (i == 1) {
+                iterator.remove();
+            }
+        }
+        ls.forEach(System.out::println);
+    }
+
 
     class Cat {
         int age;

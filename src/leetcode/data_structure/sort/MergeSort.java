@@ -112,24 +112,22 @@ public class MergeSort {
     class MergeSortP {
 
         public static void mergeSort(int[] list) {
-            int length = list.length;
-            if (length > 1) {
-                int[] firstHalf = new int[length / 2];
-                System.arraycopy(list, 0, firstHalf, 0, length / 2);
-                mergeSort(firstHalf);
-                int[] secondHalf = new int[length - length / 2];
-                System.arraycopy(list, length / 2 + 1, secondHalf, 0, length - length / 2);
-                mergeSort(secondHalf);
-                merge(firstHalf, secondHalf, list);
+            int len = list.length;
+            if (len > 1) {
+                int[] frontHalf = new int[len / 2];
+                System.arraycopy(list, 0, frontHalf, 0, len / 2);
+                mergeSort(frontHalf);
+                int[] backHalf = new int[len - len / 2];
+                System.arraycopy(list, len / 2, backHalf, 0, len - len / 2);
+                mergeSort(backHalf);
+                merge(frontHalf, backHalf, list);
             }
         }
 
         public static void merge(int[] list1, int[] list2, int[] temp) {
-            int i = 0;
-            int j = 0;
-            int k = 0;
+            int i = 0, j = 0, k = 0;
             while (i < list1.length && j < list2.length) {
-                if (list1[i] <= list2[j]) {
+                if (list1[i] < list2[j]) {
                     temp[k++] = list1[i++];
                 } else {
                     temp[k++] = list2[j++];
@@ -143,5 +141,4 @@ public class MergeSort {
             }
         }
     }
-
 }
