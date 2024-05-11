@@ -15,31 +15,35 @@ public class No752 {
 
     class Solution {
         public int openLock(String[] deadends, String target) {
-            Set<String> set = new HashSet<>(List.of(deadends));
-            if (set.contains("0000")) {
+            Set<String> deads = new HashSet<>(List.of(deadends));
+            if (deads.contains("0000")) {
                 return -1;
             }
             if (target.equals("0000")) {
                 return 0;
             }
-            Set<String> visited = new HashSet<>();
-            visited.add("0000");
+            HashSet<String> visited = new HashSet<>();
             int step = 0;
+            visited.add("0000");
             while (!visited.isEmpty()) {
-                Set<String> temp = new HashSet<>();
+                HashSet<String> temp = new HashSet<>();
                 for (String s : visited) {
                     for (int i = 0; i < 4; i++) {
-                        for (int j = -1; j <= 1; j += 2) {
-                            char[] chars = s.toCharArray();
-                            chars[i] = (char) ((chars[i] - '0' + j + 10) % 10 + '0');
-                            String newStr = new String(chars);
-                            if (newStr.equals(target)) {
-                                return step + 1;
-                            }
-                            if (!set.contains(newStr)) {
-                                temp.add(newStr);
-                                set.add(newStr);
-                            }
+                        String plus = plusOne(s, i);
+                        if (plus.equals(target)) {
+                            return step + 1;
+                        }
+                        if (!deads.contains(plus) && !visited.contains(plus)) {
+                            deads.add(plus);
+                            temp.add(plus);
+                        }
+                        String minus = minusOne(s, i);
+                        if (minus.equals(target)) {
+                            return step + 1;
+                        }
+                        if (!deads.contains(minus) && !visited.contains(minus)) {
+                            deads.add(plus);
+                            temp.add(minus);
                         }
                     }
                 }
@@ -47,6 +51,18 @@ public class No752 {
                 step++;
             }
             return -1;
+        }
+
+        private String plusOne(String s, int i) {
+            char[] chars = s.toCharArray();
+            chars[i] = (char) ((chars[i] - '0' + 1) % 10 + '0');
+            return new String(chars);
+        }
+
+        private String minusOne(String s, int i) {
+            char[] chars = s.toCharArray();
+            chars[i] = (char) ((chars[i] - '0' - 1 + 10) % 10 + '0');
+            return new String(chars);
         }
     }
 }
