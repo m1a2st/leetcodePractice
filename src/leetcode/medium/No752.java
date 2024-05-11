@@ -65,4 +65,54 @@ public class No752 {
             return new String(chars);
         }
     }
+
+    class SolutionMulti {
+        public int openLock(String[] deadends, String target) {
+            Set<String> deads = new HashSet<>(List.of(deadends));
+            HashSet<String> q1 = new HashSet<>();
+            HashSet<String> q2 = new HashSet<>();
+            HashSet<String> visited = new HashSet<>();
+            int step = 0;
+            q1.add("0000");
+            q2.add(target);
+            while (!q1.isEmpty() && !q2.isEmpty()) {
+                HashSet<String> temp = new HashSet<>();
+                for (String s : q1) {
+                    if (deads.contains(s)) {
+                        continue;
+                    }
+                    if (q2.contains(s)) {
+                        return step;
+                    }
+                    visited.add(s);
+                    for (int i = 0; i < 4; i++) {
+                        String plus = plusOne(s, i);
+                        if (!visited.contains(plus)) {
+                            temp.add(plus);
+                        }
+                        String minus = minusOne(s, i);
+                        if (!visited.contains(minus)) {
+                            temp.add(minus);
+                        }
+                    }
+                }
+                q1 = q2;
+                q2 = temp;
+                step++;
+            }
+            return -1;
+        }
+
+        private String plusOne(String s, int i) {
+            char[] chars = s.toCharArray();
+            chars[i] = (char) ((chars[i] - '0' + 1) % 10 + '0');
+            return new String(chars);
+        }
+
+        private String minusOne(String s, int i) {
+            char[] chars = s.toCharArray();
+            chars[i] = (char) ((chars[i] - '0' - 1 + 10) % 10 + '0');
+            return new String(chars);
+        }
+    }
 }
