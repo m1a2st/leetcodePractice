@@ -64,7 +64,6 @@ public class TestClass {
         ls.forEach(System.out::println);
     }
 
-
     class Cat {
         int age;
 
