@@ -18,7 +18,7 @@ public class CircleQueue {
     }
 
     public boolean isFull() {
-        return (rear + 1) * maxSize == front;
+        return (rear + 1) % maxSize == front;
     }
 
     // 判斷對列是否為空
