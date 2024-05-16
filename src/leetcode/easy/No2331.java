@@ -1,7 +1,5 @@
 package leetcode.easy;
 
-import java.util.Map;
-
 public class No2331 {
 
 
