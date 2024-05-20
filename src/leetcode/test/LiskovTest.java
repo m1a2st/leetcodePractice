@@ -9,7 +9,7 @@ public class LiskovTest {
 }
 
 class LiskovTest2 extends LiskovTest {
-    
+
 }
 
 

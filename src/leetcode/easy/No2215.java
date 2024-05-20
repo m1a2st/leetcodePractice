@@ -2,7 +2,10 @@ package leetcode.easy;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class No2215 {
 
@@ -28,13 +31,13 @@ public class No2215 {
     }
 
     @Test
-    public void test(){
-        Set<Integer> s1 = new HashSet<>(){{
+    public void test() {
+        Set<Integer> s1 = new HashSet<>() {{
             add(1);
             add(2);
             add(3);
         }};
-        Set<Integer> s2 = new HashSet<>(){{
+        Set<Integer> s2 = new HashSet<>() {{
             add(3);
             add(4);
             add(5);

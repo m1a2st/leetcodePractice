@@ -49,21 +49,21 @@ public class No20 {
     }
 
     @Test
-    public void Test(){
+    public void Test() {
         String s = "()";
         Solution solution = new Solution();
         Assertions.assertTrue(solution.isValid(s));
     }
 
     @Test
-    public void Test2(){
+    public void Test2() {
         String s = "()[]{}";
         Solution solution = new Solution();
         Assertions.assertTrue(solution.isValid(s));
     }
 
     @Test
-    public void Test3(){
+    public void Test3() {
         String s = "(]";
         Solution solution = new Solution();
         Assertions.assertFalse(solution.isValid(s));

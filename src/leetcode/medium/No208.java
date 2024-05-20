@@ -33,7 +33,7 @@ public class No208 {
             return find(prefix) != null;
         }
 
-        private TrieNode root = new TrieNode();
+        private final TrieNode root = new TrieNode();
 
         private TrieNode find(String prefix) {
             TrieNode node = root;

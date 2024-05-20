@@ -13,7 +13,7 @@ public class JosepheDemo {
         circleSingleLinkedList.add(5);
         circleSingleLinkedList.list();
         //測試出圈是否正確
-        circleSingleLinkedList.countNode(1,2,5);
+        circleSingleLinkedList.countNode(1, 2, 5);
     }
 }
 
@@ -109,14 +109,13 @@ class CircleSingleLinkedList {
                 helper = helper.getNext();
             }
             //這時first指向的節點就是要出圈的節點
-            System.out.printf("No%d out circle.\n",first.getNo());
+            System.out.printf("No%d out circle.\n", first.getNo());
             //將first指向的節點出圈
             first = first.getNext();
             helper.setNext(first);
         }
-        System.out.printf("Last No%d in the circle.\n",first.getNo());
+        System.out.printf("Last No%d in the circle.\n", first.getNo());
     }
-
 
 
 }

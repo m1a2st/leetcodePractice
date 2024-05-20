@@ -9,7 +9,7 @@ public class No392 {
             for (int i = 0; i < t.length(); i++) {
                 if (t.charAt(i) == s.charAt(pointer)) {
                     pointer++;
-                    if(pointer == s.length()){
+                    if (pointer == s.length()) {
                         return true;
                     }
                 }

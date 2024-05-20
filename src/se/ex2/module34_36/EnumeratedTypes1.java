@@ -9,21 +9,21 @@ package se.ex2.module34_36;
  */
 
 enum Month {
-	JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+    JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 }
 
 public class EnumeratedTypes1 {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		for(Month xx : Month.values()) { // 增強式的 for 迴圈
-			System.out.print(xx + " ");
-		}
-		
-		System.out.println();
+        for (Month xx : Month.values()) { // 增強式的 for 迴圈
+            System.out.print(xx + " ");
+        }
 
-		Month yy = Month.JAN;
-		System.out.println(yy); // JAN , 列舉子的值其實是它本身的名稱
+        System.out.println();
 
-		System.out.println(yy.getClass()); // class Month
-	}
+        Month yy = Month.JAN;
+        System.out.println(yy); // JAN , 列舉子的值其實是它本身的名稱
+
+        System.out.println(yy.getClass()); // class Month
+    }
 }

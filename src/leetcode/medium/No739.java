@@ -31,7 +31,7 @@ public class No739 {
         public int[] dailyTemperatures(int[] temperatures) {
             int[] ans = new int[temperatures.length];
             ArrayDeque<Integer> queue = new ArrayDeque<>();
-            for (int i = 0; i < temperatures.length ; i++) {
+            for (int i = 0; i < temperatures.length; i++) {
                 while (!queue.isEmpty() && temperatures[queue.peek()] < temperatures[i]) {
                     Integer pop = queue.pop();
                     ans[pop] = i - pop;

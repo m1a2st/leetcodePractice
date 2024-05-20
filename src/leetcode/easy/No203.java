@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 public class No203 {
 
     @Test
-    public void test() {Solution solution = new Solution();
+    public void test() {
+        Solution solution = new Solution();
         ListNode head = new ListNode(1, new ListNode(2));
         ListNode result = solution.removeElements(head, 1);
         while (result != null) {

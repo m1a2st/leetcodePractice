@@ -32,7 +32,7 @@ public class maze {
         }
 
         //使用遞迴回溯給小球找路
-        setWay(maze,1,1);
+        setWay(maze, 1, 1);
         //輸出新的地圖，小球走過，並標示過的遞迴
         System.out.println("=====================================");
         for (int i = 0; i < maze.length; i++) {
@@ -58,7 +58,7 @@ public class maze {
      *
      * @param maze 表示迷宮
      * @param i    從哪個位置開始找
-     * @param j TODO
+     * @param j    TODO
      * @return 如果找到通路就返回true，否則就返回false
      */
     public static boolean setWay(int[][] maze, int i, int j) {
@@ -77,12 +77,12 @@ public class maze {
                     return true;
                 } else if (setWay(maze, i, j - 1)) {//向左走
                     return true;
-                } else{
+                } else {
                     //說明該點是走不通的，是死路
                     maze[i][j] = 3;
                     return false;
                 }
-            }else{ //如果map[i][j] != 0，可能1, 2, 3
+            } else { //如果map[i][j] != 0，可能1, 2, 3
                 return false;
             }
         }

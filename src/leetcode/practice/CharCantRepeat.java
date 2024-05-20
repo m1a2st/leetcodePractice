@@ -17,7 +17,7 @@ public class CharCantRepeat {
         for (int i = 0; i < str.length(); i++) {
             int val = str.charAt(i) - 'a';
             System.out.println(val);
-            if((checker & (1 << val)) > 0){
+            if ((checker & (1 << val)) > 0) {
                 return false;
             }
             checker |= (1 << val);

@@ -29,16 +29,17 @@ public class HuffmanTree {
      * 5.3構建一顆新的二元數
      * 5.4從ArrayList刪除處理過的節點
      * 5.5將parentNode加入到nodes
+     *
      * @param arr 要成為赫夫曼樹的陣列
      * @return 創建好赫夫曼樹的根節點
      */
-    public static Node createHuffmanTree(int[] arr){
+    public static Node createHuffmanTree(int[] arr) {
         List<Node> nodes = new ArrayList<>();
-        for(int value : arr){
+        for (int value : arr) {
             nodes.add(new Node(value));
         }
         Collections.sort(nodes);
-        while(nodes.size() > 1){
+        while (nodes.size() > 1) {
             Node leftNode = nodes.get(0);
             Node rightNode = nodes.get(1);
             Node parentNode = new Node(leftNode.value + rightNode.value);
@@ -54,12 +55,13 @@ public class HuffmanTree {
 
     /**
      * 前序遍歷
+     *
      * @param root 根節點
      */
-    public static void preOrder(Node root){
-        if(root == null){
+    public static void preOrder(Node root) {
+        if (root == null) {
             System.out.println("This Huffman Tree is empty");
-        }else{
+        } else {
             root.preOrder();
         }
     }
@@ -97,12 +99,12 @@ class Node implements Comparable<Node> {
     /**
      * 前序遍歷
      */
-    public void preOrder(){
+    public void preOrder() {
         System.out.println(this);
-        if(this.left != null){
+        if (this.left != null) {
             this.left.preOrder();
         }
-        if(this.right != null){
+        if (this.right != null) {
             this.right.preOrder();
         }
     }

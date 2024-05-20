@@ -58,7 +58,7 @@ public class No242 {
 
     class SolutionNew {
         public boolean isAnagram(String s, String t) {
-            if(s.length() != t.length()){
+            if (s.length() != t.length()) {
                 return false;
             }
             char[] arr = new char[26];
@@ -68,7 +68,7 @@ public class No242 {
             }
             for (char c : t.toCharArray()) {
                 arr[c - a]--;
-                if(arr[c - a] == 65535){
+                if (arr[c - a] == 65535) {
                     return false;
                 }
             }

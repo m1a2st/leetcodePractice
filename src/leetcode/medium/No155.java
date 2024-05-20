@@ -62,7 +62,7 @@ public class No155 {
             return stack.peek()[1];
         }
 
-        private Stack<int[]> stack = new Stack<>(); // {x, min}
+        private final Stack<int[]> stack = new Stack<>(); // {x, min}
     }
 
     @Test

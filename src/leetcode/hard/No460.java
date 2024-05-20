@@ -136,7 +136,7 @@ public class No460 {
             Node node = cache.get(key);
             if (node == null) {
                 Node newNode = new Node(key, value);
-                cache.put(key ,newNode);
+                cache.put(key, newNode);
                 addNodeToHead(newNode);
                 size++;
                 if (size > capacity) {

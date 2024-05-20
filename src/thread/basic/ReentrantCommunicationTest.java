@@ -9,7 +9,7 @@ public class ReentrantCommunicationTest {
     // 創建一個顯式鎖
     static Lock lock = new ReentrantLock();
     // 獲取一個綁定顯式鎖的 Condition 對象
-    private static Condition condition = lock.newCondition();
+    private static final Condition condition = lock.newCondition();
 
     // 等待執行緒異步的目標任務
     static class WaitTarget implements Runnable {
@@ -30,6 +30,7 @@ public class ReentrantCommunicationTest {
             }
         }
     }
+
     // 通知執行緒的異步目標任務
     static class NotifyTarget implements Runnable {
         @Override

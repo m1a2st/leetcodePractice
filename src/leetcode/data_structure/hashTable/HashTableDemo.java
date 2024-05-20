@@ -12,7 +12,7 @@ public class HashTableDemo {
     public static void main(String[] args) {
         EmpHashTable empHashTable = new EmpHashTable(7);
 
-        String key ;
+        String key;
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("add: add an employee");

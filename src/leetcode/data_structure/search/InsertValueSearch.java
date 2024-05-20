@@ -19,6 +19,7 @@ public class InsertValueSearch {
      * 差值搜尋法
      * 注意： target > arr[arr.length - 1] || target < arr[0]，必須要有
      * 否則得到的mid可能越界
+     *
      * @param arr    欲被搜尋的陣列
      * @param right  左邊索引
      * @param left   右邊索引

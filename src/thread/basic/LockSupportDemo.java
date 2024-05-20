@@ -28,7 +28,7 @@ public class LockSupportDemo {
 
         @Override
         public void run() {
-            System.out.println(Thread.currentThread().getName() +" 即將進入無限阻塞");
+            System.out.println(Thread.currentThread().getName() + " 即將進入無限阻塞");
             LockSupport.park();
             if (Thread.currentThread().isInterrupted()) {
                 System.out.println(Thread.currentThread().getName() + " 被中斷");

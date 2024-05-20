@@ -3,7 +3,6 @@ package leetcode.medium;
 public class No707 {
 
 
-
     class MyLinkedList {
 
         class Node {
@@ -28,11 +27,11 @@ public class No707 {
 
         public int get(int index) {
             Node cur = head.next;
-            while(cur != null && index > 0) {
+            while (cur != null && index > 0) {
                 cur = cur.next;
                 index -= 1;
             }
-            if(cur != null && cur != tail && index == 0) {
+            if (cur != null && cur != tail && index == 0) {
                 return cur.val;
             }
             return -1;
@@ -56,22 +55,22 @@ public class No707 {
 
         public void addAtIndex(int index, int val) {
             Node temp = head.next;
-            while(temp != null && index > 0) {
+            while (temp != null && index > 0) {
                 temp = temp.next;
                 index -= 1;
             }
-            if(temp != null && index == 0) {
+            if (temp != null && index == 0) {
                 addNode(val, temp);
             }
         }
 
         public void deleteAtIndex(int index) {
             Node temp = head.next;
-            while(temp != null && index > 0) {
+            while (temp != null && index > 0) {
                 temp = temp.next;
                 index -= 1;
             }
-            if(temp != null && temp != tail && index == 0) {
+            if (temp != null && temp != tail && index == 0) {
                 temp.next.prev = temp.prev;
                 temp.prev.next = temp.next;
             }

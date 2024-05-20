@@ -1,12 +1,16 @@
 package leetcode.easy;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class No599 {
 
     public static void main(String[] args) {
-        String[] list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
-        String[] list2 = {"KFC","Shogun","Burger King"};
+        String[] list1 = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
+        String[] list2 = {"KFC", "Shogun", "Burger King"};
         String[] restaurant = findRestaurant(list1, list2);
         System.out.println(Arrays.toString(restaurant));
     }

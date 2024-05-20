@@ -31,19 +31,20 @@ public class BinarySearchDemo {
             } else if (arr[mid] > target) {
                 right = mid - 1; //需要向左查找
 
-            }else{
+            } else {
                 left = mid + 1; //需要向右尋找
             }
         }
-        return - 1;
+        return -1;
     }
 }
 
-class A{
-    public static void doSomething(){
+class A {
+    public static void doSomething() {
 
     }
-    public void doSomethings(){
+
+    public void doSomethings() {
 
     }
 }

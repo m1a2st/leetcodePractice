@@ -132,15 +132,16 @@ class BinaryTree {
      * 1. 如果root == null代表此樹為空
      * 2. 如果 root.id == id 代表要刪除的是根節點
      * 3. 如果以上條件都不是，則調用HeroNode的delete方法
+     *
      * @param id 欲備刪除節點的id
      */
-    public void delete(int id){
-        if(root == null){
+    public void delete(int id) {
+        if (root == null) {
             System.out.println("This binary tree is empty");
-        }else{
-            if(root.id == id){
+        } else {
+            if (root.id == id) {
                 root = null;
-            }else{
+            } else {
                 root.delete(id);
             }
         }

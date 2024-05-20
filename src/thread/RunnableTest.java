@@ -5,7 +5,7 @@ package thread;
  * @Date 2023/8/12
  * @Version v1.0
  */
-public class RunnableTest implements Runnable{
+public class RunnableTest implements Runnable {
 
     private final String msg;
 

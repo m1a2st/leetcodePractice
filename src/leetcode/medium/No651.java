@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class No651 {
 
     @Test
-    public void test(){
+    public void test() {
         new Solution().maxA(3);
     }
 

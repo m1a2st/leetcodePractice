@@ -18,7 +18,9 @@ public class No705 {
             set[key] = false;
         }
 
-        /** Returns true if this set contains the specified element */
+        /**
+         * Returns true if this set contains the specified element
+         */
         public boolean contains(int key) {
             return set[key];
         }

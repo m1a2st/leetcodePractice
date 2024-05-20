@@ -29,6 +29,7 @@ public class No834 {
             dfs2(0, -1);
             return res;
         }
+
         public void dfs1(int cur, int parent) {
             count[cur] = 1;
             for (int child : graph[cur]) {
@@ -39,6 +40,7 @@ public class No834 {
                 }
             }
         }
+
         public void dfs2(int cur, int parent) {
             for (int child : graph[cur]) {
                 if (child != parent) {

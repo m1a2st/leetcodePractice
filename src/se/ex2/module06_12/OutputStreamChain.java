@@ -6,21 +6,21 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 public class OutputStreamChain {
-	public static void main(String args[]) {
-		try {
-			FileOutputStream fos = new FileOutputStream("c:\\javawork\\hello.txt");
+    public static void main(String[] args) {
+        try {
+            FileOutputStream fos = new FileOutputStream("c:\\javawork\\hello.txt");
 
-			BufferedOutputStream bos = new BufferedOutputStream(fos);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
 
-			PrintStream ps = new PrintStream(bos);
+            PrintStream ps = new PrintStream(bos);
 
-			ps.println("Hello World 世界你好 !");
+            ps.println("Hello World 世界你好 !");
 
-			ps.close();
-			bos.close();
-			fos.close();
-		} catch (IOException e) {
-			System.err.println(e);
-		}
-	}
+            ps.close();
+            bos.close();
+            fos.close();
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+    }
 }

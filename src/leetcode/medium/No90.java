@@ -1,6 +1,10 @@
 package leetcode.medium;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class No90 {
 
@@ -36,6 +40,7 @@ public class No90 {
     static class SolutionNew {
 
         Set<List<Integer>> result = new HashSet<>();
+
         public List<List<Integer>> subsetsWithDup(int[] nums) {
             result.add(new ArrayList<>());
             List<Integer> list = new ArrayList<>();

@@ -8,7 +8,7 @@ public class ArrayBlockingQueuePetStore {
 
     static class DataBuffer<T> {
 
-        private ArrayBlockingQueue<T> dataList = new ArrayBlockingQueue<>(MAX_AMOUNT);
+        private final ArrayBlockingQueue<T> dataList = new ArrayBlockingQueue<>(MAX_AMOUNT);
 
         public void put(T data) throws Exception {
             dataList.put(data);

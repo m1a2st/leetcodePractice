@@ -10,7 +10,7 @@ public class No85 {
 
     @Test
     public void test0() {
-        SolutionNew  solution = new SolutionNew();
+        SolutionNew solution = new SolutionNew();
         char[][] matrix = {
                 {'1', '0', '1', '0', '0'},
                 {'1', '0', '1', '1', '1'},

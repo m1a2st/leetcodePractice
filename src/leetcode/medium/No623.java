@@ -2,9 +2,8 @@ package leetcode.medium;
 
 import org.junit.Test;
 
-import java.util.*;
-
-import static kotlin.reflect.jvm.internal.impl.utils.DFS.dfs;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class No623 {
 

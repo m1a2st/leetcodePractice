@@ -50,11 +50,11 @@ public class No21 {
                 }
                 p = p.next;
             }
-            if(list1 != null){
+            if (list1 != null) {
                 p.next = list1;
             }
 
-            if(list2 != null){
+            if (list2 != null) {
                 p.next = list2;
             }
             return merge.next;

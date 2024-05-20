@@ -6,16 +6,16 @@ import java.util.List;
 
 public class GenericList {
 
-	public static void main(String[] args) {
-		List<String> data = new ArrayList<String>();
-		data.add("Hello");
-		data.add("World");
+    public static void main(String[] args) {
+        List<String> data = new ArrayList<String>();
+        data.add("Hello");
+        data.add("World");
 
-		Iterator<String> it = data.iterator();
-		while (it.hasNext()) {
-			String str = it.next(); // 強制轉型,不再需要
-			System.out.println(str);
-		}
-	}
+        Iterator<String> it = data.iterator();
+        while (it.hasNext()) {
+            String str = it.next(); // 強制轉型,不再需要
+            System.out.println(str);
+        }
+    }
 
 }

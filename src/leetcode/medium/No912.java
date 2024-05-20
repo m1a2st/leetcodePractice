@@ -3,8 +3,6 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 public class No912 {
 
     class Solution {

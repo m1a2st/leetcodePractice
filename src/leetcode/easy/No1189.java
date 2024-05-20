@@ -11,7 +11,7 @@ public class No1189 {
             }
             int res = Integer.MAX_VALUE;
             res = Math.min(res, balloon['b' - 'a']);
-            res = Math.min(res, balloon['a' - 'a']);
+            res = Math.min(res, balloon[0]);
             res = Math.min(res, balloon['l' - 'a'] / 2);
             res = Math.min(res, balloon['o' - 'a'] / 2);
             res = Math.min(res, balloon['n' - 'a']);

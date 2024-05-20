@@ -1,7 +1,5 @@
 package leetcode.easy;
 
-import java.util.Stack;
-
 public class No1614 {
 
     class Solution {

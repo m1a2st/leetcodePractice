@@ -9,6 +9,7 @@ public class No495 {
 
         List<Integer> stack = new LinkedList<>();
         int position = -1;
+
         /*
          * @param x: An integer
          * @return: nothing

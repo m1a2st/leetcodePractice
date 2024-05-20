@@ -36,7 +36,7 @@ public class No145 {
         }
 
         private void postorder(TreeNode root) {
-            if(root == null){
+            if (root == null) {
                 return;
             }
             postorder(root.left);

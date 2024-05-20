@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class No201 {
 
     @Test
-    public void test(){
+    public void test() {
         new Solution().rangeBitwiseAnd(5, 7);
     }
 

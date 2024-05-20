@@ -33,13 +33,13 @@ public class CreateDemo3 {
         Thread thread = new Thread(longFutureTask, "ReturnableTaskThread");
         thread.start();
         Thread.sleep(500);
-        System.out.println( Thread.currentThread().getName() + " is running");
-        System.out.println( "Do something else");
+        System.out.println(Thread.currentThread().getName() + " is running");
+        System.out.println("Do something else");
         for (int i = 0; i < COMPUTE_TIMES; i++) {
             int j = i * i;
         }
-        System.out.println( Thread.currentThread().getName() + " get result:");
+        System.out.println(Thread.currentThread().getName() + " get result:");
         System.out.println("ReturnableTaskThread takes " + longFutureTask.get() + " ms");
-        System.out.println( Thread.currentThread().getName() + " is done");
+        System.out.println(Thread.currentThread().getName() + " is done");
     }
 }

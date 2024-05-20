@@ -7,19 +7,19 @@ import java.util.stream.Collectors;
 
 public class Test14CollectGroup {
 
-	public static void main(String[] args) {
-		List<Employee> empList = Employee.createShortList();
+    public static void main(String[] args) {
+        List<Employee> empList = Employee.createShortList();
 
-		Map<String, List<Employee>> groupMap = new HashMap<>();
+        Map<String, List<Employee>> groupMap = new HashMap<>();
 
-		// Collect CO Executives
-		groupMap = empList.stream().collect(Collectors.groupingBy(Employee::getDept));
+        // Collect CO Executives
+        groupMap = empList.stream().collect(Collectors.groupingBy(Employee::getDept));
 
-		System.out.println("\n== Employees by Dept ==");
-		groupMap.forEach((k, v) -> {
-			System.out.println("\nDept: " + k);
-			v.forEach(Employee::printSummary);
-		});
-	}
+        System.out.println("\n== Employees by Dept ==");
+        groupMap.forEach((k, v) -> {
+            System.out.println("\nDept: " + k);
+            v.forEach(Employee::printSummary);
+        });
+    }
 
 }

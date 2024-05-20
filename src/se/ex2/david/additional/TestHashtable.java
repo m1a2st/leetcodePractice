@@ -13,21 +13,21 @@
  */
 package se.ex2.david.additional;
 
-import java.util.*;
+import java.util.Hashtable;
 
 public class TestHashtable {
-	public static void main(String args[]) {
-		Hashtable hash = new Hashtable();
-		hash.put("one", new Integer(1));
-		hash.put("two", "2");
-		hash.put("three", new Float(3.0));
+    public static void main(String[] args) {
+        Hashtable hash = new Hashtable();
+        hash.put("one", Integer.valueOf(1));
+        hash.put("two", "2");
+        hash.put("three", new Float(3.0));
 
-		Integer oneValue = (Integer) hash.get("one");
-		String twoValue = (String) hash.get("two");
-		Float threeValue = (Float) hash.get("three");
+        Integer oneValue = (Integer) hash.get("one");
+        String twoValue = (String) hash.get("two");
+        Float threeValue = (Float) hash.get("three");
 
-		System.out.println(oneValue);
-		System.out.println(twoValue);
-		System.out.println(threeValue);
-	}
+        System.out.println(oneValue);
+        System.out.println(twoValue);
+        System.out.println(threeValue);
+    }
 }

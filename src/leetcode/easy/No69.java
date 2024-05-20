@@ -18,7 +18,7 @@ public class No69 {
             long ans = 0;
             while (left < right) {
                 long mid = (right - left) / 2 + left;
-                long sqrt = (long) mid * mid;
+                long sqrt = mid * mid;
                 if (sqrt == x) {
                     return (int) mid;
                 } else if (sqrt > x) {

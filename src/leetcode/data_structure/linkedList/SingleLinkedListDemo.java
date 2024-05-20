@@ -138,17 +138,18 @@ public class SingleLinkedListDemo {
      * temp 先走 index 步
      * temp 和 temp2 同时走 length - index 步
      * temp2 现在指向第 length - index + 1 個節點，即倒數第 index 個節點
-     * @param head 頭節點
+     *
+     * @param head  頭節點
      * @param index 到數最後幾個節點
      * @return 哪一個節點
      */
-    public static HeroNode findLastIndexBest(HeroNode head,int index){
+    public static HeroNode findLastIndexBest(HeroNode head, int index) {
         HeroNode temp = head;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
         HeroNode temp2 = head;
-        while(temp != null){
+        while (temp != null) {
             temp2 = temp2.next;
             temp = temp.next;
         }

@@ -1,6 +1,12 @@
 package leetcode.hard;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class No127 {
 
@@ -11,7 +17,7 @@ public class No127 {
                 return 0;
             }
             int ans = 0;
-            Deque<String> queue = new ArrayDeque<>(Arrays.asList(beginWord));
+            Deque<String> queue = new ArrayDeque<>(Collections.singletonList(beginWord));
             while (!queue.isEmpty()) {
                 ++ans;
                 for (int size = queue.size(); size > 0; size--) {

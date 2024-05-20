@@ -27,7 +27,7 @@ public class PrimAlgorithm {
         MinTree minTree = new MinTree();
         minTree.createGraph(graph, vertx, data, weight);
 //        minTree.showGraph(graph);
-        minTree.prim(graph,0);
+        minTree.prim(graph, 0);
     }
 }
 

@@ -2,8 +2,6 @@ package leetcode.easy;
 
 import leetcode.medium.ListNode;
 
-import java.util.Stack;
-
 public class No206 {
 
     static class Solution {

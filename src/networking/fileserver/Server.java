@@ -4,8 +4,9 @@ package networking.fileserver;/*
  * and open the template in the editor.
  */
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * @author catalin
@@ -28,7 +29,7 @@ public class Server {
         } catch (IOException e) {
             System.out.println("Port 9090 is already opened! Please use another port.");
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
     }
 }

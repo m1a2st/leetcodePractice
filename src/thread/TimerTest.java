@@ -2,7 +2,6 @@ package thread;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.locks.Lock;
 
 /**
  * @Author m1a2st
@@ -11,7 +10,7 @@ import java.util.concurrent.locks.Lock;
  */
 public class TimerTest extends TimerTask {
 
-    private Long time;
+    private final Long time;
 
     public TimerTest(Long time) {
         this.time = time;

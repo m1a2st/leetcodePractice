@@ -84,7 +84,7 @@ class TestChannel {
         Thread producer = new Thread(new Producer(channel));
         Thread produce1 = new Thread(new Producer(channel));
         Thread consume = new Thread(new Consumer(channel));
-        
+
         producer.start();
         produce1.start();
         consume.start();

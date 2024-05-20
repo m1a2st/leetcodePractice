@@ -14,7 +14,7 @@ public class No105 {
         public TreeNode buildTree(int[] preorder, int[] inorder) {
             Map<Integer, Integer> inToIndex = new HashMap<>();
 
-            for (int i = 0; i < inorder.length; ++i){
+            for (int i = 0; i < inorder.length; ++i) {
                 inToIndex.put(inorder[i], i);
             }
 

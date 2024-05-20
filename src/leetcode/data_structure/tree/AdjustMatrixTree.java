@@ -22,7 +22,7 @@ public class AdjustMatrixTree {
         System.out.println(Arrays.toString(practice.parent));
     }
 
-    class Practice{
+    class Practice {
         boolean[][] adj = new boolean[9][9];
         int[] parent = new int[9];
 

@@ -24,9 +24,9 @@ public class No130 {
 
             for (int i = 0; i < visited.length; i++) {
                 for (int j = 0; j < visited[i].length; j++) {
-                    if(visited[i][j]){
+                    if (visited[i][j]) {
                         board[i][j] = '0';
-                    }else{
+                    } else {
                         board[i][j] = 'X';
                     }
                 }
@@ -36,7 +36,7 @@ public class No130 {
         private void dfs(char[][] board, int i, int j, boolean[][] visited) {
             if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] == 'X') return;
 
-            if(visited[i][j]){
+            if (visited[i][j]) {
                 return;
             }
             visited[i][j] = true;

@@ -6,41 +6,41 @@ import java.util.Optional;
 
 public class Test06StreamData {
 
-	public static void main(String[] args) {
-		List<Employee> empList = Employee.createShortList();
+    public static void main(String[] args) {
+        List<Employee> empList = Employee.createShortList();
 
-		System.out.println("\n== Executive Count ==");
-		long execCount = empList.stream()
-				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
-				.count();
+        System.out.println("\n== Executive Count ==");
+        long execCount = empList.stream()
+                .filter(e -> e.getRole().equals(Role.EXECUTIVE))
+                .count();
 
-		System.out.println("Exec count: " + execCount);
+        System.out.println("Exec count: " + execCount);
 
-		System.out.println("\n== Highest Paid Exec ==");
-		Optional<Employee> highestExec = empList.stream()
-				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
-				.max(Employee::sortBySalary);
+        System.out.println("\n== Highest Paid Exec ==");
+        Optional<Employee> highestExec = empList.stream()
+                .filter(e -> e.getRole().equals(Role.EXECUTIVE))
+                .max(Employee::sortBySalary);
 
-		if (highestExec.isPresent()) {
-			Employee temp = (Employee) highestExec.get();
-			System.out.printf("Name: " + temp.getGivenName() + " " 
-								+ temp.getSurName() 
-								+ "   Salary: $%,6.2f %n ",
-								temp.getSalary());
-		}
+        if (highestExec.isPresent()) {
+            Employee temp = highestExec.get();
+            System.out.printf("Name: " + temp.getGivenName() + " "
+                            + temp.getSurName()
+                            + "   Salary: $%,6.2f %n ",
+                    temp.getSalary());
+        }
 
-		System.out.println("\n== Lowest Paid Staff ==");
-		Optional<Employee> lowestStaff = empList.stream()
-				.filter(e -> e.getRole().equals(Role.STAFF))
-				.min(Comparator.comparingDouble(e -> e.getSalary()));
+        System.out.println("\n== Lowest Paid Staff ==");
+        Optional<Employee> lowestStaff = empList.stream()
+                .filter(e -> e.getRole().equals(Role.STAFF))
+                .min(Comparator.comparingDouble(e -> e.getSalary()));
 
-		if (lowestStaff.isPresent()) {
-			Employee temp = (Employee) lowestStaff.get();
-			System.out.printf("Name: " + temp.getGivenName() + " " 
-								+ temp.getSurName() 
-								+ "   Salary: $%,6.2f %n ",
-								temp.getSalary());
-		}
-	}
+        if (lowestStaff.isPresent()) {
+            Employee temp = lowestStaff.get();
+            System.out.printf("Name: " + temp.getGivenName() + " "
+                            + temp.getSurName()
+                            + "   Salary: $%,6.2f %n ",
+                    temp.getSalary());
+        }
+    }
 
 }

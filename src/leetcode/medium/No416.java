@@ -8,7 +8,7 @@ public class No416 {
             for (int num : nums) {
                 sum += num;
             }
-            if((sum & 1) == 1){
+            if ((sum & 1) == 1) {
                 return false;
             }
             int target = sum / 2;

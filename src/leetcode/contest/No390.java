@@ -2,7 +2,11 @@ package leetcode.contest;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class No390 {
 
@@ -41,7 +45,7 @@ public class No390 {
     @Test
     public void test2() {
         Solution100228 solution = new Solution100228();
-        int res = solution.minOperations(11);
+        int res = Solution100228.minOperations(11);
         System.out.println(res);
     }
 
@@ -74,7 +78,7 @@ public class No390 {
             long[] ans = new long[n];
 
             for (int i = 0; i < n; i++) {
-                count.merge(nums[i], (long)freq[i], Long::sum);
+                count.merge(nums[i], (long) freq[i], Long::sum);
                 pq.add(new Pair(nums[i], count.get(nums[i])));
                 while (pq.peek().freq != count.get(pq.peek().id)) {
                     pq.poll();

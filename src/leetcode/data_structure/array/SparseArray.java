@@ -1,6 +1,11 @@
 package leetcode.data_structure.array;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
 
 /**
  * @Author
@@ -77,9 +82,9 @@ public class SparseArray {
         //讀取檔案
         try {
             int i;
-            FileReader fr =new FileReader(file);
-            while ((i = fr.read()) != -1){
-                System.out.print((char)i);
+            FileReader fr = new FileReader(file);
+            while ((i = fr.read()) != -1) {
+                System.out.print((char) i);
             }
         } catch (IOException e) {
             e.printStackTrace();

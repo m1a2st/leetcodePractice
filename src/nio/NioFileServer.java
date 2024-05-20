@@ -6,8 +6,14 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
+import java.nio.channels.FileChannel;
+import java.nio.channels.SelectableChannel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import static java.nio.channels.SelectionKey.OP_ACCEPT;
@@ -21,9 +27,9 @@ public class NioFileServer {
 
     static class NioServer {
         private static final String RECEIVE_PATH = "./receive/";
-        private static final Charset charset = Charset.forName("UTF-8");
-        private ByteBuffer buffer = ByteBuffer.allocate(1024);
-        private HashMap<SelectableChannel, ClientFile> clientMap = new HashMap();
+        private static final Charset charset = StandardCharsets.UTF_8;
+        private final ByteBuffer buffer = ByteBuffer.allocate(1024);
+        private final HashMap<SelectableChannel, ClientFile> clientMap = new HashMap();
 
         public void startServer() throws IOException {
 

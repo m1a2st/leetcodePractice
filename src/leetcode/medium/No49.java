@@ -2,7 +2,11 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -42,11 +46,11 @@ public class No49 {
             return new ArrayList<>(map.values());
         }
 
-        class Key{
+        class Key {
             int[] count = new int[26];
 
-            public Key(String word){
-                for(char c : word.toCharArray()){
+            public Key(String word) {
+                for (char c : word.toCharArray()) {
                     count[c - 'a']++;
                 }
             }

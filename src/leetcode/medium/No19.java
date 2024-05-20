@@ -1,4 +1,3 @@
-
 package leetcode.medium;
 
 public class No19 {

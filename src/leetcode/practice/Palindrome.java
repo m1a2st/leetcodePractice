@@ -34,11 +34,11 @@ public class Palindrome {
 
     private boolean palindrome(String str) {
         boolean isPalindrome = false;
-        if(str.length() == 0) return true;
+        if (str.length() == 0) return true;
         for (int i = 0; i < (str.length() / 2); i++) {
             if (str.charAt(i) == str.charAt(str.length() - 1 - i)) {
                 isPalindrome = true;
-            }else{
+            } else {
                 isPalindrome = false;
                 break;
             }

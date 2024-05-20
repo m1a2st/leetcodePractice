@@ -7,10 +7,10 @@ public class No661 {
     @Test
     public void test() {
         Solution solution = new Solution();
-        int[][] img = new int[][] {
-            {1,1,1},
-            {1,0,1},
-            {1,1,1}
+        int[][] img = new int[][]{
+                {1, 1, 1},
+                {1, 0, 1},
+                {1, 1, 1}
         };
         int[][] ans = solution.imageSmoother(img);
         for (int[] row : ans) {

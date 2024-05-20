@@ -1,6 +1,11 @@
 package leetcode.test;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Set;
 
 import static java.lang.Character.getNumericValue;
 import static java.lang.Character.isDigit;

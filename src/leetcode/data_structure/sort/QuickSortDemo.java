@@ -112,7 +112,6 @@ public class QuickSortDemo {
     }
 
 
-
     public void quickSortP(int[] arr, int left, int right) {
         if (left < right) {
             int partition = partitionP(arr, left, right);

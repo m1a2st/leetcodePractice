@@ -19,6 +19,7 @@ public class PolandNotationDemo {
         System.out.println(PolandCalculate.calculate(poland));
     }
 }
+
 //完成對中綴表達式字串，轉換成逆波蘭表達式陣列
 class Transform {
     /**
@@ -26,9 +27,10 @@ class Transform {
      * 說明 :
      * 1. 1 + ( ( 2 + 3 ) × 4) - 5 => 1 2 3 + 4 * + 5 -
      * 2. 因為直接對String進行操作不方便，因此先將String轉換成中綴表達式對應的List
-     *    即 1 + ( ( 2 + 3 )× 4) - 5 => ArrayList [1, +, (, (, 2, +, 3, ), *, 4, ), -, 5]
+     * 即 1 + ( ( 2 + 3 )× 4) - 5 => ArrayList [1, +, (, (, 2, +, 3, ), *, 4, ), -, 5]
      * 3. 將得到的中綴表達式對應的list => 後綴表達式的list
-     *    即 ArrayList [1, +, (, (, 2, +, 3, ), *, 4, ), -, 5] => ArrayList [1, 2, 3, +, 4, *, +, 5, -]
+     * 即 ArrayList [1, +, (, (, 2, +, 3, ), *, 4, ), -, 5] => ArrayList [1, 2, 3, +, 4, *, +, 5, -]
+     *
      * @param expression 四則運算算式
      * @return 逆波蘭表達式陣列
      */
@@ -106,7 +108,7 @@ class Transform {
                    當item的優先級，小於棧頂的優先級
                    將operStack棧頂的運算符彈出並加入到resultArray中，再次與operStack棧頂的運算符相比較
                 */
-                while (operStack.size() != 0 && checkOperPiority(operStack.peek(),item)) {
+                while (operStack.size() != 0 && checkOperPiority(operStack.peek(), item)) {
                     polandNotation.add(operStack.pop());
                 }
                 //還需要將item 壓入棧中
@@ -128,11 +130,12 @@ class Transform {
      * checkOperPiority("-","/") => false
      * checkOperPiority("+","/") => false
      * checkOperPiority("+","-") => true
+     *
      * @param operStackOper 符號棧棧頂的運算符
-     * @param suffixOper 中綴表達式中的運算符
+     * @param suffixOper    中綴表達式中的運算符
      * @return 符號棧棧頂的運算符優先度是否大於中綴表達式中的運算符
      */
-    private boolean checkOperPiority(String operStackOper, String suffixOper){
+    private boolean checkOperPiority(String operStackOper, String suffixOper) {
         return PolandOperation.getValue(operStackOper) >= PolandOperation.getValue(suffixOper);
     }
 

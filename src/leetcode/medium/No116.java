@@ -27,7 +27,7 @@ public class No116 {
 
     class Solution {
         public Node connect(Node root) {
-            if (root == null){
+            if (root == null) {
                 return null;
             }
             connectTwoNodes(root.left, root.right);
@@ -35,7 +35,7 @@ public class No116 {
         }
 
         private void connectTwoNodes(Node p, Node q) {
-            if (p == null){
+            if (p == null) {
                 return;
             }
             p.next = q;

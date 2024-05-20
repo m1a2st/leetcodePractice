@@ -6,7 +6,7 @@ public class No289 {
 
     @Test
     public void test() {
-        new Solution().gameOfLife(new int[][]{{0,1,0},{0,0,1},{1,1,1},{0,0,0}});
+        new Solution().gameOfLife(new int[][]{{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0}});
     }
 
     class Solution {

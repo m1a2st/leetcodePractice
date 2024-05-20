@@ -2,7 +2,11 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @Author m1a2st
@@ -22,7 +26,7 @@ public class No40 {
 
     class Solution {
 
-        private Set<List<Integer>> result = new HashSet<>();
+        private final Set<List<Integer>> result = new HashSet<>();
 
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
             List<Integer> list = new ArrayList<>();

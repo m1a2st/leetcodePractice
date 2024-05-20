@@ -53,9 +53,9 @@ public class DynamicProgramming {
         int i = path.length - 1;
         int j = path[0].length - 1;
         while (i > 0 && j > 0) { //逆向遍歷
-            if(path[i][j] == 1){
-                System.out.printf("第%d個商品放入背包\n",i);
-                j -= weight[i-1];
+            if (path[i][j] == 1) {
+                System.out.printf("第%d個商品放入背包\n", i);
+                j -= weight[i - 1];
             }
             i--;
         }

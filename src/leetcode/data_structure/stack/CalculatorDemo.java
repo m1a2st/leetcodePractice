@@ -28,6 +28,7 @@ class Calculator {
 
     /**
      * 計算使用者輸入的運算式，並顯示出運算結果
+     *
      * @param expression 四則運算算式
      */
     public void calculate(String expression) {
@@ -97,7 +98,7 @@ class ArrayStackCal {
     //棧的大小
     private final int maxSize;
     //陣列模擬棧，數據放在該陣列
-    private int[] stack;
+    private final int[] stack;
     //top表示棧頂，初始化為-1
     private int top = -1;
 
@@ -159,6 +160,7 @@ class ArrayStackCal {
 class Operation {
 
     //返回運算符的優先級，優先級由程式設計師來決定，優先級使用數字表示
+
     /**
      * 數字越大，則運算符的優先級越高
      *

@@ -14,7 +14,7 @@ public class DoubleLinkedListDemo {
         HeroNodeI heroNode2 = new HeroNodeI(3, "SpiderMan", "蜘蛛人");
         HeroNodeI heroNode3 = new HeroNodeI(4, "GreenMan", "綠巨人");
 
-        DoubleLinkedList doubleLinkedList=new DoubleLinkedList();
+        DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
         doubleLinkedList.add(heroNode);
         doubleLinkedList.add(heroNode1);
         doubleLinkedList.add(heroNode2);

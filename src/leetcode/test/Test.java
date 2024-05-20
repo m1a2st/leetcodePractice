@@ -12,7 +12,14 @@ import java.nio.file.Path;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -37,9 +44,8 @@ public class Test {
         FileChannel open = FileChannel.open(Path.of(path));
         MappedByteBuffer map = open.map(FileChannel.MapMode.READ_ONLY, 0, open.size());
         CharBuffer decode = Charset.forName("big5").decode(map);
-        System.out.println(decode.toString());
+        System.out.println(decode);
     }
-
 
 
     public static class Server {

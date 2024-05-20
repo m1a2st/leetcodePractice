@@ -33,16 +33,16 @@ public class No1993 {
         public LockingTree(int[] parent) {
             this.parent = parent;
             nodes = new Node[parent.length];
-            for (int i = 0; i < parent.length; ++i){
+            for (int i = 0; i < parent.length; ++i) {
                 nodes[i] = new Node();
             }
-            for (int i = 1; i < parent.length; ++i){
+            for (int i = 1; i < parent.length; ++i) {
                 nodes[parent[i]].children.add(i);
             }
         }
 
         public boolean lock(int num, int user) {
-            if (nodes[num].lockedBy != -1){
+            if (nodes[num].lockedBy != -1) {
                 return false;
             }
             nodes[num].lockedBy = user;

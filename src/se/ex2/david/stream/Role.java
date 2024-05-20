@@ -1,5 +1,5 @@
 package se.ex2.david.stream;
 
 public enum Role {
-	STAFF, MANAGER, EXECUTIVE
+    STAFF, MANAGER, EXECUTIVE
 }

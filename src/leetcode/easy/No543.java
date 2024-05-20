@@ -29,6 +29,7 @@ public class No543 {
     class SolutionNew {
 
         int ans;
+
         public int diameterOfBinaryTree(TreeNode root) {
             maxDepth(root);
             return ans;
@@ -41,7 +42,7 @@ public class No543 {
             int left = maxDepth(root.left);
             int right = maxDepth(root.left);
             ans = Math.max(ans, left + right);
-            return 1 + Math.max(left , right);
+            return 1 + Math.max(left, right);
         }
     }
 }

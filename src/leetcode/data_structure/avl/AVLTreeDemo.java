@@ -8,7 +8,7 @@ package leetcode.data_structure.avl;
  */
 public class AVLTreeDemo {
     public static void main(String[] args) {
-        int[] arr = {10,11,7,6,8,9};
+        int[] arr = {10, 11, 7, 6, 8, 9};
         AVLTree avlTree = new AVLTree();
         for (int i : arr) {
             avlTree.add(new Node(i));
@@ -324,7 +324,7 @@ class Node {
         //當添加完一個節點後，如果右子樹的高度-左子樹的高度>1，左旋轉
         if (rightHeight() - leftHeight() > 1) {
             //如果右子樹的左子樹的高度大於他的右子樹的右子樹高度
-            if(this.right != null && this.right.leftHeight() > this.right.rightHeight()){
+            if (this.right != null && this.right.leftHeight() > this.right.rightHeight()) {
                 //先對右子節點進行右旋轉
                 this.right.rightRotate();
             }
@@ -335,7 +335,7 @@ class Node {
         //當添加完一個節點後，如果左子樹的高度-右子樹的高度>1，右旋轉
         if (leftHeight() - rightHeight() > 1) {
             //如果左子樹的右子樹高度大於左子樹的高度
-            if(this.left != null && this.left.rightHeight() > this.left.leftHeight()){
+            if (this.left != null && this.left.rightHeight() > this.left.leftHeight()) {
                 //先對當前節點的左節點（左子樹）->左旋轉
                 this.left.leftRotate();
             }

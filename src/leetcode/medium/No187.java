@@ -2,7 +2,10 @@ package leetcode.medium;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class No187 {
 
@@ -20,7 +23,7 @@ public class No187 {
 
             for (int i = 0; i + 10 <= s.length(); ++i) {
                 final String seq = s.substring(i, i + 10);
-                if (seen.contains(seq)){
+                if (seen.contains(seq)) {
                     ans.add(seq);
                 }
                 seen.add(seq);

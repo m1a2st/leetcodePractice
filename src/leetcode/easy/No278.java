@@ -20,7 +20,7 @@ public class No278 {
 
     private abstract class VersionControl {
 
-        boolean isBadVersion(int version){
+        boolean isBadVersion(int version) {
             return true;
         }
     }

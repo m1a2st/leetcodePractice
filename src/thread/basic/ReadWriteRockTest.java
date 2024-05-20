@@ -2,7 +2,6 @@ package thread.basic;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -10,7 +9,7 @@ public class ReadWriteRockTest {
 
     private static final Map<String, String> MAP = new HashMap<>();
     // 創建讀寫鎖
-    private static ReentrantReadWriteLock LOCK = new ReentrantReadWriteLock();
+    private static final ReentrantReadWriteLock LOCK = new ReentrantReadWriteLock();
     // 獲取讀鎖
     final static Lock READ_LOCK = LOCK.readLock();
     // 獲取寫鎖

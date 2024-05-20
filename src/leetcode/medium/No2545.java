@@ -2,8 +2,6 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 public class No2545 {
 
     @Test
@@ -57,6 +55,7 @@ public class No2545 {
                 temp[k++] = right[j++];
             }
         }
+
         class Pair {
             int index;
             int score;

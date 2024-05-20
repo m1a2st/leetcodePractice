@@ -38,7 +38,7 @@ class Graph {
     //表示邊的數目
     private int numOfEdges;
     //定義一個陣列boolean[]，紀錄某個節點是否被訪問
-    private boolean[] isVisited;
+    private final boolean[] isVisited;
 
     public Graph(int n) {
         this.edges = new int[n][n];

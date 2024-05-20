@@ -7,7 +7,7 @@ import java.net.InetAddress;
 
 class UDPServer {
     public static void main(String[] args) throws Exception {
-        try (DatagramSocket socket = new DatagramSocket(9090);) {
+        try (DatagramSocket socket = new DatagramSocket(9090)) {
             byte[] receiveData = new byte[1024];
             byte[] sendData;
             while (true) {

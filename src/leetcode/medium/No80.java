@@ -32,7 +32,7 @@ public class No80 {
     }
 
     @Test
-    public void test(){
+    public void test() {
         SolutionNew solutionNew = new SolutionNew();
         solutionNew.removeDuplicates(new int[]{0, 0, 1, 1, 1, 1, 2, 3, 3});
     }

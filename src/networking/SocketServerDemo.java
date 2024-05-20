@@ -14,7 +14,7 @@ public class SocketServerDemo {
             try (ServerSocket serverSocket = new ServerSocket(9090);
                  Socket socket = serverSocket.accept();
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));) {
+                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
                 out.println("hello world");
                 System.out.println("server start");

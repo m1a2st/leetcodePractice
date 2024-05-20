@@ -35,7 +35,7 @@ public class No479 {
         for (int j = left; j < right; j++) {
             if (nums[j] < pivot) {
                 i++;
-                swap(nums, i ,j);
+                swap(nums, i, j);
             }
         }
         swap(nums, i + 1, right);

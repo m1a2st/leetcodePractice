@@ -1,7 +1,5 @@
 package leetcode.medium;
 
-import com.sun.source.tree.Tree;
-
 public class No1325 {
 
 

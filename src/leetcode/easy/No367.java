@@ -5,7 +5,7 @@ import org.junit.Test;
 public class No367 {
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(new Solution().isPerfectSquare(16));
     }
 
@@ -17,7 +17,7 @@ public class No367 {
 
     class Solution {
         public boolean isPerfectSquare(int num) {
-            if(num == 1) return true;
+            if (num == 1) return true;
             int left = 0, right = num;
             while (left < right) {
                 int mid = (right - left) / 2 + left;

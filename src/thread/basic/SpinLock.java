@@ -11,8 +11,8 @@ public class SpinLock implements Lock {
      * 當前鎖的擁有者
      * 使用 Thread 作為同步狀態
      */
-    private AtomicReference<Thread> owner = new AtomicReference<>();
-    private int count = 0;
+    private final AtomicReference<Thread> owner = new AtomicReference<>();
+    private final int count = 0;
 
     @Override
     public void lock() {

@@ -50,8 +50,8 @@ public class No295 {
 
     class MedianFinderNew {
 
-        private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        private PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        private final PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        private final PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
         public void addNum(int num) {
             if (maxHeap.isEmpty() || num <= maxHeap.peek()) {

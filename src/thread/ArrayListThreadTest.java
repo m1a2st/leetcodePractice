@@ -3,7 +3,6 @@ package thread;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.SynchronousQueue;
 
 /**
  * @Author m1a2st
@@ -12,7 +11,7 @@ import java.util.concurrent.SynchronousQueue;
  */
 public class ArrayListThreadTest implements Runnable {
 
-    private List<String> list;
+    private final List<String> list;
 
     public ArrayListThreadTest(List<String> list) {
         this.list = list;

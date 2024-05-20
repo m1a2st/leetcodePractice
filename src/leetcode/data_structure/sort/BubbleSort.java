@@ -75,7 +75,7 @@ public class BubbleSort {
             boolean tag = false;
             for (int i = 0; i < len - 1; i++) {
                 if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i+ 1);
+                    swap(arr, i, i + 1);
                     tag = true;
                 }
             }

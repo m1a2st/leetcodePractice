@@ -27,9 +27,9 @@ public class No14 {
                         prefix.charAt(index) == strs[i].charAt(index)) {
                     index++;
                 }
-                prefix =  prefix.substring(0, index);
+                prefix = prefix.substring(0, index);
             }
-            if(prefix.length() > 0){
+            if (prefix.length() > 0) {
                 return prefix;
             }
             return "";

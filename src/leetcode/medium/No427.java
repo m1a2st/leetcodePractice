@@ -47,7 +47,7 @@ public class No427 {
         }
 
         private Node helper(int[][] grid, int i, int j, int len) {
-            if (allSame(grid, i, j, len)){
+            if (allSame(grid, i, j, len)) {
                 return new Node(grid[i][j] == 1, true);
             }
 

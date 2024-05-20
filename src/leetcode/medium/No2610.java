@@ -2,7 +2,8 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class No2610 {
 
@@ -22,7 +23,7 @@ public class No2610 {
 
             for (int num : nums) {
                 // Construct `ans` on demand.
-                if (++count[num] > ans.size()){
+                if (++count[num] > ans.size()) {
                     ans.add(new ArrayList<>());
                 }
                 ans.get(count[num] - 1).add(num);

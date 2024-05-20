@@ -32,7 +32,7 @@ public class Main {
                 clientThread.start(); //start the thread
             }
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
     }
 

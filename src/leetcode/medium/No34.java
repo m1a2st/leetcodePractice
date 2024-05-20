@@ -4,7 +4,7 @@ public class No34 {
 
     class Solution {
         public int[] searchRange(int[] nums, int target) {
-            int[] ans = {-1 ,-1};
+            int[] ans = {-1, -1};
             int len = nums.length;
             int left = 0, right = len;
             while (left < right) {

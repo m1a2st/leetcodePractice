@@ -22,7 +22,7 @@ public class No167 {
                 else
                     --r;
 
-            return new int[] {l + 1, r + 1};
+            return new int[]{l + 1, r + 1};
         }
     }
 

@@ -34,9 +34,9 @@ public class No1046 {
             for (int stone : stones) {
                 pq.offer(stone);
             }
-            while(pq.size() > 1){
+            while (pq.size() > 1) {
                 int diff = pq.poll() - pq.poll();
-                if(diff != 0){
+                if (diff != 0) {
                     pq.offer(diff);
                 }
             }

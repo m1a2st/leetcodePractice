@@ -35,11 +35,11 @@ class ArrBinaryTree {
         this.preOrder(0);
     }
 
-    public void infixOrder(){
+    public void infixOrder() {
         this.infixOrder(0);
     }
 
-    public void postOrder(){
+    public void postOrder() {
         this.postOrder(0);
     }
 
@@ -49,6 +49,7 @@ class ArrBinaryTree {
      * 2. 輸出當前元素
      * 3. 向左遞迴遍歷
      * 4. 向右遞迴遍歷
+     *
      * @param index 陣列的索引
      */
     private void preOrder(int index) {
@@ -73,6 +74,7 @@ class ArrBinaryTree {
      * 2. 向左遞迴遍歷
      * 3. 輸出當前元素
      * 4. 向右遞迴遍歷
+     *
      * @param index 陣列的索引
      */
     private void infixOrder(int index) {
@@ -95,6 +97,7 @@ class ArrBinaryTree {
      * 2. 向左遞迴遍歷
      * 3. 向右遞迴遍歷
      * 4. 輸出當前元素
+     *
      * @param index 陣列的索引
      */
     private void postOrder(int index) {

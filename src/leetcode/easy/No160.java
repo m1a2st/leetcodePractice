@@ -40,12 +40,12 @@ public class No160 {
             while (d1 != d2) {
                 if (d1 == null) {
                     d1 = headB;
-                }else{
+                } else {
                     d1 = d1.next;
                 }
                 if (d2 == null) {
                     d2 = headA;
-                }else{
+                } else {
                     d2 = d2.next;
                 }
             }

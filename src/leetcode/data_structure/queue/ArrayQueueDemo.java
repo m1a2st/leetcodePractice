@@ -58,7 +58,7 @@ class ArrayQueue {
     private final int maxSize; //表示陣列最大容量
     private int front; //隊列頭
     private int rear; //隊列尾
-    private int[] arr; // 該陣列用於存放數據，模擬陣列
+    private final int[] arr; // 該陣列用於存放數據，模擬陣列
 
     //創建隊列構造器
     public ArrayQueue(int maxSize) {

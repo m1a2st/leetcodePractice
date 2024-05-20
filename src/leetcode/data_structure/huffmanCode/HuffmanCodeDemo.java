@@ -1,8 +1,19 @@
 package leetcode.data_structure.huffmanCode;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author
@@ -255,7 +266,7 @@ class HuffmanEncoder {
              //創建一個與文件輸出流相關連的ObjectOutputStream
              ObjectOutputStream oos = new ObjectOutputStream(os);
              //創建輸入流
-             FileInputStream is = new FileInputStream(srcFile);) {
+             FileInputStream is = new FileInputStream(srcFile)) {
             //創建一個與原文件大小一樣的陣列
             byte[] b = new byte[is.available()];
             is.read(b);
@@ -283,7 +294,7 @@ class HuffmanEncoder {
              //定義一個對象輸入流
              ObjectInputStream ois = new ObjectInputStream(is);
              //定義文件輸出流
-             OutputStream os = new FileOutputStream(dstFile);) {
+             OutputStream os = new FileOutputStream(dstFile)) {
             //讀取赫夫曼編碼表
             byte[] huffmanBytes = (byte[]) ois.readObject();
             Map<Byte, String> codes = (Map<Byte, String>) ois.readObject();

@@ -166,8 +166,8 @@ class Kruskal {
             }
         }
         //統計並打印最小生成樹，輸出result
-        for(EData eData :result){
-            if(eData != null){
+        for (EData eData : result) {
+            if (eData != null) {
                 System.out.println(eData);
             }
         }

@@ -1,6 +1,10 @@
 package leetcode.hard;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class No895 {
 
@@ -21,8 +25,8 @@ public class No895 {
         }
 
         private int maxFreq = 0;
-        private Map<Integer, Integer> count = new HashMap<>();
-        private Map<Integer, Deque<Integer>> countToStack = new HashMap<>();
+        private final Map<Integer, Integer> count = new HashMap<>();
+        private final Map<Integer, Deque<Integer>> countToStack = new HashMap<>();
     }
 
     class FreqStack {

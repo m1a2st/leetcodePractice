@@ -14,6 +14,7 @@ public class Queen8 {
         queen8.check(0);
         System.out.println(count);
     }
+
     static int count;
     //定義一個值表示最多有幾個皇后
     int max = 8;
@@ -41,9 +42,9 @@ public class Queen8 {
             //先把當前這個皇后n，放到該行的第一列
             result[nQueen] = i;
             //判斷當放置第n個皇后到第i列時，是否衝突
-            if(judge(nQueen)){ //不衝突
+            if (judge(nQueen)) { //不衝突
                 //接著放n+1個皇后，即開始遞迴
-                check(nQueen+1);
+                check(nQueen + 1);
             }
             //如果衝突，就繼續執行array[nQueen] = i;即將第n個皇后，放置在本行的後一個位置
 

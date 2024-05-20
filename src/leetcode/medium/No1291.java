@@ -2,7 +2,9 @@ package leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class No1291 {
 

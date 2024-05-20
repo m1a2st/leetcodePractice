@@ -60,7 +60,7 @@ public class TestCompareAndSwap {
                 if (i++ > 1) {
                     failure.incrementAndGet();
                 }
-            }while (!unSafeCompareAndSwap(oldValue, oldValue + 1));
+            } while (!unSafeCompareAndSwap(oldValue, oldValue + 1));
         }
     }
 

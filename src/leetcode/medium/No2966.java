@@ -25,9 +25,7 @@ public class No2966 {
 
             // 检查是否满足条件
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < 3; j++) {
-                    ans[i][j] = nums[i * 3 + j];
-                }
+                System.arraycopy(nums, i * 3 + 0, ans[i], 0, 3);
                 if (ans[i][2] - ans[i][0] > k) {
                     return new int[][]{};
                 }
@@ -42,9 +40,7 @@ public class No2966 {
             int[][] ans = new int[n][3];
             Arrays.sort(nums);
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < 3; j++) {
-                    ans[i][j] = nums[3 * i + j];
-                }
+                System.arraycopy(nums, 3 * i + 0, ans[i], 0, 3);
                 if (ans[i][2] - ans[i][0] > k) {
                     return new int[][]{};
                 }

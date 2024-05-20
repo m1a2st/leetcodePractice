@@ -1,6 +1,7 @@
 package leetcode.medium;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * @Author
@@ -21,7 +22,7 @@ public class No503 {
             Stack<Integer> stack = new Stack<>();
             int[] res = new int[n];
             Arrays.fill(res, -1);
-            for (int i = 0; i < n ; i++) {
+            for (int i = 0; i < n; i++) {
                 while (!stack.isEmpty() && nums[i % n] > nums[stack.peek()]) {
                     res[stack.pop()] = nums[i % n];
                 }

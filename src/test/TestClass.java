@@ -3,9 +3,11 @@ package test;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TestClass {
@@ -13,7 +15,7 @@ public class TestClass {
     @Test
     public void test() {
         BigDecimal b = new BigDecimal("1222.2232323");
-        System.out.println(String.format("%s", b));
+        System.out.printf("%s%n", b);
     }
 
     void app(StringBuilder sb) {

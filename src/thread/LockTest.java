@@ -10,10 +10,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date 2023/8/13
  * @Version v1.0
  */
-public class LockTest implements Runnable{
+public class LockTest implements Runnable {
 
-    private Lock lock;
-    private List<String> list;
+    private final Lock lock;
+    private final List<String> list;
 
     public LockTest(Lock lock, List<String> list) {
         this.lock = lock;
@@ -30,7 +30,7 @@ public class LockTest implements Runnable{
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             lock.unlock();
         }
     }

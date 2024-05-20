@@ -46,29 +46,29 @@ public class No15 {
             return res;
         }
 
-        public List<List<Integer>> threeSum(int[] nums){
+        public List<List<Integer>> threeSum(int[] nums) {
             ArrayList<List<Integer>> res = new ArrayList<>();
             Arrays.sort(nums);
             int len = nums.length;
             for (int left = 0; left < len; left++) {
-                if(left > 0 && nums[left] == nums[left - 1]){
+                if (left > 0 && nums[left] == nums[left - 1]) {
                     continue;
                 }
                 int mid = left + 1, right = len - 1;
-                while(mid < right){
-                    if(nums[left] + nums[mid] + nums[right] == 0){
+                while (mid < right) {
+                    if (nums[left] + nums[mid] + nums[right] == 0) {
                         res.add(Arrays.asList(nums[left], nums[mid], nums[right]));
                         mid++;
                         right--;
-                        while(mid < right && nums[mid] == nums[mid - 1]){
+                        while (mid < right && nums[mid] == nums[mid - 1]) {
                             mid++;
                         }
-                        while (mid < right && nums[right] == nums[right + 1]){
+                        while (mid < right && nums[right] == nums[right + 1]) {
                             right--;
                         }
-                    }else if(nums[mid] + nums[right] + nums[left] < 0){
+                    } else if (nums[mid] + nums[right] + nums[left] < 0) {
                         mid++;
-                    }else{
+                    } else {
                         right--;
                     }
                 }

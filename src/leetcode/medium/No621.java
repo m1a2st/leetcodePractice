@@ -3,7 +3,11 @@ package leetcode.medium;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @Author
@@ -119,6 +123,6 @@ public class No621 {
     @Test
     public void test() {
         BigDecimal bigDecimal = new BigDecimal("0.07");
-        System.out.println(String.format("%s", bigDecimal));
+        System.out.printf("%s%n", bigDecimal);
     }
 }

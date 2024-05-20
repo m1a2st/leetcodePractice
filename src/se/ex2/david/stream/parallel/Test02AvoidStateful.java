@@ -9,17 +9,17 @@ import java.util.stream.Collectors;
 
 public class Test02AvoidStateful {
 
-	public static void main(String[] args) {
-		List<Employee> empList = Employee.createShortList();
-		List<Employee> newList01 = new ArrayList<>();
+    public static void main(String[] args) {
+        List<Employee> empList = Employee.createShortList();
+        List<Employee> newList01 = new ArrayList<>();
 
-		empList.parallelStream() // Not Parallel. Bad.
-				.filter(e -> e.getDept().equals("Eng"))
-				.forEach(e -> newList01.add(e));
+        empList.parallelStream() // Not Parallel. Bad.
+                .filter(e -> e.getDept().equals("Eng"))
+                .forEach(e -> newList01.add(e));
 
-		List<Employee> newList02 = empList.parallelStream() // Good Parallel
-				.filter(e -> e.getDept().equals("Eng"))
-				.collect(Collectors.toList());
+        List<Employee> newList02 = empList.parallelStream() // Good Parallel
+                .filter(e -> e.getDept().equals("Eng"))
+                .collect(Collectors.toList());
 
-	}
+    }
 }

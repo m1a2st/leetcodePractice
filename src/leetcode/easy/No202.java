@@ -1,7 +1,5 @@
 package leetcode.easy;
 
-import org.junit.Test;
-
 public class No202 {
 
     class Solution {

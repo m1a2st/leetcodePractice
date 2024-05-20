@@ -42,12 +42,12 @@ public class No1268 {
             }
 
             numAndIndexes.sort(Comparator.comparingInt(a -> a.key));
-            return new Pair[] {numAndIndexes.get(0), numAndIndexes.get(1)};
+            return new Pair[]{numAndIndexes.get(0), numAndIndexes.get(1)};
         }
 
         class Pair {
-             int key;
-             int value;
+            int key;
+            int value;
 
             public Pair(int key, int value) {
                 this.key = key;

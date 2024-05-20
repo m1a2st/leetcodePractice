@@ -12,6 +12,7 @@ public class ShellSort {
 
     /**
      * 交換法（不好），速度很慢
+     *
      * @param arr 想要被排序的陣列
      */
     public static void shellSort(int[] arr) {
@@ -38,6 +39,7 @@ public class ShellSort {
      * 1. 先把想要排序的陣列一分為二
      * 2. 遍歷每一個分組裡面的每一個數字
      * 3. 接著使用插入排序把數字排序好
+     *
      * @param arr 想要被排序的陣列
      */
     public static void shellSortFast(int[] arr) {
@@ -53,7 +55,7 @@ public class ShellSort {
                         insertIndex -= gap;
                     }
                     //當退出while循環後，就找到temp的插入位置
-                    if(insertIndex - gap != groupIndex){
+                    if (insertIndex - gap != groupIndex) {
                         arr[insertIndex] = insertVal;
                     }
                 }

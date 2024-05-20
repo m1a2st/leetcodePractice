@@ -5,7 +5,7 @@ import org.junit.Test;
 public class No441 {
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(Math.sqrt(4));
     }
 

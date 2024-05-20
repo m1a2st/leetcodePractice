@@ -21,7 +21,7 @@ public class No98 {
                 return false;
 
             return isValidBST(root.left, minNode, root) &&
-                            isValidBST(root.right, root, maxNode);
+                    isValidBST(root.right, root, maxNode);
         }
     }
 }

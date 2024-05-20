@@ -36,7 +36,7 @@ public class No144 {
         }
 
         private void preorder(TreeNode root) {
-            if(root == null){
+            if (root == null) {
                 return;
             }
             ans.add(root.val);

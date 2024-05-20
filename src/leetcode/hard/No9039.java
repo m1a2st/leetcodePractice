@@ -9,7 +9,7 @@ public class No9039 {
     public void test() {
         Solution solution = new Solution();
         String[] wordsContainer = {"abcd", "bcd", "xbcd"};
-        String[] wordsQuery = {"cd","bcd","xyz"};
+        String[] wordsQuery = {"cd", "bcd", "xyz"};
         int[] ans = solution.stringIndices(wordsContainer, wordsQuery);
         for (int an : ans) {
             System.out.println(an);
@@ -23,7 +23,7 @@ public class No9039 {
     }
 
     class Solution {
-        private TrieNode root = new TrieNode();
+        private final TrieNode root = new TrieNode();
 
         public int[] stringIndices(String[] wordsContainer, String[] wordsQuery) {
             int[] ans = new int[wordsQuery.length];

@@ -12,8 +12,8 @@ import java.util.concurrent.Future;
  */
 public class CallableTest implements Callable<String> {
 
-    private String msg;
-    private long sleepTime;
+    private final String msg;
+    private final long sleepTime;
 
     public CallableTest(String msg, long sleepTime) {
         this.msg = msg;

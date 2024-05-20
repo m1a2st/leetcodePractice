@@ -5,22 +5,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InputFromKeyboard {
-	public static void main(String args[]) {
+    public static void main(String[] args) {
 
-		System.out.println("請輸入資料....");
+        System.out.println("請輸入資料....");
 
-		InputStreamReader isr = new InputStreamReader(System.in);
+        InputStreamReader isr = new InputStreamReader(System.in);
 
-		BufferedReader br = new BufferedReader(isr);
+        BufferedReader br = new BufferedReader(isr);
 
-		try {
+        try {
 
-			String data = br.readLine();
+            String data = br.readLine();
 
-			System.out.println(data);
+            System.out.println(data);
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

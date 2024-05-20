@@ -13,9 +13,9 @@ public class No695 {
     public void test() {
         Solution solution = new Solution();
         int[][] grid = new int[][]{{1, 1, 0, 0, 0},
-                                   {1, 1, 0, 0, 0},
-                                   {0, 0, 1, 1, 1},
-                                   {0, 0, 0, 1, 1}};
+                {1, 1, 0, 0, 0},
+                {0, 0, 1, 1, 1},
+                {0, 0, 0, 1, 1}};
         System.out.println(solution.maxAreaOfIsland(grid));
     }
 

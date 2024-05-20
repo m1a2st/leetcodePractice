@@ -14,14 +14,14 @@ public class No125 {
 
     class Solution {
         public boolean isPalindrome(String s) {
-            if(s == null || "".equals(s) ) return true;
+            if (s == null || "".equals(s)) return true;
             String l = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
             int left = 0, right = l.length() - 1;
-            while(left < right){
-                if(l.charAt(left) == l.charAt(right)){
+            while (left < right) {
+                if (l.charAt(left) == l.charAt(right)) {
                     left++;
                     right--;
-                }else{
+                } else {
                     return false;
                 }
             }
@@ -40,7 +40,7 @@ public class No125 {
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         // write test here
         String s = "race a car";
         Solution solution = new Solution();

@@ -2,7 +2,6 @@ package networking.udp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,7 +13,7 @@ import java.net.InetAddress;
  * @author CBaba
  */
 public class Server {
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         DatagramSocket serverSocket = new DatagramSocket(9090);
         byte[] receiveData = new byte[1024];
 

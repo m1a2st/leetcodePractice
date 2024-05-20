@@ -41,7 +41,7 @@ class ThreadedBinaryTree {
         this.root = root;
     }
 
-    public void threadedNodes(){
+    public void threadedNodes() {
         this.threadedNodes(root);
     }
 
@@ -50,20 +50,20 @@ class ThreadedBinaryTree {
      * 分析：
      * 1. 定義一個變量，儲存當前遍歷的節點，從root開始
      * 2. 循環找到leftType == 1 的節點，第一個找到就是8節點
-     *    後面隨著遍歷而變化，因為當leftType == 1時，說明該節點是按照線索化處理後的有效節點
+     * 後面隨著遍歷而變化，因為當leftType == 1時，說明該節點是按照線索化處理後的有效節點
      * 3. 打印當前節點
      * 4. 如果當前節點的後繼指針指向的是後繼節點，就一直輸出
      * 5. 獲取到當前節點的後繼節點
      * 6. 替換節點
      */
-    public void threadList(){
+    public void threadList() {
         HeroNode node = root;
-        while(node != null){
-            while (node.leftType == 0){
+        while (node != null) {
+            while (node.leftType == 0) {
                 node = node.left;
             }
             System.out.println(node);
-            while(node.rightType == 1){
+            while (node.rightType == 1) {
                 node = node.right;
                 System.out.println(node);
             }

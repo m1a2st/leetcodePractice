@@ -1,6 +1,7 @@
 package leetcode.medium;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class No438 {
 
@@ -65,7 +66,7 @@ public class No438 {
                 s1Arr[c2 - 'a']--;
             }
             for (int i : s1Arr) {
-                if(i != 0) return false;
+                if (i != 0) return false;
             }
             return true;
         }

@@ -132,8 +132,8 @@ class VisitedVertex {
         char[] vertex = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         int count = 0;
         for (int i : distance) {
-            if(i!= 65535){
-                System.out.println( vertex[count] + "( " + i + " )");
+            if (i != 65535) {
+                System.out.println(vertex[count] + "( " + i + " )");
                 count++;
             }
         }
@@ -199,7 +199,7 @@ class Graph {
         }
     }
 
-    public void show(){
+    public void show() {
         this.visitedVertex.show();
     }
 

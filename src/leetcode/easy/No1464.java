@@ -30,7 +30,7 @@ public class No1464 {
                 if (nums[i] > large) {
                     secondLarge = large;
                     large = nums[i];
-                } else if (nums[i] > secondLarge){
+                } else if (nums[i] > secondLarge) {
                     secondLarge = nums[i];
                 }
             }

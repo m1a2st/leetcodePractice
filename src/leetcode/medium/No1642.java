@@ -24,7 +24,7 @@ public class No1642 {
                 }
                 minHeap.offer(diff);
                 // If we run out of ladders, greedily use as less bricks as possible.
-                if (minHeap.size() > ladders){
+                if (minHeap.size() > ladders) {
                     bricks -= minHeap.poll();
                 }
                 if (bricks < 0) {

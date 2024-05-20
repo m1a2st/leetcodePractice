@@ -65,7 +65,7 @@ class Graph {
         }
     }
 
-    public void floyd(){
+    public void floyd() {
         //保存距離
         int length;
         //從中間節點遍歷，k就是中間節點的索引[A, B, C, D, E, F, G]
@@ -76,7 +76,7 @@ class Graph {
                     //求出從i節點出發，經過k中間節點，達到j節點距離
                     length = distance[i][k] + distance[k][j];
                     //如果length小於distance[i][j]
-                    if(length < distance[i][j]){
+                    if (length < distance[i][j]) {
                         //更新距離
                         distance[i][j] = length;
                         //更新前驅頂點

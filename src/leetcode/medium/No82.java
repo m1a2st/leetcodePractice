@@ -24,13 +24,13 @@ public class No82 {
         public static ListNode deleteDuplicates(ListNode head) {
             ListNode dummy = new ListNode(-1, head);
             ListNode pre = dummy;
-            while (head != null){
-                while (head.next != null && head.val == head.next.val){
+            while (head != null) {
+                while (head.next != null && head.val == head.next.val) {
                     head = head.next;
                 }
-                if(pre.next == head){
+                if (pre.next == head) {
                     pre = pre.next;
-                }else{
+                } else {
                     pre.next = head.next;
                 }
                 head = head.next;

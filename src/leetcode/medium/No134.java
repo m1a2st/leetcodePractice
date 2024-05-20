@@ -8,7 +8,7 @@ public class No134 {
         public int canCompleteCircuit(int[] gas, int[] cost) {
             int gasses = Arrays.stream(gas).sum();
             int costs = Arrays.stream(cost).sum();
-            if(gasses < costs){
+            if (gasses < costs) {
                 return -1;
             }
 
@@ -17,7 +17,7 @@ public class No134 {
 
             for (int i = 0; i < gas.length; i++) {
                 sum += gas[i] - cost[i];
-                if(sum < 0){
+                if (sum < 0) {
                     sum = 0;
                     ans = i + 1;
                 }

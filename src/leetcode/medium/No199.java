@@ -21,7 +21,7 @@ public class No199 {
 
         private void addLevelRight(TreeNode root, int level) {
             if (root == null) return;
-            if(level == res.size()){
+            if (level == res.size()) {
                 res.add(root.val);
             }
             addLevelRight(root.right, level + 1);

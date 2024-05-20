@@ -1,6 +1,11 @@
 package leetcode.data_structure.commomAlogrithm;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author
@@ -63,12 +68,12 @@ public class Greedy {
                 temp.retainAll(allAreas);
                 //如果當前這個集合包含的為覆蓋地區，比maxKey指向的地區集合還多
                 //就需要重置maxKey
-                if(temp.size() > 0 && (maxKey == null || temp.size() > broadcast.get(maxKey).size())){
+                if (temp.size() > 0 && (maxKey == null || temp.size() > broadcast.get(maxKey).size())) {
                     maxKey = key;
                 }
             }
             //maxKey != null，就應該將maxKey加入selectedBroadcast
-            if(maxKey != null){
+            if (maxKey != null) {
                 selectedBroadcast.add(maxKey);
                 //將maxKey指向的電台覆蓋的地區，從allAreas去掉
                 allAreas.removeAll(broadcast.get(maxKey));

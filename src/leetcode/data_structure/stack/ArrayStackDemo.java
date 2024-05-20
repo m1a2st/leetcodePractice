@@ -48,9 +48,9 @@ public class ArrayStackDemo {
 //定義一個ArrayStack表示棧
 class ArrayStack {
     //棧的大小
-    private int maxSize;
+    private final int maxSize;
     //陣列模擬棧，數據放在該陣列
-    private int[] stack;
+    private final int[] stack;
     //top表示棧頂，初始化為-1
     private int top = -1;
 
