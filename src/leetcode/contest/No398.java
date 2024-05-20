@@ -50,7 +50,31 @@ public class No398 {
 
     class Solution {
         public boolean[] isArraySpecial(int[] nums, int[][] queries) {
-            return null;
+            int n = nums.length;
+            boolean[] ans = new boolean[queries.length];
+
+            List<Integer> cache = new ArrayList<>();
+            cache.add(1);
+            int sum = 1;
+
+            for (int i = 0; i < n - 1; i++) {
+                if (nums[i] % 2 == nums[i + 1] % 2) {
+                    sum += 0;
+                } else {
+                    sum += 1;
+                }
+                cache.add(sum);
+            }
+
+            for (int i = 0; i < queries.length; i++) {
+                int[] q = queries[i];
+                int start = q[0];
+                int end = q[1];
+                int dist = Math.abs(start - end);
+                ans[i] = dist == cache.get(end) - cache.get(start);
+            }
+
+            return ans;
         }
     }
 
@@ -61,32 +85,17 @@ public class No398 {
 
     class Solution100300 {
         public long sumDigitDifferences(int[] nums) {
-            int n = nums.length;
-
-            // Determine the number of digits in each number
-            int numDigits = String.valueOf(nums[0]).length();
-
-            // Create a 2D list to count digits at each position
-            int[][] digitCount = new int[numDigits][10];
-
-            // Fill the digit count array
-            for (int num : nums) {
-                String numStr = String.valueOf(num);
-                for (int i = 0; i < numDigits; i++) {
-                    digitCount[i][numStr.charAt(i) - '0']++;
+            int len = nums.length;
+            int digits = String.valueOf(nums[0]).length();
+            int[][] count = new int[digits][10];
+            long res = (long) len * (len - 1) / 2 * digits;
+            for (int a : nums) {
+                for (int i = 0; i < digits && a > 0; i++) {
+                    res -= count[i][a % 10]++;
+                    a /= 10;
                 }
             }
-
-            // Calculate the sum of digit differences
-            int totalDifference = 0;
-            for (int i = 0; i < numDigits; i++) {
-                for (int d = 0; d < 10; d++) {
-                    int count = digitCount[i][d];
-                    totalDifference += count * (n - count) / 2;
-                }
-            }
-
-            return totalDifference;
+            return res;
         }
     }
 }
