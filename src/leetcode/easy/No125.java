@@ -2,6 +2,8 @@ package leetcode.easy;
 
 import org.junit.jupiter.api.Test;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,16 +14,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class No125 {
 
+    /**
+     * 1. 先將字串轉為小寫，並過濾掉非字母和數字的字符
+     * 2. 雙指針，一個指向頭，一個指向尾，比較兩個字符是否相等
+     */
     class Solution {
         public boolean isPalindrome(String s) {
-            if (s == null || "".equals(s)) return true;
-            String l = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-            int left = 0, right = l.length() - 1;
+            if (s == null || s.isEmpty()) return true;
+            StringBuilder sb = new StringBuilder();
+            char[] chars = s.toLowerCase().toCharArray();
+            for (char c : chars) {
+                if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
+                    sb.append(c);
+                }
+            }
+            int left = 0, right = sb.length() - 1;
             while (left < right) {
-                if (l.charAt(left) == l.charAt(right)) {
-                    left++;
-                    right--;
-                } else {
+                if (sb.charAt(left++) != sb.charAt(right--)) {
                     return false;
                 }
             }
