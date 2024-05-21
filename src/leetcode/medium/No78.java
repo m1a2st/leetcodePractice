@@ -1,56 +1,36 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class No78 {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         int[] a = {1, 2, 3};
-        subsets(a).forEach(System.out::println);
+        new Solution().subsets(a).forEach(System.out::println);
     }
 
-    public static List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        List<Integer> list = new ArrayList<>();
-        result.add(new ArrayList<>());
-        recursive(nums, result, list, 0);
-        return result;
-    }
-
-    private static void recursive(int[] nums, List<List<Integer>> result, List<Integer> list, int start) {
-        for (int i = start; i < nums.length; i++) {
-            list.add(nums[i]);
-            result.add(new ArrayList<>(list));
-            recursive(nums, result, list, i + 1);
-            list.remove(list.size() - 1);
-        }
-    }
 
     class Solution {
-        List<List<Integer>> lists = new ArrayList<>();
+
+        List<List<Integer>> ans = new ArrayList<>();
 
         public List<List<Integer>> subsets(int[] nums) {
-            List<Integer> track = new ArrayList<>();
-            boolean[] used = new boolean[nums.length];
-            recursive(nums, track, used);
-            return lists;
+            ans.add(new ArrayList<>());
+            backTracking(nums, 0, new ArrayList<>());
+            return ans;
         }
 
-        private void recursive(int[] nums, List<Integer> track, boolean[] used) {
-            if (track.size() == used.length) {
-                lists.add(new ArrayList<>(track));
-                return;
-            }
-            for (int i = 0; i < nums.length; i++) {
-                if (used[i]) {
-                    continue;
-                }
-                track.add(nums[i]);
-                used[i] = true;
-                recursive(nums, track, used);
-                track.remove(track.size() - 1);
-                used[i] = false;
+        private void backTracking(int[] nums, int i, List<Integer> sub) {
+            for (int j = i; j < nums.length; j++) {
+                sub.add(nums[j]);
+                ans.add(new ArrayList<>(sub));
+                backTracking(nums, j + 1, sub);
+                sub.remove(sub.size() - 1);
             }
         }
     }
