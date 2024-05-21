@@ -36,12 +36,7 @@ public class No57 {
                 i++;
             }
 
-            int[][] arr = new int[result.size()][2];
-            for (int j = 0; j < result.size(); j++) {
-                arr[j] = result.get(j);
-            }
-
-            return arr;
+            return result.toArray(new int[][]{});
         }
     }
 }
