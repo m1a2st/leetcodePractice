@@ -13,67 +13,42 @@ import java.util.List;
  */
 public class No15 {
 
-    static class Solution {
-        public List<List<Integer>> threeSumOld(int[] nums) {
-            List<List<Integer>> res = new ArrayList<>();
-            int len = nums.length;
-            Arrays.sort(nums);
-            for (int left = 0; left < len; left++) {
-                //當數字一樣時ex: [-1, -1 , .....]
-                if (left > 0 && nums[left] == nums[left - 1]) {
-                    continue;
-                }
-                // 設定左邊為right ，中間數字為mid
-                int mid = left + 1, right = len - 1;
-                while (mid < right) {
-                    if (nums[mid] + nums[right] + nums[left] == 0) {
-                        res.add(Arrays.asList(nums[left], nums[mid], nums[right]));
-                        mid++;
-                        right--;
-                        while (mid < right && nums[mid] == nums[mid - 1]) {
-                            mid++;
-                        }
-                        while (mid < right && nums[right] == nums[right + 1]) {
-                            right--;
-                        }
-                    } else if (nums[mid] + nums[right] + nums[left] < 0) {
-                        mid++;
-                    } else {
-                        right--;
-                    }
-                }
-            }
-            return res;
-        }
-
+    /**
+     * 1. 先排序
+     * 2. 遍歷數組
+     * 3. 雙指針
+     * 4. 如果是加起來為0，則加入答案
+     * 4.1 指針移動時候要除重複的數字
+     * 5. 如果和小於0，則左指針右移
+     * 6. 如果和大於0，則右指針左移
+     */
+    class Solution {
         public List<List<Integer>> threeSum(int[] nums) {
-            ArrayList<List<Integer>> res = new ArrayList<>();
+            List<List<Integer>> ans = new ArrayList<>();
             Arrays.sort(nums);
             int len = nums.length;
-            for (int left = 0; left < len; left++) {
-                if (left > 0 && nums[left] == nums[left - 1]) {
+            for (int i = 0; i < len; ++i) {
+                if (i > 0 && nums[i] == nums[i - 1]) {
                     continue;
                 }
-                int mid = left + 1, right = len - 1;
-                while (mid < right) {
-                    if (nums[left] + nums[mid] + nums[right] == 0) {
-                        res.add(Arrays.asList(nums[left], nums[mid], nums[right]));
-                        mid++;
-                        right--;
-                        while (mid < right && nums[mid] == nums[mid - 1]) {
-                            mid++;
+                int left = i + 1, right = len - 1;
+                while (left < right) {
+                    if (nums[i] + nums[left] + nums[right] == 0) {
+                        ans.add(List.of(nums[i], nums[left++], nums[right--]));
+                        while (left < right && nums[left] == nums[left - 1]) {
+                            left++;
                         }
-                        while (mid < right && nums[right] == nums[right + 1]) {
+                        while (left < right && nums[right] == nums[right + 1]) {
                             right--;
                         }
-                    } else if (nums[mid] + nums[right] + nums[left] < 0) {
-                        mid++;
+                    } else if (nums[i] + nums[left] + nums[right] < 0) {
+                        left++;
                     } else {
                         right--;
                     }
                 }
             }
-            return res;
+            return ans;
         }
     }
 
