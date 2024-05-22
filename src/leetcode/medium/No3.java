@@ -12,41 +12,32 @@ import java.util.Map;
  * @Version v1.0
  */
 public class No3 {
+    /**
+     * 1. 使用一個 陣列 來記錄每個字元出現的次數
+     * 2. 使用兩個指針 left 和 right 來記錄當前子串的左右邊界
+     * 3. 當 right 指針指向的字元出現次數大於 1 時，將 left 指針向右移動，直到當前子串中沒有重複的字元
+     * 4. 每次移動 right 指針時，更新當前子串的長度
+     * 6. 當 cache 中的字元出現次數大於 1 時，將 left 指針向右移動，直到當前子串中沒有重複的字元
+     */
     class Solution {
-        public int lengthOfLongestSubstringOld(String s) {
-            Map<Character, Integer> window = new HashMap<>();
-            int left = 0, right = 0;
-            int res = 0;
-
-            while (right < s.length()) {
-                char c = s.charAt(right);
-                right++;
-                window.put(c, window.getOrDefault(c, 0) + 1);
-                while (window.get(c) > 1) {
-                    char d = s.charAt(left);
-                    left++;
-                    window.put(d, window.get(d) - 1);
-                }
-                res = Math.max(res, right - left + 1);
-            }
-            return res;
-        }
-
         public int lengthOfLongestSubstring(String s) {
-            int right = 0, left = 0;
             int ans = 0;
-            Map<Character, Integer> window = new HashMap<>();
-            while (right < s.length()) {
-                char c = s.charAt(right);
-                right++;
-                window.put(c, window.getOrDefault(c, 0) + 1);
-                while (window.get(c) > 1) {
-                    char d = s.charAt(left);
-                    left++;
-                    window.put(d, window.get(d) - 1);
+            int tempAns = 0;
+            char[] chars = s.toCharArray();
+            int[] cache = new int[128];
+            int left = 0, right = 0;
+            while (right < chars.length) {
+                char c = chars[right];
+                cache[c]++;
+                while(cache[c] == 2) {
+                    --tempAns;
+                    --cache[chars[left++]];
                 }
-                ans = Math.max(ans, right - left);
+                tempAns++;
+                right++;
+                ans = Math.max(ans, tempAns);
             }
+
             return ans;
         }
     }
