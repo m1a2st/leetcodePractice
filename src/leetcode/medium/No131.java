@@ -23,36 +23,33 @@ public class No131 {
 
     class Solution {
 
-        List<List<String>> result = new ArrayList<>();
+        List<List<String>> ans = new ArrayList<>();
 
         public List<List<String>> partition(String s) {
-            List<String> list = new ArrayList<>();
-            recursive(s, list, 0);
-            return result;
+            backTracking(s, 0, new ArrayList<>());
+            return ans;
         }
 
-        private void recursive(String s, List<String> list, int start) {
-            // 終止條件
-            if (start == s.length()) {
-                result.add(new ArrayList<>(list));
+        private void backTracking(String s, int start, ArrayList<String> sub) {
+            int len = s.length();
+            if (start == len) {
+                ans.add(new ArrayList<>(sub));
                 return;
             }
-            for (int i = start; i < s.length(); i++) {
+            for (int i = start; i < len; i++) {
                 if (isPalindrome(s, start, i)) {
-                    list.add(s.substring(start, i + 1));
-                    recursive(s, list, i + 1);
-                    list.remove(list.size() - 1);
+                    sub.add(s.substring(start, i + 1));
+                    backTracking(s, start + 1, sub);
+                    sub.remove(sub.size() - 1);
                 }
             }
         }
 
-        private boolean isPalindrome(String s, int l, int r) {
-            while (l < r) {
-                if (s.charAt(l) != s.charAt(r)) {
+        private boolean isPalindrome(String s, int start, int end) {
+            while (start < end) {
+                if (s.charAt(start++) != s.charAt(end--)) {
                     return false;
                 }
-                l++;
-                r--;
             }
             return true;
         }
