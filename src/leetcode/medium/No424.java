@@ -12,35 +12,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class No424 {
 
     class Solution {
+        /**
+         * 1. 使用一個 陣列 來記錄每個字元出現的次數
+         * 2. 使用兩個指針 left 和 right 來記錄當前子串的左右邊界
+         * 3. 計算當前子串中出現次數最多的字元的次數
+         * 5. 如果 right - left + 1 - maxCount > k，代表 k 不夠用，需要將 left 指針向右移動
+         * 6. 每次移動 right 指針時，更新當前子串的長度
+         */
         public int characterReplacement(String s, int k) {
             int ans = 0;
             int maxCount = 0;
-            int[] count = new int[128];
+            int[] count = new int[26];
 
             for (int l = 0, r = 0; r < s.length(); ++r) {
-                maxCount = Math.max(maxCount, ++count[s.charAt(r)]);
-                while (maxCount + k < r - l + 1)
-                    --count[s.charAt(l++)];
-                ans = Math.max(ans, r - l + 1);
-            }
-
-            return ans;
-        }
-
-        public int characterReplacementNew(String s, int k) {
-            int countMax = 0;
-            int ans = 0;
-            int[] count = new int[26];
-            for (int l = 0, r = 0; r < s.length(); r++) {
-                char cRight = s.charAt(r);
-                countMax = Math.max(countMax, ++count[cRight - 'A']);
-                if (countMax + k < r - l + 1) {
-                    l++;
-                    char cLeft = s.charAt(l);
-                    countMax = Math.max(countMax, --count[cLeft - 'A']);
+                maxCount = Math.max(maxCount, ++count[s.charAt(r) - 'A']);
+                while (maxCount + k < r - l + 1) {
+                    --count[s.charAt(l++) - 'A'];
                 }
                 ans = Math.max(ans, r - l + 1);
             }
+
             return ans;
         }
 
