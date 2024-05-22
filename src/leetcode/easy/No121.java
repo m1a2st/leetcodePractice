@@ -24,6 +24,11 @@ public class No121 {
         Assertions.assertEquals(0, solution.maxProfit(s));
     }
 
+    /**
+     * 1. 買入價格為第一天價格
+     * 2. 如果買入價格大於當前價格，則更新買入價格
+     * 3. 如果當前價格減去買入價格大於當前最大利潤，則更新最大利潤
+     */
     class Solution {
         public int maxProfit(int[] prices) {
             int buy = prices[0];
