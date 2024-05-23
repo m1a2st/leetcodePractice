@@ -1,7 +1,11 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 public class No19 {
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         ListNode head = new ListNode(1);
         ListNode a = new ListNode(2);
         ListNode b = new ListNode(3);
@@ -11,46 +15,24 @@ public class No19 {
         a.next = b;
         b.next = c;
         c.next = d;
-        Solution.removeNthFromEnd(head, 2);
+        new Solution().removeNthFromEnd(head, 2);
     }
 
-    static class Solution {
-        public static ListNode removeNthFromEnd(ListNode head, int n) {
-            ListNode dummy = new ListNode(-1);
-            dummy.next = head;
-            // 找到要刪除的前一個節點
-            ListNode node = findRemoveNode(dummy, n + 1);
-            node.next = node.next.next;
-            return dummy.next;
-        }
-
-        private static ListNode findRemoveNode(ListNode dummy, int i) {
-            ListNode fast = dummy;
-            ListNode slow = dummy;
-            for (int j = 0; j < i; j++) {
-                fast = fast.next;
-            }
-            while (fast.next != null) {
-                fast = fast.next;
-                slow = slow.next;
-            }
-            return slow;
-        }
-    }
-
-    class SolutionNew {
+    /**
+     * 1. 找到要刪除的前一個節點
+     * 2. 使用快慢指針的方式找到要刪除的前一個節點
+     */
+    class Solution {
         public ListNode removeNthFromEnd(ListNode head, int n) {
-            ListNode dummy = new ListNode(-1);
-            dummy.next = head;
-            ListNode node = findRemoveNode(dummy, n + 1);
-            node.next = node.next.next;
+            ListNode dummy = new ListNode(-1, head);
+            ListNode preNode = findRemovePreNode(dummy, n + 1);
+            preNode.next = preNode.next.next;
             return dummy.next;
         }
 
-        private ListNode findRemoveNode(ListNode dummy, int n) {
-            ListNode fast = dummy;
-            ListNode slow = dummy;
-            for (int i = 0; i < n; i++) {
+        private ListNode findRemovePreNode(ListNode head, int n) {
+            ListNode slow = head, fast = head;
+            for (int i = 0; i < n; ++i) {
                 fast = fast.next;
             }
             while (fast != null) {
