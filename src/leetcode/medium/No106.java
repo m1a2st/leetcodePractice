@@ -27,33 +27,6 @@ public class No106 {
     }
 
     class Solution {
-        public TreeNode buildTree(int[] inorder, int[] postorder) {
-            TreeNode root = new TreeNode(postorder[postorder.length - 1]);
-
-
-            return root;
-        }
-
-        public void inorder(TreeNode root) {
-            if (root == null) {
-                return;
-            }
-            inorder(root.left);
-            System.out.println(root.val);
-            inorder(root.right);
-        }
-
-        public void postorder(TreeNode root) {
-            if (root == null) {
-                return;
-            }
-            postorder(root.left);
-            postorder(root.right);
-            System.out.println(root.val);
-        }
-    }
-
-    class SolutionNew {
 
         Map<Integer, Integer> inToIndex = new HashMap<>();
 
