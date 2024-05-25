@@ -10,45 +10,53 @@ import java.util.List;
  */
 public class No207 {
 
-    enum State {
-        kInit, kVisiting, kVisited
-    }
-
     class Solution {
 
-        public boolean canFinish(int numCourses, int[][] prerequisites) {
-            List<Integer>[] graph = new List[numCourses];
-            State[] states = new State[numCourses];
+        enum State {
+            INIT, VISITING, VISITED;
+        }
 
-            // 初始化陣列
-            for (int i = 0; i < numCourses; i++) {
-                graph[i] = new ArrayList<>();
+        List<List<Integer>> graph;
+        State[] visited;
+
+        public boolean canFinish(int numCourses, int[][] prerequisites) {
+            graph = new ArrayList<>();
+            visited = new State[numCourses];
+
+            for (int i = 0; i < numCourses; ++i) {
+                graph.add(new ArrayList<>());
             }
 
             for (int[] prerequisite : prerequisites) {
-                int r = prerequisite[1];
-                int pre = prerequisite[0];
-                graph[r].add(pre);
+                int start = prerequisite[0];
+                int end = prerequisite[1];
+                graph.get(start).add(end);
             }
 
-            for (int i = 0; i < numCourses; i++) {
-                if (hasCycle(graph, i, states)) {
+            for (int i = 0; i < numCourses; ++i) {
+                if (hasCycle(i)) {
                     return false;
                 }
             }
             return true;
         }
 
-        private boolean hasCycle(List<Integer>[] graph, int u, State[] states) {
-            if (states[u] == State.kVisiting) return true;
-            if (states[u] == State.kVisited) return false;
+        private boolean hasCycle(int start) {
+            // 結束條件
+            if (visited[start] == State.VISITING) {
+                return true;
+            }
+            if (visited[start] == State.VISITED) {
+                return false;
+            }
 
-            states[u] = State.kVisiting;
-            for (final int v : graph[u])
-                if (hasCycle(graph, v, states))
+            visited[start] = State.VISITING;
+            for (Integer edge : graph.get(start)) {
+                if (hasCycle(edge)) {
                     return true;
-            states[u] = State.kVisited;
-
+                }
+            }
+            visited[start] = State.VISITED;
             return false;
         }
     }
