@@ -33,50 +33,30 @@ public class No133 {
     }
 
     class Solution {
-        public Node cloneGraph(Node node) {
-            if (node == null) return null;
-            Node[] visited = new Node[101];
-            Node newNode = new Node(node.val);
-            dfs(node, newNode, visited);
-            return newNode;
-        }
-
-        private void dfs(Node node, Node newNode, Node[] visited) {
-            visited[newNode.val] = newNode;
-            for (Node neighbor : node.neighbors) {
-                if (visited[neighbor.val] == null) {
-                    Node n = new Node(neighbor.val);
-                    newNode.neighbors.add(n);
-                    dfs(neighbor, n, visited);
-                } else {
-                    newNode.neighbors.add(visited[neighbor.val]);
-                }
-            }
-        }
-    }
-
-    class SolutionNew2 {
 
         Node[] visited = new Node[101];
 
         public Node cloneGraph(Node node) {
-            if (node == null) return null;
+            if (node == null) {
+                return null;
+            }
             Node newNode = new Node(node.val);
-            dfs(newNode, node);
+            dfs(node, newNode);
             return newNode;
         }
 
-        private void dfs(Node newNode, Node node) {
-            visited[newNode.val] = newNode;
+        private void dfs(Node node, Node newNode) {
+            visited[node.val] = newNode;
             for (Node neighbor : node.neighbors) {
                 if (visited[neighbor.val] == null) {
-                    Node newNeighborNode = new Node(neighbor.val);
-                    newNode.neighbors.add(newNeighborNode);
-                    dfs(newNeighborNode, neighbor);
+                    Node newNeighbor = new Node(neighbor.val);
+                    newNode.neighbors.add(newNeighbor);
+                    dfs(neighbor, newNeighbor);
                 } else {
                     newNode.neighbors.add(visited[neighbor.val]);
                 }
             }
         }
     }
+
 }
