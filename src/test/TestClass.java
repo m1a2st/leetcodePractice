@@ -66,6 +66,15 @@ public class TestClass {
         ls.forEach(System.out::println);
     }
 
+    @Test
+    public void test5() {
+        double d = 1.0;
+        double d1 = 5.0;
+        for (Operator value : Operator.values()) {
+            System.out.println(value.apply((int) d, (int) d1));
+        }
+    }
+
     class Cat {
         int age;
 
