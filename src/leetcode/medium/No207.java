@@ -2,6 +2,8 @@ package leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @Author m1a2st
@@ -22,7 +24,6 @@ public class No207 {
         public boolean canFinish(int numCourses, int[][] prerequisites) {
             graph = new ArrayList<>();
             visited = new State[numCourses];
-
             for (int i = 0; i < numCourses; ++i) {
                 graph.add(new ArrayList<>());
             }
