@@ -10,7 +10,7 @@ public class No322 {
 
     @Test
     public void test() {
-        new Solution().coinChange(new int[]{1, 2, 5}, 11);
+        new SolutionNew().coinChange(new int[]{2}, 3);
     }
 
     class Solution {
@@ -46,43 +46,21 @@ public class No322 {
         }
     }
 
-    class SolutionBottonUp {
-
-        int[] dp;
-
+    class SolutionNew {
         public int coinChange(int[] coins, int amount) {
-            dp = new int[amount + 1];
-            Arrays.fill(dp, amount + 1);
+            int[] dp = new int[amount + 1];
+            Arrays.fill(dp, Integer.MAX_VALUE);
             dp[0] = 0;
-            for (int i = 0; i < dp.length; i++) {
+            for (int i = 1; i <= amount; ++i) {
                 for (int coin : coins) {
-                    if (i - amount < 0) {
-                        continue;
+                    if (i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
+                        dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
                     }
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
-            return (dp[amount] == amount + 1) ? -1 : dp[amount];
-        }
-    }
 
-    class SolutionBP {
 
-        int[] dp;
-
-        public int coinChange(int[] coins, int amount) {
-            dp = new int[amount + 1];
-            Arrays.fill(dp, amount + 1);
-            dp[0] = 0;
-            for (int i = 0; i < dp.length; i++) {
-                for (int coin : coins) {
-                    if (i - coin < 0) {
-                        continue;
-                    }
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-                }
-            }
-            return dp[amount] == amount - 1 ? -1 : dp[amount];
+            return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
         }
     }
 }
