@@ -58,8 +58,6 @@ public class No322 {
                     }
                 }
             }
-
-
             return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
         }
     }
