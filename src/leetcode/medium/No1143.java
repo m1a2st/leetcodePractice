@@ -1,6 +1,13 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 public class No1143 {
+
+    @Test
+    public void test() {
+        System.out.println(new Solution().longestCommonSubsequence("abcde", "aace"));
+    }
 
     class Solution {
         public int longestCommonSubsequence(String text1, String text2) {
