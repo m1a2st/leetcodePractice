@@ -11,9 +11,12 @@ import java.util.Arrays;
  * @Description
  */
 public class HeapSort {
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33, 123, 100, 45};
-        heapSort(arr);
+        _heapSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
     /**
@@ -71,81 +74,37 @@ public class HeapSort {
         arr[noLeafNodeIndex] = temp; //將temp值放到調整後的位置
     }
 
-    @Test
-    public void test() {
-        int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33, 123, 100, 45};
-        heapSortQ(arr);
-        for (int i : arr) {
-            System.out.println(i);
-        }
-    }
-
-    public void heapSortP(int[] arr) {
-        // 根據樹的結構來推算（如果根節點所引為 0），最後一個非葉子節點的索引必定是 arr.length / 2 - 1
-        // 因為要把樹結構調整成「大頂堆」，所以就從最後一個非根節點開始調整
+    private void _heapSort(int[] arr) {
+        // 先調整成一個大頂堆
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
-            adjustHeapP(arr, i, arr.length);
+            _adjustHeap(arr, i, arr.length);
         }
         for (int i = arr.length - 1; i > 0; i--) {
             swap(arr, 0, i);
-            adjustHeapP(arr, 0, i);
+            _adjustHeap(arr, 0, i);
         }
     }
 
-    private void adjustHeapP(int[] arr, int notLeafNodeIndex, int length) {
-        // 先取出當前元素的值，保存在臨時變量，也就是目前子樹的父節點
-        int root = arr[notLeafNodeIndex];
-        // leftNodeIndex = notLeafNodeIndex * 2 + 1 是 notLeafNodeIndex 的左子節點
-        // rightNodeIndex = notLeafNodeIndex * 2 + 2 是 notLeafNodeIndex 的右子節點
-        for (int leftNodeIndex = notLeafNodeIndex * 2 + 1; leftNodeIndex < length; leftNodeIndex = leftNodeIndex * 2 + 1) {
+    private void _adjustHeap(int[] arr, int noLeafNodeIndex, int length) {
+        int temp = arr[noLeafNodeIndex];
+
+        for (int leftNodeIndex = noLeafNodeIndex * 2 + 1; leftNodeIndex < length;
+             leftNodeIndex = leftNodeIndex * 2 + 1) {
             int rightNodeIndex = leftNodeIndex + 1;
-            // 判斷哪一個子節點比較大，值比較大的節點，會被換到父節點
-            int biggestLeafNodeIndex = leftNodeIndex;
-            if (rightNodeIndex < length && arr[leftNodeIndex] < arr[rightNodeIndex]) {
-                biggestLeafNodeIndex = rightNodeIndex;
+            int biggestNodeIndex = leftNodeIndex;
+            if (rightNodeIndex < length && arr[rightNodeIndex] > arr[leftNodeIndex]) {
+                biggestNodeIndex = rightNodeIndex;
             }
-            // 如果子節點的值大於父節點
-            if (arr[biggestLeafNodeIndex] > root) {
-                // 將子節點的值換到父節點
-                arr[notLeafNodeIndex] = arr[biggestLeafNodeIndex];
+            if (arr[biggestNodeIndex] > temp) {
+                arr[noLeafNodeIndex] = arr[biggestNodeIndex];
                 // 將指針變成新的父節點，繼續往下一個子樹比較
-                notLeafNodeIndex = biggestLeafNodeIndex;
+                noLeafNodeIndex = biggestNodeIndex;
                 // 要注意，這邊需要重新更新 leftNodeIndex 的值，繼續遍歷的索引才會正確
-                leftNodeIndex = biggestLeafNodeIndex;
+                leftNodeIndex = biggestNodeIndex;
             } else {
                 break;
             }
         }
-        // 將保存的節點放回正確的指針位置
-        arr[notLeafNodeIndex] = root;
-    }
-
-    public void heapSortQ(int[] arr) {
-        for (int i = arr.length / 2 - 1; i >= 0; --i) {
-            adjustHeapQ(arr, i, arr.length);
-        }
-        for (int i = arr.length - 1; i >= 0; --i) {
-            swap(arr, 0, i);
-            adjustHeapQ(arr, 0, i);
-        }
-    }
-
-    private void adjustHeapQ(int[] arr, int notLeafNodeIndex, int length) {
-        int root = arr[notLeafNodeIndex];
-        for (int leftNodeIndex = notLeafNodeIndex * 2 + 1; leftNodeIndex < length; leftNodeIndex = leftNodeIndex * 2 + 1) {
-            int rightNodeIndex = leftNodeIndex + 1;
-            int biggestLeafNodeIndex = leftNodeIndex;
-            if (rightNodeIndex < length && arr[leftNodeIndex] < arr[rightNodeIndex]) {
-                biggestLeafNodeIndex = rightNodeIndex;
-            }
-            if (arr[biggestLeafNodeIndex] > root) {
-                arr[notLeafNodeIndex] = arr[biggestLeafNodeIndex];
-                notLeafNodeIndex = biggestLeafNodeIndex;
-                leftNodeIndex = biggestLeafNodeIndex;
-            } else {
-                break;
-            }
-        }
-        arr[notLeafNodeIndex] = root;
+        arr[noLeafNodeIndex] = temp;
     }
 }
