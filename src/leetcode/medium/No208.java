@@ -1,11 +1,20 @@
 package leetcode.medium;
 
-/**
- * @Author m1a2st
- * @Date 2023/7/18
- * @Version v1.0
- */
+
+import org.junit.jupiter.api.Test;
+
 public class No208 {
+
+    @Test
+    void test() {
+        Trie trie = new Trie();
+        trie.insert("apple");
+        System.out.println(trie.search("apple")); // true
+        System.out.println(trie.search("app")); // false
+        System.out.println(trie.startsWith("app")); // true
+        trie.insert("app");
+        System.out.println(trie.search("app")); // true
+    }
 
     class TrieNode {
         public TrieNode[] children = new TrieNode[26];
@@ -13,13 +22,16 @@ public class No208 {
     }
 
     class Trie {
+
+        private final TrieNode root = new TrieNode();
+
         public void insert(String word) {
             TrieNode node = root;
-            for (final char c : word.toCharArray()) {
-                final int i = c - 'a';
-                if (node.children[i] == null)
-                    node.children[i] = new TrieNode();
-                node = node.children[i];
+            for (char c : word.toCharArray()) {
+                if (node.children[c - 'a'] == null) {
+                    node.children[c - 'a'] = new TrieNode();
+                }
+                node = node.children[c - 'a'];
             }
             node.isWord = true;
         }
@@ -33,15 +45,13 @@ public class No208 {
             return find(prefix) != null;
         }
 
-        private final TrieNode root = new TrieNode();
-
         private TrieNode find(String prefix) {
             TrieNode node = root;
-            for (final char c : prefix.toCharArray()) {
-                final int i = c - 'a';
-                if (node.children[i] == null)
+            for (char c : prefix.toCharArray()) {
+                if (node.children[c - 'a'] == null) {
                     return null;
-                node = node.children[i];
+                }
+                node = node.children[c - 'a'];
             }
             return node;
         }
