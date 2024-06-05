@@ -2,13 +2,18 @@ package leetcode.easy;
 
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class No1002 {
+
+    @Test
+    void test2() {
+        BigDecimal b = new BigDecimal("4");
+        System.out.println(b.subtract(new BigDecimal("2")).divide(new BigDecimal("2")));
+    }
 
     @Test
     void test() {
