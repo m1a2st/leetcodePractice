@@ -9,7 +9,6 @@ public class Trie {
 
     void insert(String word) {
         TrieNode current = root;
-
         for (char l : word.toCharArray()) {
             current = current.getChildren().computeIfAbsent(l, c -> new TrieNode());
         }
@@ -22,10 +21,8 @@ public class Trie {
 
     boolean containsNode(String word) {
         TrieNode current = root;
-
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            TrieNode node = current.getChildren().get(ch);
+        for (char c : word.toCharArray()) {
+            TrieNode node = current.getChildren().get(c);
             if (node == null) {
                 return false;
             }
