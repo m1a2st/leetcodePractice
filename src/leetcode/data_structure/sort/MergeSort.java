@@ -2,6 +2,7 @@ package leetcode.data_structure.sort;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -12,7 +13,46 @@ import java.util.Date;
  */
 public class MergeSort {
 
-    public static void main(String[] args) {
+    @Test
+    public void test1() {
+        int[] arr = {8, 4, 5, 7, 1, 3, 6, 2};
+        _mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public void _mergeSort(int[] arr) {
+        int len = arr.length;
+        if (len > 1) {
+            int mid = len / 2;
+            int[] leftArr = new int[mid];
+            System.arraycopy(arr, 0, leftArr, 0, mid);
+            _mergeSort(leftArr);
+            int[] rightArr = new int[len - mid];
+            System.arraycopy(arr, mid, rightArr, 0, len - mid);
+            _mergeSort(rightArr);
+            _merge(leftArr, rightArr, arr);
+        }
+    }
+
+    private void _merge(int[] leftArr, int[] rightArr, int[] arr) {
+        int left = 0, right = 0, index = 0;
+        while (left < leftArr.length && right < rightArr.length) {
+            if (leftArr[left] < rightArr[right]) {
+                arr[index++] = leftArr[left++];
+            } else {
+                arr[index++] = rightArr[right++];
+            }
+        }
+        while (left < leftArr.length) {
+            arr[index++] = leftArr[left++];
+        }
+        while (right < rightArr.length) {
+            arr[index++] = rightArr[right++];
+        }
+    }
+
+    @Test
+    public void test() {
         int[] arr = new int[80000];
         int[] temp = new int[80000];
         for (int i = 0; i < 80000; i++) {
@@ -28,7 +68,7 @@ public class MergeSort {
     }
 
     //分+合方法
-    public static void mergeSort(int[] arr, int left, int right, int[] temp) {
+    public void mergeSort(int[] arr, int left, int right, int[] temp) {
         if (left < right) {
             int mid = (left + right) / 2; //中間索引
             //向左遞迴分解
@@ -100,45 +140,4 @@ public class MergeSort {
         }
     }
 
-    @Test
-    public void test() {
-        int[] arr = {8, 7, 44, 32, 5, 6, 3, 0, 1, 33};
-        MergeSortP.mergeSort(arr);
-        for (int i : arr) {
-            System.out.println(i);
-        }
-    }
-
-    class MergeSortP {
-
-        public static void mergeSort(int[] list) {
-            int len = list.length;
-            if (len > 1) {
-                int[] frontHalf = new int[len / 2];
-                System.arraycopy(list, 0, frontHalf, 0, len / 2);
-                mergeSort(frontHalf);
-                int[] backHalf = new int[len - len / 2];
-                System.arraycopy(list, len / 2, backHalf, 0, len - len / 2);
-                mergeSort(backHalf);
-                merge(frontHalf, backHalf, list);
-            }
-        }
-
-        public static void merge(int[] list1, int[] list2, int[] temp) {
-            int i = 0, j = 0, k = 0;
-            while (i < list1.length && j < list2.length) {
-                if (list1[i] < list2[j]) {
-                    temp[k++] = list1[i++];
-                } else {
-                    temp[k++] = list2[j++];
-                }
-            }
-            while (i < list1.length) {
-                temp[k++] = list1[i++];
-            }
-            while (j < list2.length) {
-                temp[k++] = list2[j++];
-            }
-        }
-    }
 }
