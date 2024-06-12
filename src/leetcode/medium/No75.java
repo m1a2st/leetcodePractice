@@ -13,45 +13,25 @@ public class No75 {
         }
     }
 
-    class SolutionP {
+    class Solution {
         public void sortColors(int[] nums) {
             int left = 0, right = nums.length - 1, current = 0;
             while (current <= right) {
-                if (nums[current] == 2) {
-                    swap(nums, current, right);
-                    right--;
-                } else if (nums[current] == 1) {
+                int num = nums[current];
+                if (num == 2) {
+                    swap(nums, current, right--);
+                } else if (num == 1) {
                     current++;
                 } else {
-                    swap(nums, current, left);
-                    left++;
-                    current++;
+                    swap(nums, left++, current++);
                 }
             }
         }
 
-        private void swap(int[] nums, int i, int j) {
-            int k = nums[i];
-            nums[i] = nums[j];
-            nums[j] = k;
-        }
-    }
-
-    class Solution {
-        public void sortColors(int[] nums) {
-            for (int i = 0; i < nums.length; i++) {
-                for (int j = i + 1; j < nums.length; j++) {
-                    if (nums[i] > nums[j]) {
-                        swap(nums, i, j);
-                    }
-                }
-            }
-        }
-
-        private void swap(int[] nums, int i, int j) {
-            int k = nums[i];
-            nums[i] = nums[j];
-            nums[j] = k;
+        public void swap(int[] nums, int left, int right) {
+            int temp = nums[right];
+            nums[right] = nums[left];
+            nums[left] = temp;
         }
     }
 
