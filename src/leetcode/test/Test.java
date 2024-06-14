@@ -30,8 +30,16 @@ import java.util.stream.Collectors;
  * @Description
  */
 public class Test {
+    
+    @org.junit.jupiter.api.Test
+    public void test() {
+        LocalDate startDate = LocalDate.of(2021, 1, 1);
+        LocalDate endDate = LocalDate.of(2021, 1, 2);
+        System.out.println(startDate.isBefore(endDate));
+        System.out.println(startDate.isAfter(endDate));
+    }
 
-    @org.junit.Test
+    @org.junit.jupiter.api.Test
     public void test1() {
         String s = "abs測試DCF123";
         System.out.println(s.toUpperCase(Locale.ENGLISH));
