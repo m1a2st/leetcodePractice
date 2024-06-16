@@ -12,10 +12,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="junit.platform.launcher" level="application" />
     <orderEntry type="library" exported="" name="junit.jupiter" level="application" />
-    <orderEntry type="library" exported="" name="junit.vintage.engine" level="application" />
-    <orderEntry type="library" name="junit:junit:4.13.2" level="project" />
     <orderEntry type="library" name="com.lotaris.junitee:junitee-data-utils:2.0.1" level="project" />
-    <orderEntry type="library" name="com.bluecatcode.junit:junit-4.10-extended:1.0.4" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit5.7.0">
         <CLASSES>

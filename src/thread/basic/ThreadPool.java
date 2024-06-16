@@ -1,6 +1,5 @@
 package thread.basic;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -34,7 +33,7 @@ public class ThreadPool {
         }
 
         @Override
-        public Thread newThread(@Nonnull Runnable target) {
+        public Thread newThread(Runnable target) {
             Thread t = new Thread(group, target,
                     threadTag + threadNumber.getAndIncrement(),
                     0);
