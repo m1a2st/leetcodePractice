@@ -92,62 +92,60 @@ public class LineCode {
         }
     }
 
-    public class Main {
 
-        enum State {
-            INIT, VISITING, VISITED
+    enum State {
+        INIT, VISITING, VISITED
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        // 讀取節點數量
+        int n = Integer.parseInt(reader.readLine());
+
+        // 建立邊的數據結構
+        List<List<Integer>> edges = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            edges.add(new ArrayList<>());
         }
 
-        public static void main(String[] args) throws IOException {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-            // 讀取節點數量
-            int n = Integer.parseInt(reader.readLine());
-
-            // 建立邊的數據結構
-            List<List<Integer>> edges = new ArrayList<>();
-            for (int i = 0; i < n; i++) {
-                edges.add(new ArrayList<>());
-            }
-
-            // 使用鄰接表存儲有向圖
-            String line;
-            while ((line = reader.readLine()) != null && !line.isEmpty()) {
-                String[] splitLine = line.split(" ");
-                int fromNode = Integer.parseInt(splitLine[0]);
-                int toNode = Integer.parseInt(splitLine[1]);
-                edges.get(fromNode).add(toNode);
-            }
-
-            // 檢查有向圖中是否存在循環
-            State[] visited = new State[n];
-            for (int i = 0; i < n; i++) {
-                if (hasCycle(i, visited, edges)) {
-                    System.out.println("true");
-                    return;
-                }
-            }
-            System.out.println("false");
+        // 使用鄰接表存儲有向圖
+        String line;
+        while ((line = reader.readLine()) != null && !line.isEmpty()) {
+            String[] splitLine = line.split(" ");
+            int fromNode = Integer.parseInt(splitLine[0]);
+            int toNode = Integer.parseInt(splitLine[1]);
+            edges.get(fromNode).add(toNode);
         }
 
-        private static boolean hasCycle(int node, State[] visited, List<List<Integer>> edges) {
-            if (visited[node] == State.VISITING) {
-                // 節點已在訪問中，存在循環
-                return true;
+        // 檢查有向圖中是否存在循環
+        State[] visited = new State[n];
+        for (int i = 0; i < n; i++) {
+            if (hasCycle(i, visited, edges)) {
+                System.out.println("true");
+                return;
             }
-            if (visited[node] == State.VISITED) {
-                // 節點已被訪問過，則直接返回 false
-                return false;
-            }
-            visited[node] = State.VISITING;
-            for (int edge : edges.get(node)) {
-                if (hasCycle(edge, visited, edges)) {
-                    return true;
-                }
-            }
-            visited[node] = State.VISITED;
+        }
+        System.out.println("false");
+    }
+
+    private static boolean hasCycle(int node, State[] visited, List<List<Integer>> edges) {
+        if (visited[node] == State.VISITING) {
+            // 節點已在訪問中，存在循環
+            return true;
+        }
+        if (visited[node] == State.VISITED) {
+            // 節點已被訪問過，則直接返回 false
             return false;
         }
+        visited[node] = State.VISITING;
+        for (int edge : edges.get(node)) {
+            if (hasCycle(edge, visited, edges)) {
+                return true;
+            }
+        }
+        visited[node] = State.VISITED;
+        return false;
     }
 
     static class Pair {
@@ -188,23 +186,23 @@ public class LineCode {
     }
 
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        MaxInSlidingWindow maxInWin = new MaxInSlidingWindow();
-
-        // 從第一行讀取窗口大小
-        long windowSize = Long.parseLong(reader.readLine().trim());
-
-        String line;
-        long index = 0;
-        while ((line = reader.readLine()) != null) {
-            long num = Long.parseLong(line);
-            maxInWin.in(num, index, windowSize);
-            if (index >= windowSize - 1) {
-                // 當讀取的行數大於窗口大小時，就輸出當前窗口中的最大值
-                System.out.println(maxInWin.getMaxValue());
-            }
-            index++;
-        }
-    }
+//    public static void main(String[] args) throws IOException {
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//        MaxInSlidingWindow maxInWin = new MaxInSlidingWindow();
+//
+//        // 從第一行讀取窗口大小
+//        long windowSize = Long.parseLong(reader.readLine().trim());
+//
+//        String line;
+//        long index = 0;
+//        while ((line = reader.readLine()) != null) {
+//            long num = Long.parseLong(line);
+//            maxInWin.in(num, index, windowSize);
+//            if (index >= windowSize - 1) {
+//                // 當讀取的行數大於窗口大小時，就輸出當前窗口中的最大值
+//                System.out.println(maxInWin.getMaxValue());
+//            }
+//            index++;
+//        }
+//    }
 }
