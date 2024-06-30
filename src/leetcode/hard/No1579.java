@@ -56,7 +56,7 @@ public class No1579 {
 
         /**
          * path compression
-         * @{link <a href="https://haogroot.com/2021/01/29/union_find-leetcode/"></a>}
+         * @{link <a href="https://haogroot.com/2021/01/29/union_find-leetcode/">...</a>}
          */
         private int find(int u) {
             return id[u] == u ? u : (id[u] = find(id[u]));
