@@ -74,12 +74,26 @@ public class TestClass {
             System.out.println(value.apply((int) d, (int) d1));
         }
     }
+    
+    @Test
+    public void test6() {
+        new Cat(1);
+    }
 
     class Cat {
         int age;
 
         public Cat(int age) {
+            System.out.println("constructor Cat");
             this.age = age;
+        }
+        
+        static {
+            System.out.println("static Cat");
+        }
+
+        {
+            System.out.println("{} Cat " + age);
         }
 
         public NewCat toNewCat() {
