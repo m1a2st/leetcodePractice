@@ -3,9 +3,6 @@ package leetcode.medium;
 import java.util.Stack;
 
 public class No1190 {
-
-
-    
     
     class Solution {
         public String reverseParentheses(String s) {
