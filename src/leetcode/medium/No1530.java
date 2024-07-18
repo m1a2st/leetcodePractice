@@ -1,6 +1,25 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 public class No1530 {
+    
+    @Test
+    public void test() {
+        TreeNode root = new TreeNode(1);
+        TreeNode l = new TreeNode(2);
+        TreeNode r = new TreeNode(3);
+        TreeNode ll = new TreeNode(4);
+        TreeNode lr = new TreeNode(5);
+        TreeNode rl = new TreeNode(6);
+        TreeNode rr = new TreeNode(7);
+        root.left = l;
+        root.right = r;
+        l.left = ll;
+        l.right = lr;
+        r.right = rr;
+        System.out.println(new Solution().countPairs(root, 3));
+    }
 
 
     class Solution {
