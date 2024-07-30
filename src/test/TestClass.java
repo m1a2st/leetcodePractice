@@ -3,14 +3,32 @@ package test;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingDeque;
 import java.util.stream.Collectors;
 
 public class TestClass {
+    
+    @Test
+    public void drainTo() {
+        ArrayBlockingQueue<Integer> deque = new ArrayBlockingQueue<>(10, true);
+        deque.add(1);
+        deque.add(2);
+        deque.add(3);
+        deque.add(4);
+        deque.add(5);
+        List<Integer> ls = new ArrayList<>();
+        deque.drainTo(ls, 3);
+        ls.forEach(System.out::println);
+        deque.forEach(System.out::println);
+    }
 
     @Test
     public void test() {
