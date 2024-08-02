@@ -6,23 +6,22 @@ public class No2134 {
         public int minSwaps(int[] nums) {
             int onesCount = 0;
             for (int num : nums) {
-                onesCount = onesCount + num;
+                onesCount += num;
             }
-            int n = nums.length, left = 0, right = 0, windowSize = 0;
-            // 窗口大小為 0 到 onesCount
+            int len = nums.length;
+            int left = 0;
+            int right = 0;
+            int windowOnesCount = 0;
             while (right < onesCount) {
-                windowSize = windowSize + nums[right % n];
-                right++;
+                windowOnesCount += nums[right++];
             }
-            int result = onesCount - windowSize;
-            while (right < n + onesCount) {
-                windowSize = windowSize + nums[right % n];
-                windowSize = windowSize - nums[left % n];
-                right++;
-                left++;
-                result = Math.min(result, onesCount - windowSize);
+            int ans = onesCount - windowOnesCount;
+            while (right < len + onesCount) {
+                windowOnesCount += nums[right++ % len];
+                windowOnesCount -= nums[left++ % len];
+                ans = Math.min(ans, onesCount - windowOnesCount);
             }
-            return result;
+            return ans;
         }
     }
 }
