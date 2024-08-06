@@ -2,7 +2,7 @@ package test;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(TimeoutTestTemplate.class)
+@ExtendWith({TimeoutTestTemplate.class, PrintTestTemplate.class})
 public class Junit5Test {
     
     @TimeoutTest(timeout = "1", timeUnit = "SECONDS")
