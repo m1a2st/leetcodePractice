@@ -7,11 +7,11 @@ public class No273 {
             return num == 0 ? "Zero" : helper(num);
         }
 
-        private final String[] belowTwenty = {"",        "One",     "Two",       "Three",    "Four",
-                "Five",    "Six",     "Seven",     "Eight",    "Nine",
-                "Ten",     "Eleven",  "Twelve",    "Thirteen", "Fourteen",
+        private final String[] belowTwenty = {"", "One", "Two", "Three", "Four",
+                "Five", "Six", "Seven", "Eight", "Nine",
+                "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
                 "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-        private final String[] tens = {"",      "",      "Twenty",  "Thirty", "Forty",
+        private final String[] tens = {"", "", "Twenty", "Thirty", "Forty",
                 "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 
         private String helper(int num) {
