@@ -1,6 +1,14 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Test;
+
 public class No264 {
+    
+    @Test
+    void test() {
+        int n = 10;
+        System.out.println(new Solution().nthUglyNumber(n));
+    }
 
     class Solution {
         public int nthUglyNumber(int n) {
