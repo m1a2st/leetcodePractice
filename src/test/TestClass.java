@@ -1,5 +1,6 @@
 package test;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ import java.util.concurrent.BlockingDeque;
 import java.util.stream.Collectors;
 
 public class TestClass {
-    
+
     @Test
     public void drainTo() {
         ArrayBlockingQueue<Integer> deque = new ArrayBlockingQueue<>(10, true);
@@ -92,10 +93,26 @@ public class TestClass {
             System.out.println(value.apply((int) d, (int) d1));
         }
     }
-    
+
     @Test
     public void test6() {
         new Cat(1);
+    }
+    
+    @Test
+    public void test7() {
+        List<String> assignmentStrategies = null;
+        Assertions.assertDoesNotThrow(() -> checkPartitionAssigmentStrategy(assignmentStrategies));
+        List<String> assignmentStrategies1 = new ArrayList<>();
+        Assertions.assertDoesNotThrow(() -> checkPartitionAssigmentStrategy(assignmentStrategies1));
+        List<String> assignmentStrategies2 = List.of("a", "b", "c");
+        Assertions.assertThrows(RuntimeException.class, () -> checkPartitionAssigmentStrategy(assignmentStrategies2));
+    }
+
+    private void checkPartitionAssigmentStrategy(List<String> assignmentStrategies) {
+        if (assignmentStrategies != null && !assignmentStrategies.isEmpty()) {
+            throw new RuntimeException();
+        }
     }
 
     class Cat {
@@ -105,7 +122,7 @@ public class TestClass {
             System.out.println("constructor Cat");
             this.age = age;
         }
-        
+
         static {
             System.out.println("static Cat");
         }
