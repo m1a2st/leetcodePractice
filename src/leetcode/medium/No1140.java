@@ -16,19 +16,19 @@ public class No1140 {
             return stoneGameII(suffix, 0, 1, mem);
         }
 
-        // Returns the maximum number of stones Alice can get from piles[i..n) with M.
-        private int stoneGameII(int[] suffix, int i, int M, int[][] mem) {
-            if (i + 2 * M >= suffix.length)
+        // Returns the maximum number of stones Alice can get from piles[i..n) with m.
+        private int stoneGameII(int[] suffix, int i, int m, int[][] mem) {
+            if (i + 2 * m >= suffix.length)
                 return suffix[i];
-            if (mem[i][M] != -1)
-                return mem[i][M];
+            if (mem[i][m] != -1)
+                return mem[i][m];
 
             int opponent = suffix[i];
 
-            for (int X = 1; X <= 2 * M; ++X)
-                opponent = Math.min(opponent, stoneGameII(suffix, i + X, Math.max(M, X), mem));
+            for (int X = 1; X <= 2 * m; ++X)
+                opponent = Math.min(opponent, stoneGameII(suffix, i + X, Math.max(m, X), mem));
 
-            return mem[i][M] = suffix[i] - opponent;
+            return mem[i][m] = suffix[i] - opponent;
         }
     }
 }
