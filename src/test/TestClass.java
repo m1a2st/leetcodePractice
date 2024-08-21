@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingDeque;
 import java.util.stream.Collectors;
@@ -107,6 +108,15 @@ public class TestClass {
         Assertions.assertDoesNotThrow(() -> checkPartitionAssigmentStrategy(assignmentStrategies1));
         List<String> assignmentStrategies2 = List.of("a", "b", "c");
         Assertions.assertThrows(RuntimeException.class, () -> checkPartitionAssigmentStrategy(assignmentStrategies2));
+    }
+    
+    @Test
+    public void test8() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("a", List.of(1, 2, 3));
+        map.put("b", List.of(4, 5, 6));
+        List<String> a = (List<String>) map.get("a");
+        
     }
 
     private void checkPartitionAssigmentStrategy(List<String> assignmentStrategies) {
