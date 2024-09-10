@@ -118,6 +118,13 @@ public class TestClass {
         List<String> a = (List<String>) map.get("a");
         
     }
+    
+    @Test
+    public void testTriFunction() {
+        TriFunction<Integer, Integer, Integer, String> triFunction = (a, b, c) -> String.valueOf(a + b + c);
+        String apply = triFunction.apply(1, 2, 3);
+        System.out.println(apply);
+    }
 
     private void checkPartitionAssigmentStrategy(List<String> assignmentStrategies) {
         if (assignmentStrategies != null && !assignmentStrategies.isEmpty()) {
@@ -152,5 +159,10 @@ public class TestClass {
         public NewCat(int age) {
             this.age = age;
         }
+    }
+
+    @FunctionalInterface
+    interface TriFunction<A, B, C, R> {
+        R apply(A a, B b, C c);
     }
 }
