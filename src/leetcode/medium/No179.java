@@ -9,7 +9,7 @@ public class No179 {
     @Test
     public void test() {
         Solution solution = new Solution();
-        int[] nums = {3, 30, 34, 5, 9};
+        int[] nums = {3, 30, 34, 5, 9, 0};
         System.out.println(solution.largestNumber(nums));
     }
 
@@ -19,7 +19,7 @@ public class No179 {
             for (int i = 0; i < nums.length; i++) {
                 strNums[i] = String.valueOf(nums[i]);
             }
-            Arrays.sort(strNums, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
+            Arrays.sort(strNums, (a, b) -> (b + a).compareTo(a + b));
             if (strNums[0].equals("0")) {
                 return "0";
             }
