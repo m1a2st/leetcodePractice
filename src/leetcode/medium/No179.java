@@ -23,11 +23,11 @@ public class No179 {
             if (strNums[0].equals("0")) {
                 return "0";
             }
-            StringBuilder sb = new StringBuilder();
+            StringBuilder ans = new StringBuilder();
             for (String strNum : strNums) {
-                sb.append(strNum);
+                ans.append(strNum);
             }
-            return sb.toString();
+            return ans.toString();
         }
     }
 }
