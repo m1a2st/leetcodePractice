@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,6 +19,16 @@ import java.util.concurrent.BlockingDeque;
 import java.util.stream.Collectors;
 
 public class TestClass {
+    
+    @Test
+    public void join() {
+        List<String> list = List.of("a", "b", "c");
+        String join = String.join(",", list);
+        System.out.println(join);
+        List<String> empty = Collections.emptyList();
+        String join1 = String.join(",", empty);
+        System.out.println(join1);
+    }
 
     @Test
     public void drainTo() {
