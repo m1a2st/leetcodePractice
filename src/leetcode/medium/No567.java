@@ -15,56 +15,27 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class No567 {
 
-    class Solution {
+    class SolutionP {
         public boolean checkInclusion(String s1, String s2) {
-            int len2 = s2.length();
-            int len1 = s1.length();
-            // 窗口大小固定為s1的長度
-            Map<Character, Integer> count = new HashMap<>(len1);
-            int left = 0, right = 0;
-            while (right < len2) {
-                // 取出right的值
-                char r = s2.charAt(right);
-                // 放進windows 裡面
-                count.put(r, count.getOrDefault(r, 0) + 1);
-                // 移動左指針
-                right++;
-                System.out.printf("window: [%d, %d)\n", left, right);
-                // 當窗口大小為 s1 長度時
-                if (right - left == len1) {
-                    // 判斷是否為相同字串
-                    if (checkStringIsValid(count, s1)) {
+            int[] cache = new int[26];
+            for (char c : s1.toCharArray()) {
+                cache[c - 'a']++;
+            }
+            int required = s1.length();
+            for (int left = 0, right = 0; right < s2.length(); ++right) {
+                if (cache[s2.charAt(right) - 'a']-- > 0) {
+                    required--;
+                }
+                while (required == 0) {
+                    if (right - left + 1 == s1.length()) {
                         return true;
                     }
-                    // 把左只真的值移出window
-                    char l = s2.charAt(left);
-                    count.put(l, count.get(l) - 1);
-                    // 若為0時則移出window
-                    if (count.get(l) == 0) {
-                        count.remove(l);
+                    if (++cache[s2.charAt(left++) - 'a'] > 0) {
+                        required++;
                     }
-                    left++;
                 }
-
             }
-            // 不是的話遍歷完，回傳false
             return false;
-        }
-
-        private boolean checkStringIsValid(Map<Character, Integer> count, String s1) {
-            Map<Character, Integer> copy = new HashMap<>(count);
-            for (int i = 0; i < s1.length(); i++) {
-                char c = s1.charAt(i);
-                if (copy.containsKey(c)) {
-                    copy.put(c, copy.get(c) - 1);
-                    if (copy.get(c) == 0) {
-                        copy.remove(c);
-                    }
-                } else {
-                    return false;
-                }
-            }
-            return copy.size() == 0;
         }
     }
 
@@ -76,11 +47,11 @@ public class No567 {
 
     @Test
     public void test2() {
-        SolutionGood solution = new SolutionGood();
+        Solution solution = new Solution();
         assertFalse(solution.checkInclusion("ab", "eidboaoo"));
     }
 
-    class SolutionGood {
+    class Solution {
         public boolean checkInclusion(String s1, String s2) {
             int[] count = new int[26];
             int required = s1.length();
