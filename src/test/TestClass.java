@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +20,13 @@ import java.util.concurrent.BlockingDeque;
 import java.util.stream.Collectors;
 
 public class TestClass {
+    
+    @Test
+    public void scale() {
+        BigDecimal b = new BigDecimal("1222");
+        BigDecimal scale = b.setScale(2, RoundingMode.HALF_UP);
+        System.out.println(scale);
+    }
     
     @Test
     public void join() {
