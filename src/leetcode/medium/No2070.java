@@ -6,34 +6,40 @@ import java.util.Comparator;
 public class No2070 {
 
     class Solution {
+
         public int[] maximumBeauty(int[][] items, int[] queries) {
             int[] ans = new int[queries.length];
-            int[] maxBeautySoFar = new int[items.length + 1];
-
+            // Sort and store max beauty
             Arrays.sort(items, Comparator.comparingInt(a -> a[0]));
+            int max = items[0][1];
+            for (int i = 0; i < items.length; i++) {
+                max = Math.max(max, items[i][1]);
+                items[i][1] = max;
+            }
 
-            for (int i = 0; i < items.length; ++i)
-                maxBeautySoFar[i + 1] = Math.max(maxBeautySoFar[i], items[i][1]);
-
-            for (int i = 0; i < queries.length; ++i) {
-                final int index = firstGreater(items, queries[i]);
-                ans[i] = maxBeautySoFar[index];
+            for (int i = 0; i < queries.length; i++) {
+                // answer i-th query
+                ans[i] = binarySearch(items, queries[i]);
             }
 
             return ans;
         }
 
-        private int firstGreater(int[][] items, int q) {
+        private int binarySearch(int[][] items, int targetPrice) {
             int l = 0;
-            int r = items.length;
-            while (l < r) {
-                final int m = (l + r) / 2;
-                if (items[m][0] > q)
-                    r = m;
-                else
-                    l = m + 1;
+            int r = items.length - 1;
+            int maxBeauty = 0;
+            while (l <= r) {
+                int mid = (l + r) / 2;
+                if (items[mid][0] > targetPrice) {
+                    r = mid - 1;
+                } else {
+                    // Found viable price. Keep moving to right
+                    maxBeauty = Math.max(maxBeauty, items[mid][1]);
+                    l = mid + 1;
+                }
             }
-            return l;
+            return maxBeauty;
         }
     }
 }
