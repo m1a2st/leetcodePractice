@@ -13,7 +13,9 @@ public class No2290 {
             final int m = grid.length;
             final int n = grid[0].length;
             Queue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a[0])) {
-                { offer(new int[] {grid[0][0], 0, 0}); } // (d, i, j)
+                {
+                    offer(new int[]{grid[0][0], 0, 0});
+                } // (d, i, j)
             };
             int[][] dist = new int[m][n];
             Arrays.stream(dist).forEach(A -> Arrays.fill(A, Integer.MAX_VALUE));
@@ -33,7 +35,7 @@ public class No2290 {
                     final int newDist = d + grid[i][j];
                     if (newDist < dist[x][y]) {
                         dist[x][y] = newDist;
-                        minHeap.offer(new int[] {newDist, x, y});
+                        minHeap.offer(new int[]{newDist, x, y});
                     }
                 }
             }
