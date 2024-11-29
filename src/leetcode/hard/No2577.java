@@ -38,7 +38,7 @@ public class No2577 {
                     seen[x][y] = true;
                 }
             }
-
+            
             throw new IllegalArgumentException();
         }
     }
