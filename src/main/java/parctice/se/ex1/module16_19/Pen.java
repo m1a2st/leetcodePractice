@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module16_19;
+package parctice.se.ex1.module16_19;
 
 /*
  * 設計此類別與PenTest.java一起使用

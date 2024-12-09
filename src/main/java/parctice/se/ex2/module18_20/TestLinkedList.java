@@ -5,7 +5,7 @@
  * Object getFirst();       Object getLast(); 等方法
  */
 
-package main.java.parctice.se.ex2.module18_20;
+package parctice.se.ex2.module18_20;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,7 +16,6 @@ public class TestLinkedList {
         LinkedList list = new LinkedList();
         list.add(Integer.valueOf(12));
         list.add(Long.valueOf(34L));
-        list.add(new Double(5.6));
         list.add("Hello");
         list.add("Hello"); // duplicate, is added
 

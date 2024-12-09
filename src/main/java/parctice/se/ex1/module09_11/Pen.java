@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module09_11;
+package parctice.se.ex1.module09_11;
 
 /*
  * 設計一個筆的類別，搭配PenTest.java一起參考使用

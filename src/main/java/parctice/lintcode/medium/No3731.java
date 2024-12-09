@@ -1,4 +1,4 @@
-package main.java.parctice.lintcode.medium;
+package parctice.lintcode.medium;
 
 public class No3731 {
 

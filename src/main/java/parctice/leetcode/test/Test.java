@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.test;
+package parctice.leetcode.test;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

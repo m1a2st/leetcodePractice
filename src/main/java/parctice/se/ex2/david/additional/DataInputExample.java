@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.additional;
+package parctice.se.ex2.david.additional;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

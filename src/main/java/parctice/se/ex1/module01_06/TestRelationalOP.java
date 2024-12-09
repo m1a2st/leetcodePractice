@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module01_06;
+package parctice.se.ex1.module01_06;
 
 /*
  * 此範例為關係運算子測試使用

@@ -1,4 +1,4 @@
-package main.java.parctice.thread;
+package parctice.thread;
 
 /**
  * @Author m1a2st

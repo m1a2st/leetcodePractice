@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module07_08;
+package parctice.se.ex1.module07_08;
 
 /*
  * 巢狀迴圈應用，寫九九乘法表

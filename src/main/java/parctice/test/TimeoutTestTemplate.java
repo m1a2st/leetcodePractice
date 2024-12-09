@@ -1,4 +1,4 @@
-package main.java.parctice.test;
+package parctice.test;
 
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;

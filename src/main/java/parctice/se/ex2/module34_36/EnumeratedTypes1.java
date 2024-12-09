@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module34_36;
+package parctice.se.ex2.module34_36;
 
 /*
  將數個參考值或名稱集合在一起。

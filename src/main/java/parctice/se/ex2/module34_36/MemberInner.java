@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module34_36;
+package parctice.se.ex2.module34_36;
 
 class Outer2 {
     static int x = 1;

@@ -1,6 +1,4 @@
-package main.java.parctice.leetcode.medium;
-
-import static kotlin.reflect.jvm.internal.impl.utils.DFS.dfs;
+package parctice.leetcode.medium;
 
 public class No1038 {
 

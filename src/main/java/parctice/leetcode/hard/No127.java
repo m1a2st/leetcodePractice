@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.hard;
+package parctice.leetcode.hard;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.easy;
+package parctice.leetcode.easy;
 
 import java.util.ArrayList;
 import java.util.Stack;

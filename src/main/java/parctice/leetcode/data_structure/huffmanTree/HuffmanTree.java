@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.huffmanTree;
+package parctice.leetcode.data_structure.huffmanTree;
 
 import java.util.ArrayList;
 import java.util.Collections;

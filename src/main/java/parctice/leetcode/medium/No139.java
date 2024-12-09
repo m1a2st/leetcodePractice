@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.medium;
+package parctice.leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ public class No139 {
     @Test
     public void test() {
         Solution solution = new Solution();
-        System.out.println(solution.wordBreak("main/java/parctice/leetcode", List.of("leet", "code")));
+        System.out.println(solution.wordBreak("parctice/leetcode", List.of("leet", "code")));
     }
 
     class Solution {

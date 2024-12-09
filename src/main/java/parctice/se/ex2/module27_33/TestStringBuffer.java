@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module27_33;
+package parctice.se.ex2.module27_33;
 
 public class TestStringBuffer {
     public static void main(String[] args) {

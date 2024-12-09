@@ -1,8 +1,8 @@
-package main.java.parctice.se.ex2.david.stream.parallel;
+package parctice.se.ex2.david.stream.parallel;
 
 
-import main.java.parctice.se.ex2.david.stream.Employee;
-import main.java.parctice.se.ex2.david.stream.Role;
+import parctice.se.ex2.david.stream.Employee;
+import parctice.se.ex2.david.stream.Role;
 
 import java.util.List;
 

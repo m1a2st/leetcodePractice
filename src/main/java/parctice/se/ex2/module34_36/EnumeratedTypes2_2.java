@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module34_36;
+package parctice.se.ex2.module34_36;
 
 /*更複雜的列舉定義
  底下示範了一個比較複雜的例子，由這個例子中可以看出，

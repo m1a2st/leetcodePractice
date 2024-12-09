@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module21_26;
+package parctice.se.ex2.module21_26;
 
 public class SelfishTest {
     private final static int NUMRUNNERS = 2;

@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.tree.threadedBinaryTree;
+package parctice.leetcode.data_structure.tree.threadedBinaryTree;
 
 /**
  * @Author

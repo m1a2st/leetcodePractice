@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.stream;
+package parctice.se.ex2.david.stream;
 
 import java.util.HashMap;
 import java.util.List;

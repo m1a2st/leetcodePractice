@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module21_26;
+package parctice.se.ex2.module21_26;
 //多執行緒
 
 public class CounterRunnable implements Runnable {

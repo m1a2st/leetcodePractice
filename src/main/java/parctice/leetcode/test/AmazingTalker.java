@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.test;
+package parctice.leetcode.test;
 
 public class AmazingTalker {
 

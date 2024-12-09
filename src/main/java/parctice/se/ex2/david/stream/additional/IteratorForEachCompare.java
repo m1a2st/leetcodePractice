@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.stream.additional;
+package parctice.se.ex2.david.stream.additional;
 
 import java.time.Duration;
 import java.time.Instant;

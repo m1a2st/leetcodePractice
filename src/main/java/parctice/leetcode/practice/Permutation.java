@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.practice;
+package parctice.leetcode.practice;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

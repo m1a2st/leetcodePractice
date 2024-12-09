@@ -1,4 +1,4 @@
-package main.java.parctice.thread;
+package parctice.thread;
 
 import java.util.ArrayList;
 import java.util.List;

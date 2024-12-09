@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module07_08;
+package parctice.se.ex1.module07_08;
 
 /*
  * 此範例為程式流程制控(if - else)使用範例

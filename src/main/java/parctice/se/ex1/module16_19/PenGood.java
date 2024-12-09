@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module16_19;
+package parctice.se.ex1.module16_19;
 
 /*
  * 正確的資料封裝處理示範

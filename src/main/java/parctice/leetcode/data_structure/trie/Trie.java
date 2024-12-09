@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.trie;
+package parctice.leetcode.data_structure.trie;
 
 public class Trie {
     private final TrieNode root;

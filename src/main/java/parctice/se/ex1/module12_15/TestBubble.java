@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module12_15;
+package parctice.se.ex1.module12_15;
 
 public class TestBubble {
 

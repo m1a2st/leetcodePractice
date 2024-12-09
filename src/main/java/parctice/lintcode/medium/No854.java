@@ -1,4 +1,4 @@
-package main.java.parctice.lintcode.medium;
+package parctice.lintcode.medium;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

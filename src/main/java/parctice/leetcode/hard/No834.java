@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.hard;
+package parctice.leetcode.hard;
 
 public class No834 {
 

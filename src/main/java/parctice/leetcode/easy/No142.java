@@ -1,6 +1,6 @@
-package main.java.parctice.leetcode.easy;
+package parctice.leetcode.easy;
 
-import main.java.parctice.leetcode.medium.ListNode;
+import parctice.leetcode.medium.ListNode;
 
 public class No142 {
     public ListNode detectCycle(ListNode head) {

@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module21_26;
+package parctice.se.ex2.module21_26;
 
 import java.io.PrintWriter;
 

@@ -1,6 +1,6 @@
-package main.java.parctice.leetcode.medium;
+package parctice.leetcode.medium;
 
-import main.java.parctice.leetcode.easy.No108;
+import parctice.leetcode.easy.No108;
 
 import java.util.ArrayList;
 import java.util.List;

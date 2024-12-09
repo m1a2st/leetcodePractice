@@ -1,8 +1,8 @@
-package main.java.parctice.se.ex2.david.stream.additional;
+package parctice.se.ex2.david.stream.additional;
 
-import main.java.parctice.se.ex2.david.stream.Employee;
-import main.java.parctice.se.ex2.david.stream.Gender;
-import main.java.parctice.se.ex2.david.stream.Role;
+import parctice.se.ex2.david.stream.Employee;
+import parctice.se.ex2.david.stream.Gender;
+import parctice.se.ex2.david.stream.Role;
 
 import java.time.LocalDate;
 import java.util.List;

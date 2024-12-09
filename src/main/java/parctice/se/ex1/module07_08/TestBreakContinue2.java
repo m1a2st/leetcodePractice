@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module07_08;
+package parctice.se.ex1.module07_08;
 
 /*
  * 迴圈搭配continue與標籤的範例說明

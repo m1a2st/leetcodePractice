@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.linkedList;
+package parctice.leetcode.data_structure.linkedList;
 
 /**
  * @Author

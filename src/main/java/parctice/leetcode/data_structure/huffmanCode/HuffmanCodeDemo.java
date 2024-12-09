@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.huffmanCode;
+package parctice.leetcode.data_structure.huffmanCode;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

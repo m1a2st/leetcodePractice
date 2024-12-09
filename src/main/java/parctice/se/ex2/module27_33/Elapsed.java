@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module27_33;
+package parctice.se.ex2.module27_33;
 
 public class Elapsed {
     public static void main(java.lang.String[] args) {

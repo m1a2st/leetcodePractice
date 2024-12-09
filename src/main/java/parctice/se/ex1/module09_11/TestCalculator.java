@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module09_11;
+package parctice.se.ex1.module09_11;
 
 /*
  * 觀察方法傳入參數之間與回傳值的對應

@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module09_11;
+package parctice.se.ex1.module09_11;
 
 /*
  * 建立方法並觀察參數傳遞與回傳值

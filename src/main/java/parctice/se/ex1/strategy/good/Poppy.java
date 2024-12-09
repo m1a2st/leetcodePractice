@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.strategy.good;
+package parctice.se.ex1.strategy.good;
 
 public class Poppy extends Hero {
 

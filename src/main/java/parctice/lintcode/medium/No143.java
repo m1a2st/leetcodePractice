@@ -1,4 +1,4 @@
-package main.java.parctice.lintcode.medium;
+package parctice.lintcode.medium;
 
 import org.junit.jupiter.api.Test;
 

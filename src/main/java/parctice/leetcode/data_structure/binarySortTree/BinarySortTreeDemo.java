@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.binarySortTree;
+package parctice.leetcode.data_structure.binarySortTree;
 
 /**
  * @Author

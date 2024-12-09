@@ -1,4 +1,4 @@
-package main.java.parctice.nio;
+package parctice.nio;
 
 import java.io.File;
 import java.io.FileOutputStream;

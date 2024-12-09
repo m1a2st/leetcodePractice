@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module01_06;
+package parctice.se.ex1.module01_06;
 
 /*
  * 此範例為練習基本型態變數宣告與初始化

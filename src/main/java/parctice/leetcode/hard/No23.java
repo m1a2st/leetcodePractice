@@ -1,6 +1,6 @@
-package main.java.parctice.leetcode.hard;
+package parctice.leetcode.hard;
 
-import main.java.parctice.leetcode.medium.ListNode;
+import parctice.leetcode.medium.ListNode;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

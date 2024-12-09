@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module07_08;
+package parctice.se.ex1.module07_08;
 
 /*
  * 此範例為while迴圈測試

@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.medium;
+package parctice.leetcode.medium;
 
 public class No974 {
     class Solution {

@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module21_26;
+package parctice.se.ex2.module21_26;
 
 /**
  * 自私的執行緒 -自私的執行緒(selfish thread): 實踐了 "socially-impaired" 特性

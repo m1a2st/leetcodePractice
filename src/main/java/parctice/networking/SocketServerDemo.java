@@ -1,4 +1,4 @@
-package main.java.parctice.networking;
+package parctice.networking;
 
 import java.io.BufferedReader;
 import java.io.IOException;

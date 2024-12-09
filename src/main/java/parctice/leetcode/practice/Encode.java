@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.practice;
+package parctice.leetcode.practice;
 
 /**
  * @Author

@@ -1,4 +1,4 @@
-package main.java.parctice.test;
+package parctice.test;
 
 public enum Operator {
     ADD("+") {

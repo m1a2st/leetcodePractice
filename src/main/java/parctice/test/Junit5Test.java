@@ -1,4 +1,4 @@
-package main.java.parctice.test;
+package parctice.test;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 

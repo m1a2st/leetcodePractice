@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module06_12;
+package parctice.se.ex2.module06_12;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module01_05;
+package parctice.se.ex2.module01_05;
 
 public class TestThrowDemo {
     public static double method(double i, double j) throws ArithmeticException {

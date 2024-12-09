@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.commomAlogrithm.horse;
+package parctice.leetcode.data_structure.commomAlogrithm.horse;
 
 import java.awt.Point;
 import java.time.Duration;

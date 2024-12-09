@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.commomAlogrithm.dijkstra;
+package parctice.leetcode.data_structure.commomAlogrithm.dijkstra;
 
 import java.util.Arrays;
 

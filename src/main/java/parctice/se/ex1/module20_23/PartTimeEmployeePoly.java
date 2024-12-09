@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module20_23;
+package parctice.se.ex1.module20_23;
 
 public class PartTimeEmployeePoly extends EmployeePoly {
     private final double hourPay; //時薪

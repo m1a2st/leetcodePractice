@@ -1,4 +1,4 @@
-package main.java.parctice.networking;
+package parctice.networking;
 
 public class SocketClientDemo {
 

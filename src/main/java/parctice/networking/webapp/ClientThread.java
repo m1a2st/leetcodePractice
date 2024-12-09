@@ -1,4 +1,4 @@
-package main.java.parctice.networking.webapp;
+package parctice.networking.webapp;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module09_11;
+package parctice.se.ex1.module09_11;
 
 /*
  * 此範例為方法多載的示範說明

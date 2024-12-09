@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module20_23;
+package parctice.se.ex1.module20_23;
 
 public class FullTimeEmployee extends Employee {
     private final double monthlySalary; // 月薪

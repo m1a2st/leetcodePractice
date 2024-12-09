@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module24_26;
+package parctice.se.ex1.module24_26;
 
 // 筆類別(父類別)
 // 抽象類別

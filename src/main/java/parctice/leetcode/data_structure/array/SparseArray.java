@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.array;
+package parctice.leetcode.data_structure.array;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

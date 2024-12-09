@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.stream;
+package parctice.se.ex2.david.stream;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -136,8 +136,8 @@ public class Employee {
     }
 
     public static int sortBySalary(Employee a, Employee b) {
-        Double s1 = new Double(a.getSalary());
-        Double s2 = new Double(b.getSalary());
+        Double s1 = a.getSalary();
+        Double s2 = b.getSalary();
         return s1.compareTo(s2);
     }
 

@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.trie;
+package parctice.leetcode.data_structure.trie;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.avl;
+package parctice.leetcode.data_structure.avl;
 
 /**
  * @Author

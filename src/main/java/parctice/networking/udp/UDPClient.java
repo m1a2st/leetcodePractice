@@ -1,4 +1,4 @@
-package main.java.parctice.networking.udp;
+package parctice.networking.udp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

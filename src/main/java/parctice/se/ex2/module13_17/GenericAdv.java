@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module13_17;
+package parctice.se.ex2.module13_17;
 
 class Book<T> {
     T price;

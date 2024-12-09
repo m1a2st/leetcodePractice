@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module07_08;
+package parctice.se.ex1.module07_08;
 
 /*
  * 三種迴圈比較用法

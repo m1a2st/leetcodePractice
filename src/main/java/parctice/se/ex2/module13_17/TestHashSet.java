@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module13_17;
+package parctice.se.ex2.module13_17;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,7 +10,6 @@ public class TestHashSet {
         Set set = new HashSet();
         set.add(Integer.valueOf(12));
         set.add(Long.valueOf(34L));
-        set.add(new Double(5.6));
         set.add("Hello");
         set.add("Hello"); // 值重覆不會加入
 

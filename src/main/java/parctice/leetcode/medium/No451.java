@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.medium;
+package parctice.leetcode.medium;
 
 import java.util.PriorityQueue;
 import java.util.TreeSet;

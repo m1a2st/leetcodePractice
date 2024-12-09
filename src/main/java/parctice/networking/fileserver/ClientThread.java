@@ -1,4 +1,4 @@
-package main.java.parctice.networking.fileserver;
+package parctice.networking.fileserver;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

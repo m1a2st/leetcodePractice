@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.sort;
+package parctice.leetcode.data_structure.sort;
 
 import org.junit.jupiter.api.Test;
 

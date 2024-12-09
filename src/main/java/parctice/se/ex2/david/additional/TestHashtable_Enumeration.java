@@ -11,7 +11,7 @@
  * 取出資料的同時, 必須注意該資料的型態而自行作物件資料轉換(casting)的動作.
  */
 
-package main.java.parctice.se.ex2.david.additional;
+package parctice.se.ex2.david.additional;
 
 import java.util.Collection;
 import java.util.Enumeration;
@@ -24,7 +24,6 @@ public class TestHashtable_Enumeration {
         Hashtable map = new Hashtable();
         map.put("one", Integer.valueOf(1));
         map.put("two", "2");
-        map.put("three", new Float(3.0));
 
         Integer oneValue = (Integer) map.get("one");
         String twoValue = (String) map.get("two");

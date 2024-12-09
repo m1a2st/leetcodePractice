@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module12_15;
+package parctice.se.ex1.module12_15;
 
 /*
  * 觀察陣列的傳值

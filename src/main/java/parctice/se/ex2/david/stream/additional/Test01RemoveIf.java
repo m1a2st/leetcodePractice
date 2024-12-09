@@ -1,7 +1,7 @@
-package main.java.parctice.se.ex2.david.stream.additional;
+package parctice.se.ex2.david.stream.additional;
 
 
-import main.java.parctice.se.ex2.david.stream.Employee;
+import parctice.se.ex2.david.stream.Employee;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module27_30;
+package parctice.se.ex1.module27_30;
 
 public class TestEquals {
     public static void main(String[] args) {

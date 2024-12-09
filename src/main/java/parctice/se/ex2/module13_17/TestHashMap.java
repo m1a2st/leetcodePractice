@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module13_17;
+package parctice.se.ex2.module13_17;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,7 +11,6 @@ public class TestHashMap {
         Map map = new HashMap();
         map.put("one", Integer.valueOf(1));
         map.put("two", "2");
-        map.put("three", new Float(3.0));
 //		map.put("three","hello");//新的value，會覆蓋掉舊的值
 
         System.out.println(map.get("one"));

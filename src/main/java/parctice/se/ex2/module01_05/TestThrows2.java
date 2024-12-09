@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module01_05;
+package parctice.se.ex2.module01_05;
 
 public class TestThrows2 {
     String[] strs = {"Hello1", "Hello2", "Hello3"};

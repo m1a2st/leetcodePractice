@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.practice;
+package parctice.leetcode.practice;
 
 import java.util.HashSet;
 import java.util.Set;

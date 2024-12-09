@@ -1,4 +1,4 @@
-package main.java.parctice.thread.basic;
+package parctice.thread.basic;
 
 public class InterruptDemo {
 

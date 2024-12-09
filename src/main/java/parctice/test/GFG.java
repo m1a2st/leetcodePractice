@@ -1,4 +1,4 @@
-package main.java.parctice.test;
+package parctice.test;
 
 // Java Program to implement Bitap Algorithm.
 

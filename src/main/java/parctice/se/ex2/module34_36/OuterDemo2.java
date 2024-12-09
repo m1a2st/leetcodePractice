@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module34_36;
+package parctice.se.ex2.module34_36;
 
 class OuterDemo2_Test {
     private int outerNumber = 0;

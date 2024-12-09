@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.commomAlogrithm;
+package parctice.leetcode.data_structure.commomAlogrithm;
 
 import java.util.ArrayList;
 import java.util.HashMap;

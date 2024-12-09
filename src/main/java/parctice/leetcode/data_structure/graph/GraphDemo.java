@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.graph;
+package parctice.leetcode.data_structure.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;

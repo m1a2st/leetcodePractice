@@ -1,4 +1,4 @@
-package main.java.parctice.thread.basic;
+package parctice.thread.basic;
 
 import sun.misc.Unsafe;
 
@@ -7,7 +7,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static main.java.parctice.thread.basic.TestCompareAndSwap.OptimisticLockingPlus.THREAD_COUNT;
+import static parctice.thread.basic.TestCompareAndSwap.OptimisticLockingPlus.THREAD_COUNT;
 
 public class TestCompareAndSwap {
 

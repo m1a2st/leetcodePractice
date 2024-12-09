@@ -1,4 +1,4 @@
-package main.java.parctice.thread;
+package parctice.thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

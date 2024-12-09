@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.stream;
+package parctice.se.ex2.david.stream;
 
 public enum Bonus {
     STAFF(0.02), MANAGER(0.04), EXECUTIVE(0.06);

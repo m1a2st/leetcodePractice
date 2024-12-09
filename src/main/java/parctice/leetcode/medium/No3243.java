@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.medium;
+package parctice.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

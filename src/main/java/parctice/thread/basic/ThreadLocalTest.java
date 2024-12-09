@@ -1,4 +1,4 @@
-package main.java.parctice.thread.basic;
+package parctice.thread.basic;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

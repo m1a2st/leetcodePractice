@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module01_06;
+package parctice.se.ex1.module01_06;
 
 /*
  * 此範例為測為型別晉升與型別轉換

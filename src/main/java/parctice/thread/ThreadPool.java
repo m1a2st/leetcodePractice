@@ -1,4 +1,4 @@
-package main.java.parctice.thread;
+package parctice.thread;
 
 public class ThreadPool {
 

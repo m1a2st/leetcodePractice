@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module12_15;
+package parctice.se.ex1.module12_15;
 
 /*
  * 此範例為一維陣列的基本使用示範

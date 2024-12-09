@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.test;
+package parctice.leetcode.test;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -9,8 +9,8 @@ import java.util.Set;
 
 import static java.lang.Character.getNumericValue;
 import static java.lang.Character.isDigit;
-import static main.java.parctice.leetcode.test.Utils.charArr2HashSet;
-import static main.java.parctice.leetcode.test.Utils.charArr2IntegerArr;
+import static parctice.leetcode.test.Utils.charArr2HashSet;
+import static parctice.leetcode.test.Utils.charArr2IntegerArr;
 
 /**
  * @Author m1a2st

@@ -1,4 +1,4 @@
-package main.java.parctice.leetcode.data_structure.hashTable;
+package parctice.leetcode.data_structure.hashTable;
 
 import java.util.Scanner;
 

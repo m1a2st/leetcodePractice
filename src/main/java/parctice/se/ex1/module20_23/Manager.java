@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module20_23;
+package parctice.se.ex1.module20_23;
 
 public class Manager extends FullTimeEmployee {
     private final double bonus; // 獎金; 額外津貼; 特別補助

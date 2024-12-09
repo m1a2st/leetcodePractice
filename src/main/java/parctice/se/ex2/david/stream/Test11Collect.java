@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.stream;
+package parctice.se.ex2.david.stream;
 
 import java.util.ArrayList;
 import java.util.Comparator;

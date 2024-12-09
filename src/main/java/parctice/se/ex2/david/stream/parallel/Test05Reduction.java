@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.david.stream.parallel;
+package parctice.se.ex2.david.stream.parallel;
 
 import java.util.stream.IntStream;
 

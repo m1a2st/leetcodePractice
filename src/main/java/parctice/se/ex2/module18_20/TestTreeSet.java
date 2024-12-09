@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module18_20;
+package parctice.se.ex2.module18_20;
 
 import java.util.Iterator;
 import java.util.Set;

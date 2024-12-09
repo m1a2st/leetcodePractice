@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex1.module09_11;
+package parctice.se.ex1.module09_11;
 
 /*
  * 此範例為傳值傳址測試

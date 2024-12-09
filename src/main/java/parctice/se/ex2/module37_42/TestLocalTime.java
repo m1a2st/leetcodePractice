@@ -1,4 +1,4 @@
-package main.java.parctice.se.ex2.module37_42;
+package parctice.se.ex2.module37_42;
 
 import java.time.LocalTime;
 

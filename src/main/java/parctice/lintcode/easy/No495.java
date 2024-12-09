@@ -1,4 +1,4 @@
-package main.java.parctice.lintcode.easy;
+package parctice.lintcode.easy;
 
 import java.util.LinkedList;
 import java.util.List;
