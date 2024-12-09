@@ -2,8 +2,8 @@
 # Project Specific
 ######################
 /build/www/**
-/src/test/javascript/coverage/
-/src/test/javascript/PhantomJS*/
+/src/main/java/parctice/test/javascript/coverage/
+/src/main/java/parctice/test/javascript/PhantomJS*/
 
 ######################
 # Node
@@ -127,7 +127,6 @@ Desktop.ini
 ######################
 # Others
 ######################
-*.class
 *.*~
 *~
 .merge_file*
