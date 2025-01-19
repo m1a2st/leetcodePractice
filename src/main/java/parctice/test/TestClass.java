@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.stream.Collectors;
 
@@ -140,6 +141,13 @@ public class TestClass {
         String apply = triFunction.apply(1, 2, 3);
         System.out.println(apply);
     }
+    
+    @Test
+    public void testFF() {
+        F f = new F(1);
+        FF ff = new FF(f);
+        System.out.println(ff.equals(f));
+    }
 
     private void checkPartitionAssigmentStrategy(List<String> assignmentStrategies) {
         if (assignmentStrategies != null && !assignmentStrategies.isEmpty()) {
@@ -179,5 +187,47 @@ public class TestClass {
     @FunctionalInterface
     interface TriFunction<A, B, C, R> {
         R apply(A a, B b, C c);
+    }
+    
+    class FF extends F {
+
+        F f;
+        
+        public FF(F f) {
+            super(f.i);
+            this.f = f;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            return super.equals(o);
+        }
+
+        @Override
+        public int hashCode() {
+            return f.hashCode();
+        }
+    }
+    
+    
+    class F {
+        Integer i;
+
+        public F(Integer i) {
+            this.i = i;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == null || getClass() != o.getClass()) return false;
+
+            F f = (F) o;
+            return Objects.equals(i, f.i);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hashCode(i);
+        }
     }
 }
