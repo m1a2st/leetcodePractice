@@ -18,10 +18,6 @@ public class No684 {
     }
 
     class UnionFind {
-
-        private final int[] id;
-        private final int[] rank;
-
         public UnionFind(int n) {
             id = new int[n];
             rank = new int[n];
@@ -45,6 +41,9 @@ public class No684 {
             return true;
         }
 
+        private int[] id;
+        private int[] rank;
+
         private int find(int u) {
             return id[u] == u ? u : (id[u] = find(id[u]));
         }
@@ -54,11 +53,15 @@ public class No684 {
         public int[] findRedundantConnection(int[][] edges) {
             UnionFind uf = new UnionFind(edges.length + 1);
 
-            for (int[] edge : edges)
-                if (!uf.unionByRank(edge[0], edge[1]))
+            for (int[] edge : edges) {
+                final int u = edge[0];
+                final int v = edge[1];
+                if (!uf.unionByRank(u, v))
                     return edge;
+            }
 
             throw new IllegalArgumentException();
         }
     }
+    
 }
