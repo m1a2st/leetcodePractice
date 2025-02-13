@@ -1,233 +1,112 @@
 package parctice.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.stream.Collectors;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.fail;
+
+/**
+ There are six conditions:
+ 1. future is cancel: It will fail at L603, the error message is `Expected NullPointerException, but got java.util.concurrent.CancellationException`
+ 2. future is timeout: It will fail at L609, the error message is `Future is not completed within 15000 millisecond.`
+ 3. future is interrupt: It will fail at L603, the error message is `Expected NullPointerException, but got java.lang.InterruptedException`
+ 4. future is completed without any exception: It will fail at L600, The error message is `Should throw expected exception NullPointerException but nothing was thrown.`
+ 5. future throw unexcepted exception: It will fail at L603, the error message is `Expected NullPointerException, but got java.lang.RuntimeException`
+ 6. future throw excepted exception: pass this assertion
+ */
 public class TestClass {
+
     
     @Test
-    public void scale() {
-        BigDecimal b = new BigDecimal("1222");
-        BigDecimal scale = b.setScale(2, RoundingMode.HALF_UP);
-        System.out.println(scale);
-    }
-    
-    @Test
-    public void join() {
-        List<String> list = List.of("a", "b", "c");
-        String join = String.join(",", list);
-        System.out.println(join);
-        List<String> empty = Collections.emptyList();
-        String join1 = String.join(",", empty);
-        System.out.println(join1);
-    }
+    void testFutureInterrupted() {
+        FutureTask<String> future = new FutureTask<>(() -> {
+            Thread.sleep(Long.MAX_VALUE);
+            return "result";
+        });
 
-    @Test
-    public void drainTo() {
-        ArrayBlockingQueue<Integer> deque = new ArrayBlockingQueue<>(10, true);
-        deque.add(1);
-        deque.add(2);
-        deque.add(3);
-        deque.add(4);
-        deque.add(5);
-        List<Integer> ls = new ArrayList<>();
-        deque.drainTo(ls, 3);
-        ls.forEach(System.out::println);
-        deque.forEach(System.out::println);
-    }
-
-    @Test
-    public void test() {
-        BigDecimal b = new BigDecimal("1222.2232323");
-        System.out.printf("%s%n", b);
-    }
-
-    void app(StringBuilder sb) {
-        sb.append("456");
-    }
-
-    @Test
-    public void test1() {
-        System.out.println(Test.class.getSimpleName());
-    }
-
-    @Test
-    public void test2() {
-        System.out.println(System.getProperty("os.name"));
-        System.out.println(System.getProperty("java.version"));
-    }
-
-    @Test
-    public void test3() {
-        Map<String, List<Cat>> map = new HashMap<>() {{
-            put("a", List.of(new Cat(1)));
-            put("b", List.of(new Cat(2)));
-            put("c", List.of(new Cat(3)));
-            put("d", List.of(new Cat(4)));
-            put("e", List.of(new Cat(5)));
-        }};
-        Map<String, List<NewCat>> collect = map.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .map(Cat::toNewCat).collect(Collectors.toList())));
-    }
-
-    @Test
-    public void test4() {
-        ArrayList<Integer> ls = new ArrayList<>();
-        ls.add(1);
-        ls.add(2);
-        ls.add(3);
-        ls.add(4);
-        ls.add(5);
-        Iterator<Integer> iterator = ls.iterator();
-        while (iterator.hasNext()) {
-            Integer i = iterator.next();
-            if (i == 1) {
-                iterator.remove();
+        Thread currentThread = Thread.currentThread();
+        Thread interrupter = new Thread(() -> {
+            try {
+                Thread.sleep(100); // 等待一小段時間
+                currentThread.interrupt();
+            } catch (InterruptedException e) {
+                // ignore
             }
-        }
-        ls.forEach(System.out::println);
+        });
+
+        interrupter.start();
+        assertFutureThrows(future, NullPointerException.class);
     }
 
     @Test
-    public void test5() {
-        double d = 1.0;
-        double d1 = 5.0;
-        for (Operator value : Operator.values()) {
-            System.out.println(value.apply((int) d, (int) d1));
-        }
+    void testFutureSuccess() {
+        CompletableFuture<String> future = CompletableFuture.completedFuture("success");
+        assertFutureThrows(future, NullPointerException.class);
     }
 
     @Test
-    public void test6() {
-        new Cat(1);
+    void testFutureThrowsNullException() {
+        CompletableFuture<String> future = CompletableFuture.failedFuture(
+                new NullPointerException("Expected exception"));
+
+        assertFutureThrows(future, NullPointerException.class);
     }
-    
+
     @Test
-    public void test7() {
-        List<String> assignmentStrategies = null;
-        Assertions.assertDoesNotThrow(() -> checkPartitionAssigmentStrategy(assignmentStrategies));
-        List<String> assignmentStrategies1 = new ArrayList<>();
-        Assertions.assertDoesNotThrow(() -> checkPartitionAssigmentStrategy(assignmentStrategies1));
-        List<String> assignmentStrategies2 = List.of("a", "b", "c");
-        Assertions.assertThrows(RuntimeException.class, () -> checkPartitionAssigmentStrategy(assignmentStrategies2));
+    void testFutureThrowsRuntimeException() {
+        CompletableFuture<String> future = CompletableFuture.failedFuture(
+                new RuntimeException("Expected exception"));
+
+        assertFutureThrows(future, NullPointerException.class);
     }
-    
+
     @Test
-    public void test8() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("a", List.of(1, 2, 3));
-        map.put("b", List.of(4, 5, 6));
-        List<String> a = (List<String>) map.get("a");
-        
+    void testFutureCancelled() {
+        CompletableFuture<String> future = new CompletableFuture<>();
+        new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            future.cancel(true);
+        }).start();
+        assertFutureThrows(future, NullPointerException.class);
     }
-    
+
     @Test
-    public void testTriFunction() {
-        TriFunction<Integer, Integer, Integer, String> triFunction = (a, b, c) -> String.valueOf(a + b + c);
-        String apply = triFunction.apply(1, 2, 3);
-        System.out.println(apply);
-    }
-    
-    @Test
-    public void testFF() {
-        F f = new F(1);
-        FF ff = new FF(f);
-        System.out.println(ff.equals(f));
+    void testFutureTimeout() {
+        CompletableFuture<String> future = new CompletableFuture<>();
+        assertFutureThrows(future, NullPointerException.class);
     }
 
-    private void checkPartitionAssigmentStrategy(List<String> assignmentStrategies) {
-        if (assignmentStrategies != null && !assignmentStrategies.isEmpty()) {
-            throw new RuntimeException();
+    public static <T extends Throwable> T assertFutureThrows(Future<?> future, Class<T> exceptionCauseClass) {
+        try {
+            future.get(10000, TimeUnit.MILLISECONDS);
+            fail("Should throw expected exception " + exceptionCauseClass.getSimpleName() + " but nothing was thrown.");
+        } catch (ExecutionException e) {
+            assertInstanceOf(
+                exceptionCauseClass, e.getCause(),
+                "Expected " + exceptionCauseClass.getSimpleName() + ", but got " + e.getCause()
+            );
+            return exceptionCauseClass.cast(e.getCause());
+        } catch (InterruptedException | CancellationException e) {
+            assertInstanceOf(
+                exceptionCauseClass, e,
+                "Expected " + exceptionCauseClass.getSimpleName() + ", but got " + e
+            );
+            return exceptionCauseClass.cast(e);
+        } catch (TimeoutException e) {
+            fail("Future is not completed within " + 10000 + " millisecond.");
         }
-    }
-
-    class Cat {
-        int age;
-
-        public Cat(int age) {
-            System.out.println("constructor Cat");
-            this.age = age;
-        }
-
-        static {
-            System.out.println("static Cat");
-        }
-
-        {
-            System.out.println("{} Cat " + age);
-        }
-
-        public NewCat toNewCat() {
-            return new NewCat(age);
-        }
-    }
-
-    class NewCat {
-        int age;
-
-        public NewCat(int age) {
-            this.age = age;
-        }
-    }
-
-    @FunctionalInterface
-    interface TriFunction<A, B, C, R> {
-        R apply(A a, B b, C c);
-    }
-    
-    class FF extends F {
-
-        F f;
-        
-        public FF(F f) {
-            super(f.i);
-            this.f = f;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            return super.equals(o);
-        }
-
-        @Override
-        public int hashCode() {
-            return f.hashCode();
-        }
-    }
-    
-    
-    class F {
-        Integer i;
-
-        public F(Integer i) {
-            this.i = i;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (o == null || getClass() != o.getClass()) return false;
-
-            F f = (F) o;
-            return Objects.equals(i, f.i);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hashCode(i);
-        }
+        throw new RuntimeException("Future should throw expected exception but unexpected error happened.");
     }
 }
