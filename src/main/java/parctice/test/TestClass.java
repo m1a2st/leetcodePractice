@@ -10,21 +10,22 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
- There are six conditions:
- 1. future is cancel: It will fail at L603, the error message is `Expected NullPointerException, but got java.util.concurrent.CancellationException`
- 2. future is timeout: It will fail at L609, the error message is `Future is not completed within 15000 millisecond.`
- 3. future is interrupt: It will fail at L603, the error message is `Expected NullPointerException, but got java.lang.InterruptedException`
- 4. future is completed without any exception: It will fail at L600, The error message is `Should throw expected exception NullPointerException but nothing was thrown.`
- 5. future throw unexcepted exception: It will fail at L603, the error message is `Expected NullPointerException, but got java.lang.RuntimeException`
- 6. future throw excepted exception: pass this assertion
+ * There are six conditions:
+ * 1. future is cancel: It will fail at L603, the error message is `Expected NullPointerException, but got java.util.concurrent.CancellationException`
+ * 2. future is timeout: It will fail at L609, the error message is `Future is not completed within 15000 millisecond.`
+ * 3. future is interrupt: It will fail at L603, the error message is `Expected NullPointerException, but got java.lang.InterruptedException`
+ * 4. future is completed without any exception: It will fail at L600, The error message is `Should throw expected exception NullPointerException but nothing was thrown.`
+ * 5. future throw unexcepted exception: It will fail at L603, the error message is `Expected NullPointerException, but got java.lang.RuntimeException`
+ * 6. future throw excepted exception: pass this assertion
  */
 public class TestClass {
 
-    
+
     @Test
     void testFutureInterrupted() {
         FutureTask<String> future = new FutureTask<>(() -> {
@@ -57,7 +58,8 @@ public class TestClass {
         CompletableFuture<String> future = CompletableFuture.failedFuture(
                 new NullPointerException("Expected exception"));
 
-        assertFutureThrows(future, NullPointerException.class);
+        NullPointerException nullPointerException = assertFutureThrows(future, NullPointerException.class);
+        assertEquals("Expected exception", nullPointerException.getMessage());
     }
 
     @Test
@@ -90,22 +92,16 @@ public class TestClass {
 
     public static <T extends Throwable> T assertFutureThrows(Future<?> future, Class<T> exceptionCauseClass) {
         try {
-            future.get(10000, TimeUnit.MILLISECONDS);
+            future.get(5000, TimeUnit.MILLISECONDS);
             fail("Should throw expected exception " + exceptionCauseClass.getSimpleName() + " but nothing was thrown.");
-        } catch (ExecutionException e) {
-            assertInstanceOf(
-                exceptionCauseClass, e.getCause(),
-                "Expected " + exceptionCauseClass.getSimpleName() + ", but got " + e.getCause()
+        } catch (InterruptedException | ExecutionException | CancellationException e) {
+            Throwable cause = e instanceof ExecutionException ? e.getCause() : e;
+            return assertInstanceOf(
+                    exceptionCauseClass, cause,
+                    "Expected " + exceptionCauseClass.getSimpleName() + ", but got " + cause
             );
-            return exceptionCauseClass.cast(e.getCause());
-        } catch (InterruptedException | CancellationException e) {
-            assertInstanceOf(
-                exceptionCauseClass, e,
-                "Expected " + exceptionCauseClass.getSimpleName() + ", but got " + e
-            );
-            return exceptionCauseClass.cast(e);
         } catch (TimeoutException e) {
-            fail("Future is not completed within " + 10000 + " millisecond.");
+            fail("Future is not completed within " + 5000 + " millisecond.");
         }
         throw new RuntimeException("Future should throw expected exception but unexpected error happened.");
     }
