@@ -10,28 +10,22 @@ import java.util.Map;
  */
 public class No1358 {
 
-    public static void main(String[] args) {
-        Solution.numberOfSubstrings("aaacb");
-    }
+    class Solution {
+        // Similar to 3. Longest SubString Without Repeating Characters
+        public int numberOfSubstrings(String s) {
+            int ans = 0;
+            int[] count = new int[3];
 
-    static class Solution {
-        public static int numberOfSubstrings(String s) {
-            Map<Character, Integer> window = new HashMap<>();
-            int length = s.length();
-            int left = 0, right = 0;
-            int res = 0;
-            while (right < length) {
-                char c = s.charAt(right);
-                right++;
-                window.put(c, window.getOrDefault(c, 0) + 1);
-                while (!window.containsValue(0) && window.size() == 3) {
-                    res += length - right + 1;
-                    char d = s.charAt(left);
-                    window.put(d, window.get(d) - 1);
-                    left++;
-                }
+            int l = 0;
+            for (final char c : s.toCharArray()) {
+                ++count[c - 'a'];
+                while (count[0] > 0 && count[1] > 0 && count[2] > 0)
+                    --count[s.charAt(l++) - 'a'];
+                // s[0..r], s[1..r], ..., s[l - 1..r] are satified strings.
+                ans += l;
             }
-            return res;
+
+            return ans;
         }
     }
 }
