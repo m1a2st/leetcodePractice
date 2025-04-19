@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class No2563 {
 
 
+    
     class Solution {
         public long countFairPairs(int[] nums, int lower, int upper) {
             // nums[i] + nums[j] == nums[j] + nums[i], so the condition that i < j
