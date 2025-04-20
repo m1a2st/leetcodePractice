@@ -2,8 +2,8 @@
 # Project Specific
 ######################
 /build/www/**
-/src/main/java/parctice/test/javascript/coverage/
-/src/main/java/parctice/test/javascript/PhantomJS*/
+/src/main/java/practice/test/javascript/coverage/
+/src/main/java/practice/test/javascript/PhantomJS*/
 
 ######################
 # Node
