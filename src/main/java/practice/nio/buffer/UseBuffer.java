@@ -1,4 +1,4 @@
-package main.java.parctice.nio.buffer;
+package practice.nio.buffer;
 
 import java.nio.IntBuffer;
 

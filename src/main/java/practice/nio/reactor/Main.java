@@ -1,4 +1,4 @@
-package main.java.parctice.nio.reactor;
+package practice.nio.reactor;
 
 public class Main {
 

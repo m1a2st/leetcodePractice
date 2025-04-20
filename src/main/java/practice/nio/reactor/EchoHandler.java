@@ -1,4 +1,4 @@
-package main.java.parctice.nio.reactor;
+package practice.nio.reactor;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

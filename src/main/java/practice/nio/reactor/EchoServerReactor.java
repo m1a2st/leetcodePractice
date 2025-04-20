@@ -1,4 +1,4 @@
-package main.java.parctice.nio.reactor;
+package practice.nio.reactor;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -62,7 +62,7 @@ public class EchoServerReactor implements Runnable {
             try {
                 SocketChannel channel = serverSocketChannel.accept();
                 if (channel != null) {
-                    new EchoHandler(selector, channel);
+                    new practice.nio.reactor.EchoHandler(selector, channel);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
