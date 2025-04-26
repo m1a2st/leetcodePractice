@@ -12,8 +12,7 @@ public class No2444 {
         int maxK = 5;
         System.out.println(solution.countSubarrays(nums, minK, maxK));
     }
-
-
+    
     class Solution {
         public long countSubarrays(int[] nums, int minK, int maxK) {
             long ans = 0;
