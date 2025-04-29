@@ -1,8 +1,7 @@
 package practice.leetcode.medium;
 
 public class No2962 {
-
-
+    
     class Solution {
         public long countSubarrays(int[] nums, int k) {
             long res = 0;
