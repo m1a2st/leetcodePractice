@@ -1,6 +1,7 @@
 package practice.leetcode.easy;
 
 public class No1550 {
+    
     class Solution {
         public boolean threeConsecutiveOdds(int[] arr) {
             int counter = 0;
