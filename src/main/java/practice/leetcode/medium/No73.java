@@ -3,7 +3,6 @@ package practice.leetcode.medium;
 public class No73 {
 
     class Solution {
-
         boolean[][] isVisited;
 
         public void setZeroes(int[][] matrix) {
