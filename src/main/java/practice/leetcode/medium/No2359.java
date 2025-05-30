@@ -5,34 +5,30 @@ import java.util.Arrays;
 public class No2359 {
 
     class Solution {
-        public int closestMeetingNode(int[] edges, int node1, int node2) {
-            final int MAX = 10000;
-            final int[] dist1 = getDist(edges, node1);
-            final int[] dist2 = getDist(edges, node2);
-            int minDist = MAX;
-            int ans = -1;
-
-            for (int i = 0; i < edges.length; ++i)
-                if (Math.min(dist1[i], dist2[i]) >= 0) {
-                    final int maxDist = Math.max(dist1[i], dist2[i]);
-                    if (maxDist < minDist) {
-                        minDist = maxDist;
-                        ans = i;
-                    }
-                }
-
-            return ans;
+        private void dfs(int current, int distance, int[] edges, int[] distances) {
+            while (current != -1 && distances[current] == -1) {
+                distances[current] = distance++;
+                current = edges[current];
+            }
         }
 
-        private int[] getDist(int[] edges, int u) {
-            int[] dist = new int[edges.length];
-            Arrays.fill(dist, -1);
-            int d = 0;
-            while (u != -1 && dist[u] == -1) {
-                dist[u] = d++;
-                u = edges[u];
+        public int closestMeetingNode(int[] edges, int start1, int start2) {
+            int res = -1, Min_Of_Max = Integer.MAX_VALUE, n = edges.length;
+            int[] dist1 = new int[n], dist2 = new int[n];
+            Arrays.fill(dist1, -1);
+            Arrays.fill(dist2, -1);
+            dfs(start1, 0, edges, dist1);
+            dfs(start2, 0, edges, dist2);
+            for (int i = 0; i < n; i++) {
+                if (dist1[i] >= 0 && dist2[i] >= 0) {
+                    int maxDist = Math.max(dist1[i], dist2[i]);
+                    if (maxDist < Min_Of_Max) {
+                        Min_Of_Max = maxDist;
+                        res = i;
+                    }
+                }
             }
-            return dist;
+            return res;
         }
     }
 }
