@@ -11,7 +11,7 @@ public class No386 {
     void test() {
         System.out.println(new Solution().lexicalOrder(123));
     }
-
+    
     class Solution {
         public List<Integer> lexicalOrder(int n) {
             List<Integer> ans = new ArrayList<>();
