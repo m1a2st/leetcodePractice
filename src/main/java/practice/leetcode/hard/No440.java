@@ -2,6 +2,7 @@ package practice.leetcode.hard;
 
 public class No440 {
 
+    
     class Solution {
         public int findKthNumber(int n, int k) {
             long ans = 1;
