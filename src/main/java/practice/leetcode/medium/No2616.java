@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class No2616 {
 
+    
     class Solution {
         public int minimizeMax(int[] nums, int p) {
             if (p == 0) {
