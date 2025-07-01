@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 public class No1498 {
 
+    
     @Test
     public void test() {
         Solution solution = new Solution();
