@@ -2,6 +2,7 @@ package practice.leetcode.medium;
 
 public class No2311 {
 
+    
     class Solution {
         public int longestSubsequence(String s, int k) {
             int oneCount = 0;
