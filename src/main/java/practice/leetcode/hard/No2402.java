@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 public class No2402 {
 
+    
     class Solution {
         public int mostBooked(int n, int[][] meetings) {
             Arrays.sort(meetings, (a, b) -> a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1]));
