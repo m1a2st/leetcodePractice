@@ -6,6 +6,7 @@ import java.util.List;
 
 public class No1233 {
     
+    
     class Solution {
         public List<String> removeSubfolders(String[] folder) {
             List<String> ans = new ArrayList<>();
