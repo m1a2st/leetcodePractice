@@ -2,6 +2,7 @@ package practice.leetcode.easy;
 
 public class No1957 {
 
+
     class Solution {
         public String makeFancyString(String s) {
             StringBuilder sb = new StringBuilder();
