@@ -3,8 +3,7 @@ package practice.leetcode.medium;
 import java.util.Arrays;
 
 public class No2044 {
-
-
+    
     class Solution {
 
         private int ans = 0;
