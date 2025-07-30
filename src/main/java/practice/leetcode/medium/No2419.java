@@ -2,6 +2,7 @@ package practice.leetcode.medium;
 
 public class No2419 {
 
+    
     class Solution {
         public int longestSubarray(int[] nums) {
             int ans = 0;
