@@ -17,7 +17,7 @@ public class No904 {
         Solution solution = new Solution();
         solution.totalFruit(new int[]{1, 0, 1, 4, 1, 4, 1, 2, 3});
     }
-
+    
     class Solution {
         public int totalFruit(int[] fruits) {
             int max = 0;
