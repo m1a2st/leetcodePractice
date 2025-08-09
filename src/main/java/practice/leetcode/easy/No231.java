@@ -1,15 +1,6 @@
 package practice.leetcode.easy;
 
-import org.junit.jupiter.api.Test;
-
 public class No231 {
-
-    boolean a;
-
-    @Test
-    public void test() {
-        System.out.println(a);
-    }
 
     class Solution {
         public boolean isPowerOfTwo(int n) {
