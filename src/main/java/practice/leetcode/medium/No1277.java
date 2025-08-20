@@ -14,6 +14,7 @@ public class No1277 {
         }));
     }
 
+    
     class Solution {
         public int countSquares(int[][] matrix) {
             final int m = matrix.length, n = matrix[0].length;
