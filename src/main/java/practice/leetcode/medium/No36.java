@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class No36 {
 
+    
     class Solution {
         public boolean isValidSudoku(char[][] board) {
             Set<String> seen = new HashSet<>();
