@@ -4,6 +4,7 @@ import java.util.PriorityQueue;
 
 public class No1792 {
 
+    
     class Solution {
         public double maxAverageRatio(int[][] classes, int extraStudents) {
             // (extra pass ratio, pass, total)
