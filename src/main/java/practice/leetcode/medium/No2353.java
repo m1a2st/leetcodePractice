@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 public class No2353 {
 
+
     class FoodRatings {
         Map<String, TreeSet<Pair>> cuisineToRatingAndFoods = new HashMap<>();
         Map<String, String> foodToCuisine = new HashMap<>();
