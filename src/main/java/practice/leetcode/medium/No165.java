@@ -2,6 +2,7 @@ package practice.leetcode.medium;
 
 public class No165 {
 
+
     class Solution {
         public int compareVersion(String version1, String version2) {
             String[] v1 = version1.split("\\.");
