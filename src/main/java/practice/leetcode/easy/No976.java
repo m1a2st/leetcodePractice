@@ -3,6 +3,7 @@ package practice.leetcode.easy;
 import java.util.Arrays;
 
 public class No976 {
+
     //simple answer
     public static int largestPerimeter(int[] arr) {
         Arrays.sort(arr);
