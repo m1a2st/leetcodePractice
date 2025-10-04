@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class No11 {
 
+
     /**
      * 1. 先找出左邊和右邊的高度較小的那個
      * 2. 計算面積
