@@ -8,6 +8,7 @@ import java.util.Arrays;
  * @Version v1.0
  */
 public class No2300 {
+
     class Solution {
         public int[] successfulPairs(int[] spells, int[] potions, long success) {
             int[] res = new int[spells.length];
