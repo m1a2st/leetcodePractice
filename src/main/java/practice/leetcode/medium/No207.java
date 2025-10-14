@@ -13,26 +13,25 @@ public class No207 {
     class Solution {
 
         enum State {
-            INIT, VISITING, VISITED;
+            INIT, VISITING, VISITED
         }
 
-        List<List<Integer>> graph;
-        State[] visited;
+        List<List<Integer>> graph = new ArrayList<>();
+        State[] states;
 
         public boolean canFinish(int numCourses, int[][] prerequisites) {
-            graph = new ArrayList<>();
-            visited = new State[numCourses];
-            for (int i = 0; i < numCourses; ++i) {
+            states = new State[numCourses];
+            for (int i = 0; i < numCourses; i++) {
                 graph.add(new ArrayList<>());
             }
 
             for (int[] prerequisite : prerequisites) {
                 int start = prerequisite[0];
                 int end = prerequisite[1];
-                graph.get(start).add(end);
+                graph.get(end).add(start);
             }
 
-            for (int i = 0; i < numCourses; ++i) {
+            for (int i = 0; i < numCourses; i++) {
                 if (hasCycle(i)) {
                     return false;
                 }
@@ -40,22 +39,23 @@ public class No207 {
             return true;
         }
 
-        private boolean hasCycle(int start) {
-            // 結束條件
-            if (visited[start] == State.VISITING) {
+        private boolean hasCycle(int i) {
+            if (states[i] == State.VISITING) {
                 return true;
             }
-            if (visited[start] == State.VISITED) {
+
+            if (states[i] == State.VISITED) {
                 return false;
             }
 
-            visited[start] = State.VISITING;
-            for (Integer edge : graph.get(start)) {
+            states[i] = State.VISITING;
+            // dfs
+            for (Integer edge : graph.get(i)) {
                 if (hasCycle(edge)) {
                     return true;
                 }
             }
-            visited[start] = State.VISITED;
+            states[i] = State.VISITED;
             return false;
         }
     }
