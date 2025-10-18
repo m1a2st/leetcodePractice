@@ -17,15 +17,20 @@ public class No189 {
     class Solution {
         public void rotate(int[] nums, int k) {
             int len = nums.length;
-            int[] ans = new int[len];
-            int mod = k % len;
-            for (int i = len - mod, j = 0; i < len; i++, j++) {
-                ans[j] = nums[i];
+            k = k % len;
+            shift(nums, 0, len - 1);
+            shift(nums, 0, k - 1);
+            shift(nums, k, len - 1);
+        }
+
+        private void shift(int[] nums, int left, int right) {
+            while (left < right) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right--;
             }
-            for (int i = 0, j = mod; i < len - mod; i++, j++) {
-                ans[j] = nums[i];
-            }
-            System.arraycopy(ans, 0, nums, 0, len);
         }
     }
 }
