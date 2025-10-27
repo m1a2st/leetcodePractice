@@ -2,7 +2,6 @@ package practice.leetcode.medium;
 
 public class No2125 {
 
-
     class Solution {
         public int numberOfBeams(String[] bank) {
             int prevRowCount = 0;
