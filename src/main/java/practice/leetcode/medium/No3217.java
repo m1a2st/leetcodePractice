@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class No3217 {
 
-    // Definition for singly-linked list.
     public class ListNode {
         int val;
         ListNode next;
@@ -40,8 +39,8 @@ public class No3217 {
                 }
                 curr = curr.next;
             }
-            
-            return dummy.next;  
+
+            return dummy.next;
         }
     }
 }
